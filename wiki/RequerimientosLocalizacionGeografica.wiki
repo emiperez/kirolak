@@ -1,0 +1,12 @@
+#summary Requerimientos del Sistema de localización geográfica de Contenidos.
+
+= Introducción =
+
+Varios de los contenidos serán ubicables geográficamente por ejemplo, una competición disputarse en un país, un equipo a una ciudad, o un estadio estar ubicado en una calle de la ciudad. El sistema de Localización Geográfica proveerá a los diferentes módulos de un sistema para asociar los contenidos con ubicaciones.
+
+
+= Requerimientos =
+
+  * No será necesario tener creadas todas las ubicaciones en la instalación del sistema, será posible crearlos dinámicamente durante la explotación.
+  * Para cada ubicación se podrá establecer un punto central en coordenadas de Latitud y Longitud, así como un radio establecido como un ángulo.
+  * Las ubicaciones formarán una estructura de arbol, de tal forma que existirá una raiz, y a partir de ahí se podrán crear tantas ramas y subramas como se desee.
