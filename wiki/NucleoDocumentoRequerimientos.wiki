@@ -1,4 +1,5 @@
 #summary Requerimientos del Nucleo del Portal de Clasificaciones Deportivas Kirolak.
+#labels Phase-Requirements
 
 = Introducción =
 
