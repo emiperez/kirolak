@@ -1,5 +1,12 @@
 #summary Kirolak, Portal de Clasificaciones Deportivas.
 
+The following is:
+  * A list
+  * Of bulleted items
+    # This is a numbered sublist
+    # Which is done by indenting further
+  * And back to the main bulleted list
+
 = Introducción =
 
 En el presente proyecto se pretende crear un sistema de gestión de clasificaciones deportivas multilenguaje, multisistema (móvil, web, MHP ...etc), y con la posibilidad de que los propios usuarios sean los que lo alimenten de información.
