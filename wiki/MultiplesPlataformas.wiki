@@ -1,0 +1,13 @@
+#summary Kirolak, Requerimientos del Sistema Multiplataforma.
+#labels Phase-Requirements
+
+= Introducción =
+
+Dado que los eventos deportivos suelen celebrarse en lugares con limitaciones para el acceso a ordenadores, el sistema debe de estar provisto de la posibilidad de ser actualizado desde dispositivos móviles.
+
+
+= Requerimientos =
+
+  * Capacidad de establecer el formato dependiendo del dispositivo
+  * Capacidad de extender los formatos a los que vayan surgiendo
+  * Inicialmente se contemplarán los formatos HTML y XHTML MP.
