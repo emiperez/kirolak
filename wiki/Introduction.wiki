@@ -2,9 +2,9 @@
 
 = Introduction =
 
-Help, [Introducción_Español Translate From Spanish]
+Help, [IntroduccionEspanol Translate From Spanish]
 
 
 = Details =
 
-Help, [Detalles_Español Translate From Spanish]
+Help, [DetallesEspanol Translate From Spanish]
