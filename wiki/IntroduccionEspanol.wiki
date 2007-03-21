@@ -1,16 +1,10 @@
 #summary Kirolak, Portal de Clasificaciones Deportivas.
 #labels Featured
 
-The following is:
-  * A list
-  * Of bulleted items
-    # This is a numbered sublist
-    # Which is done by indenting further
-  * And back to the main bulleted list
 
 = Introducción =
 
-En el presente proyecto se pretende crear un sistema de gestión de clasificaciones deportivas multilenguaje, multisistema (móvil, web, MHP ...etc), y con la posibilidad de que los propios usuarios sean los que lo alimenten de información.
+El nombre Kirolak es el termino en idioma vasco para el termino "Deportes" y es el nombre que se le da al presente proyecto en el que se pretende crear un sistema de gestión de clasificaciones deportivas multilenguaje, multisistema (móvil, web, MHP ...etc), y con la posibilidad de que los propios usuarios sean los que lo alimenten de información.
 
 
 = Características =
@@ -28,7 +22,7 @@ En el presente proyecto se pretende crear un sistema de gestión de clasificacio
   * PHP 5
   * MySQL 5
 
-= Fases del Proyecto
+= Fases del Proyecto =
 
   # Nucleo del Sistema (Fecha de Final deseada 1 de Mayo de 2007)
     * [NucleoDocumentoRequerimientos Documento de Requerimientos]
@@ -39,5 +33,7 @@ En el presente proyecto se pretende crear un sistema de gestión de clasificacio
     * Documento de Requerimientos
     * Diseño Técnico
     * Desarrollo
-    * Desarrollo
-  * 
+  
+  # Pruebas de Integración
+
+  # Mejora Permanente con Funcionalidades y Corrección de Bugs
