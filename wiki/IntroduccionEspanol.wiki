@@ -14,14 +14,6 @@ En el presente proyecto se pretende crear un sistema de gestión de clasificacio
 
 = Características =
 
-
-The following is:
-  * A list
-  * Of bulleted items
-    # This is a numbered sublist
-    # Which is done by indenting further
-  * And back to the main bulleted list
-
   * Acceso vía PC o móvil
 * Sistema Multideporte
 * Información generada por los usuarios
