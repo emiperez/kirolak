@@ -1,0 +1,14 @@
+#summary Requerimientos del Sistema Multi-Idioma.
+#labels Phase-Requirements
+
+= Introduction =
+
+Kirolak será un sistema multi-idioma cumpliendo los siguientes requerimientos.
+
+
+= Requerimientos =
+
+  * El administrador del sistema podrá escoger que idiomas se le darán a elegir al usuario.
+  * Si el administrador ha decidido que habrá más de uno, estos se mostrarán en todas las pantallas como enlaces con el nombre de cada uno de ellos en su idioma correspondiente (English, Español, Euskara...).
+  * Cuando un usuario cambie el idioma se le seguirá mostrando la misma pantalla en la que estaba en el momento de pulsar el enlace del nuevo idioma, sólo que con el idioma cambiado.
+  * Los usuarios podrán reducir el número de idiomas de la información producida por ellos.
