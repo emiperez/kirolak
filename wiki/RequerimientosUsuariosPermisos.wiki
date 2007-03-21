@@ -1,0 +1,17 @@
+#summary Requerimientos en la Gestión de Usuarios y Permisos.
+#labels Phase-Requirements
+
+= Introducción =
+
+A continuación se detallan los requerimientos que deberá de cumplir el sistema de gestión de usuarios.
+
+
+= Requerimientos =
+
+  * Los usuarios podrán registrarse vía PC o móvil.
+  * Todas las acciones que se puedan realizar en el sistema estarán establecidas en un listado de acciones.
+  * Se crearán roles de usuarios como agrupaciones de acciones.
+  * Un usuario podrá pertenecer a varios roles.
+  * El usuario no verá nunca la posibilidad de ejecutar una acción para la que no tiene permisos.
+  * Antes de realizar cualquier acción se comprobará que el usuario tiene permiso para hacerla.
+  * Existirá un sistema de gestión web de acciones, roles y usuarios.
