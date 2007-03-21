@@ -5,10 +5,16 @@
 En el presente proyecto se pretende crear un sistema de gestión de clasificaciones deportivas multilenguaje, multisistema (móvil, web, MHP ...etc), y con la posibilidad de que los propios usuarios sean los que lo alimenten de información.
 
 
-= Details =
+= Características =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+* Acceso vía PC o móvil
+* Sistema Multideporte
+* Información generada por los usuarios
+* Sistema de calificación de la fiabilidad de los usuarios
+* Multiples salidas para la información (HTML, WML, XHTML MP, PDF... etc)
+* Multi-idioma
 
+= Detalles técnicos =
+
+* PHP 5
+* MySQL 5
