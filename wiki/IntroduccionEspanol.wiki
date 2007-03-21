@@ -1,8 +1,8 @@
-#summary One-sentence summary of this page.
+#summary Kirolak, Portal de Clasificaciones Deportivas.
 
-= Introduction =
+= Introducción =
 
-Add your content here.
+En el presente proyecto se pretende crear un sistema de gestión de clasificaciones deportivas multilenguaje, multisistema (móvil, web, MHP ...etc), y con la posibilidad de que los propios usuarios sean los que lo alimenten de información.
 
 
 = Details =
@@ -11,5 +11,4 @@ Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
-
 
