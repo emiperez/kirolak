@@ -15,13 +15,13 @@ En el presente proyecto se pretende crear un sistema de gestión de clasificacio
 = Características =
 
   * Acceso vía PC o móvil
-* Sistema Multideporte
-* Información generada por los usuarios
-* Sistema de calificación de la fiabilidad de los usuarios
-* Multiples salidas para la información (HTML, WML, XHTML MP, PDF... etc)
-* Multi-idioma
+  * Sistema Multideporte
+  * Información generada por los usuarios
+  * Sistema de calificación de la fiabilidad de los usuarios
+  * Multiples salidas para la información (HTML, WML, XHTML MP, PDF... etc)
+  * Multi-idioma
 
 = Detalles técnicos =
 
-* PHP 5
-* MySQL 5
+  * PHP 5
+  * MySQL 5
