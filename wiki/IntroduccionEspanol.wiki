@@ -28,12 +28,9 @@ El nombre Kirolak es el termino en idioma vasco para el termino "Deportes" y es 
     * [NucleoDocumentoRequerimientos Documento de Requerimientos]
     * Diseño Técnico
     * Desarrollo
-
   # Sistema de Clasificaciones (Fecha de Final Deseada, 30 de Diciembre de 2007)
     * Documento de Requerimientos
     * Diseño Técnico
-    * Desarrollo
-  
+    * Desarrollo  
   # Pruebas de Integración
-
   # Mejora Permanente con Funcionalidades y Corrección de Bugs
