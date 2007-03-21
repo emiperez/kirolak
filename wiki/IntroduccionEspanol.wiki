@@ -1,4 +1,5 @@
 #summary Kirolak, Portal de Clasificaciones Deportivas.
+#labels Featured
 
 The following is:
   * A list
@@ -14,8 +15,9 @@ En el presente proyecto se pretende crear un sistema de gestión de clasificacio
 
 = Características =
 
-  * Acceso vía PC o móvil
+  * Actualización vía PC o móvil
   * Sistema Multideporte
+  * Sistema de Ubicación Geográfica de Eventos y Competiciones (Nacional, Regional... etc)
   * Información generada por los usuarios
   * Sistema de calificación de la fiabilidad de los usuarios
   * Multiples salidas para la información (HTML, WML, XHTML MP, PDF... etc)
@@ -25,3 +27,17 @@ En el presente proyecto se pretende crear un sistema de gestión de clasificacio
 
   * PHP 5
   * MySQL 5
+
+= Fases del Proyecto
+
+  # Nucleo del Sistema (Fecha de Final deseada 1 de Mayo de 2007)
+    * [NucleoDocumentoRequerimientos Documento de Requerimientos]
+    * Diseño Técnico
+    * Desarrollo
+
+  # Sistema de Clasificaciones (Fecha de Final Deseada, 30 de Diciembre de 2007)
+    * Documento de Requerimientos
+    * Diseño Técnico
+    * Desarrollo
+    * Desarrollo
+  * 
