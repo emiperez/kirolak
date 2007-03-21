@@ -22,7 +22,7 @@ The following is:
     # Which is done by indenting further
   * And back to the main bulleted list
 
-* Acceso vía PC o móvil
+  * Acceso vía PC o móvil
 * Sistema Multideporte
 * Información generada por los usuarios
 * Sistema de calificación de la fiabilidad de los usuarios
