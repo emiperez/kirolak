@@ -12,3 +12,4 @@ A continuación se describe los componentes que tendrá el nucleo del sistema, e
   # [RequerimientosUsuariosPermisos Sistema de Usuarios y Gestión de Permisos]
   # [RequerimientosIdiomas Sistema Multilenguaje]
   # [RequerimientosLocalizacionGeografica Sistema de Ubicación de Eventos y Categorías]
+  # [MultiplesPlataformas Sistema Multiplataforma]
