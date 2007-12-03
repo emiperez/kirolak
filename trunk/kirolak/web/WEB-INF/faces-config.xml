@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE faces-config PUBLIC
+  "-//Sun Microsystems, Inc.//DTD JSF Config 1.1//EN"
+  "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+<faces-config>
+	<application>
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>es</supported-locale>
+			<supported-locale>eu</supported-locale>
+		</locale-config>
+	</application>
+
+	<!-- NAVIGATION RULES -->
+	<navigation-rule>
+		<from-view-id>/sports.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>edit</from-outcome>
+			<to-view-id>/sport.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>newSport</from-outcome>
+			<to-view-id>/sport.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>deleted</from-outcome>
+			<to-view-id>/sports.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/sport.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>saved</from-outcome>
+			<to-view-id>/sports.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- BEANS -->
+	<managed-bean>
+		<managed-bean-name>sport</managed-bean-name>
+		<managed-bean-class>
+			com.kirolak.beans.SportBean
+		</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>observers</property-name>
+			<list-entries>
+				<value>#{sports}</value>
+			</list-entries>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>sports</managed-bean-name>
+		<managed-bean-class>
+			com.kirolak.beans.SportListBean
+		</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+</faces-config>
