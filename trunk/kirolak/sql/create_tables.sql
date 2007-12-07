@@ -20,8 +20,12 @@ create table competitions
 	sport_id smallint unsigned,
 	name char(25) NOT NULL,
 	seo_name char(15) NOT NULL,
+	start_date date,
+	finish_date date,
 	INDEX comp_name (name),
 	INDEX comp_sport (sport_id),
+	INDEX comp_start (start_date),
+	INDEX comp_finish (finish_date),
 	FOREIGN KEY (sport_id) REFERENCES sports(id) ON DELETE CASCADE
 );
 
@@ -32,6 +36,8 @@ create table stages
 	competition_id int unsigned, 
 	name char(25) NOT NULL,
 	seo_name char(15) NOT NULL,
+	start_date date,
+	finish_date date,
 	type tinyint unsigned COMMENT 'knockout, points...',
 	matches tinyint unsigned,
 	max_parts tinyint unsigned,
@@ -41,6 +47,8 @@ create table stages
 	points_loose tinyint,	
 	INDEX stage_name (name),
 	INDEX stage_comp (competition_id),
+	INDEX stage_start (start_date),
+	INDEX stage_finish (finish_date),
 	FOREIGN KEY (competition_id) REFERENCES competitions(id) ON DELETE CASCADE
 );
 
@@ -61,7 +69,10 @@ create table teams
 	id int unsigned PRIMARY KEY AUTO_INCREMENT,
 	sport_id smallint unsigned,
 	name char(25) NOT NULL,
+	seo_name char(15) NOT NULL,
+	acronym char(3) NOT NULL,
 	INDEX team_name (name),
+	INDEX team_seo_name (seo_name),
 	INDEX team_sport (sport_id),
 	FOREIGN KEY (sport_id) REFERENCES sports(id) ON DELETE CASCADE
 	
