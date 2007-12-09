@@ -11,7 +11,7 @@
 	<body>
 	<h:form id="sports">
 	<h:commandLink action="newSport" value="#{msg.new}"/>
-	<h:dataTable value="#{sports.sports}" var="item" binding="#{sport.sportData}">	
+	<h:dataTable value="#{app.sports}" var="item" binding="#{sport.sportData}">	
 		<h:column>
 			<f:facet name="header">
 				<h:outputText value="#{msg.id}" />
