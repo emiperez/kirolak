@@ -6,10 +6,10 @@
 	<application>
 		<locale-config>
 			<default-locale>en</default-locale>
-			<supported-locale>es</supported-locale>
-			<supported-locale>eu</supported-locale>
-		</locale-config>
+		</locale-config>			
+        <message-bundle>com.kirolak.bundle.messages</message-bundle>
 	</application>
+
 
 	<!-- NAVIGATION RULES -->
 	<navigation-rule>
@@ -46,15 +46,23 @@
 		<managed-property>
 			<property-name>observers</property-name>
 			<list-entries>
-				<value>#{sports}</value>
+				<value>#{app}</value>
 			</list-entries>
 		</managed-property>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>sports</managed-bean-name>
+		<managed-bean-name>app</managed-bean-name>
 		<managed-bean-class>
-			com.kirolak.beans.SportListBean
+			com.kirolak.beans.Kirolak
 		</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
+
+	<validator>
+		<validator-id>kirolak.seoNameValidator</validator-id>
+		<validator-class>
+			com.kirolak.jsf.validators.SeoNameValidator
+		</validator-class>
+	</validator>
+	
 </faces-config>

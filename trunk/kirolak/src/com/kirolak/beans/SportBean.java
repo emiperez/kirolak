@@ -9,9 +9,9 @@ import javax.faces.component.UIData;
 
 import org.hibernate.Session;
 
-import util.HibernateUtil;
 
 import com.kirolak.Sport;
+import com.kirolak.util.HibernateUtil;
 
 public class SportBean extends Observable implements Serializable
 {
@@ -20,7 +20,6 @@ public class SportBean extends Observable implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	private Sport sport = new Sport();
-	private ArrayList<Observer> observers;
 	private UIData sportData;
 
 	public UIData getSportData()
@@ -147,11 +146,7 @@ public class SportBean extends Observable implements Serializable
 
 	public String save()
 	{
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
-		session.saveOrUpdate(this.sport);
-		session.getTransaction().commit();
-
+		this.sport.save();
 		// Notify to the observers
 		setChanged();
 		notifyObservers();
@@ -162,10 +157,7 @@ public class SportBean extends Observable implements Serializable
 	public String delete()
 	{
 		this.sport = (Sport) sportData.getRowData();
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
-		session.delete(this.sport);
-		session.getTransaction().commit();
+		this.sport.delete();
 
 		// Notify to the observers
 		setChanged();

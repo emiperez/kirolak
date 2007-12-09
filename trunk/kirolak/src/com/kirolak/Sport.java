@@ -1,5 +1,11 @@
 package com.kirolak;
 
+import java.util.List;
+
+import org.hibernate.Session;
+
+import com.kirolak.util.HibernateUtil;
+
 // Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1
 
 /**
@@ -142,6 +148,33 @@ public class Sport implements java.io.Serializable
 	public void setPointsLoose(Byte pointsLoose)
 	{
 		this.pointsLoose = pointsLoose;
+	}
+	
+	public static List<Sport> getAll()
+	{
+		List<Sport> sports;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		sports = session.createQuery("from Sport").list();
+		session.getTransaction().commit();
+		return sports;	
+	}
+	
+	
+	public void save()
+	{
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		session.saveOrUpdate(this);
+		session.getTransaction().commit();
+	}
+
+	public void delete()
+	{
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		session.delete(this);
+		session.getTransaction().commit();
 	}
 
 }
