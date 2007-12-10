@@ -2,7 +2,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import util.KirolakValidator;
+import com.kirolak.util.KirolakValidator;
+
 
 import junit.framework.JUnit4TestAdapter;
 

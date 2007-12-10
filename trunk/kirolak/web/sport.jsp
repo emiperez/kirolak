@@ -28,6 +28,12 @@
 				<f:validateLength minimum="3" maximum="25" />
 			</h:inputText>
 			<h:message id="nameError" for="name" styleClass="error" />
+			
+			<h:outputText value="#{msg.score_mode}" />
+			<h:selectOneMenu id="mode" value="#{sport.scoreMode}" required="true">
+				<f:selectItems value="#{app.scoreModesSelectItems}" />
+			</h:selectOneMenu>
+			<h:message id="scoreModeError" for="mode" styleClass="error" />
 
 		</h:panelGrid>
 		<h:commandButton value="#{msg.save}" action="#{sport.save}" />

@@ -1,10 +1,19 @@
+drop table if exists score_modes;
+create table score_modes
+(
+	id tinyint unsigned PRIMARY KEY,
+	name char(15) UNIQUE
+);
+insert into score_modes values(10,'Accumulative');
+insert into score_modes values(20,'Winned Parts');
+
 drop table if exists sports;
 create table sports
 (
 	id smallint unsigned PRIMARY KEY AUTO_INCREMENT,
 	name char(25) UNIQUE,
 	seo_name char(15) UNIQUE,
-	score_mode tinyint unsigned COMMENT 'accumulative, winned parts...',
+	score_mode tinyint unsigned COMMENT 'accumulative, winned parts...' NOT NULL,
 	part_name char(25),
 	max_parts tinyint unsigned,
 	play_off_name char(25),
@@ -28,6 +37,16 @@ create table competitions
 	INDEX comp_finish (finish_date),
 	FOREIGN KEY (sport_id) REFERENCES sports(id) ON DELETE CASCADE
 );
+
+drop table if exists stage_types;
+create table stage_types
+(
+	id tinyint unsigned PRIMARY KEY,
+	name char(15)
+);
+insert into stage_types values(10,'Heats');
+insert into stage_types values(20,'Points');
+insert into stage_types values(30,'Race');
 
 drop table if exists stages;
 create table stages
