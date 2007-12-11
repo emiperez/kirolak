@@ -3,6 +3,7 @@ package com.kirolak;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.mapping.Set;
 
 import com.kirolak.util.HibernateUtil;
 
@@ -13,17 +14,30 @@ import com.kirolak.util.HibernateUtil;
  */
 public class Sport implements java.io.Serializable
 {
-
+	private Set competitions;
 	private short id;
-	private String name;
-	private String seoName;
-	private Byte scoreMode;
-	private String partName;
 	private Byte maxParts;
+	private String name;
+	private String partName;
 	private String playOffName;
-	private Byte pointsWin;
 	private Byte pointsDraw;
 	private Byte pointsLoose;
+	private Byte pointsWin;
+	
+	private Byte scoreMode;
+	private String seoName;
+
+	private Set teams;
+
+	public static List<Sport> getAll()
+	{
+		List<Sport> sports;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		sports = session.createQuery("from Sport s, Team t where s.id = t.sportId ").list();
+		session.getTransaction().commit();
+		return sports;	
+	}
 
 	public Sport()
 	{
@@ -50,54 +64,22 @@ public class Sport implements java.io.Serializable
 		this.pointsLoose = pointsLoose;
 	}
 
+	public void delete()
+	{
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		session.delete(this);
+		session.getTransaction().commit();
+	}
+
+	public Set getCompetitions()
+	{
+		return competitions;
+	}
+
 	public short getId()
 	{
 		return this.id;
-	}
-
-	public void setId(short id)
-	{
-		this.id = id;
-	}
-
-	public String getName()
-	{
-		return this.name;
-	}
-
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-
-	public String getSeoName()
-	{
-		return this.seoName;
-	}
-
-	public void setSeoName(String seoName)
-	{
-		this.seoName = seoName;
-	}
-
-	public Byte getScoreMode()
-	{
-		return this.scoreMode;
-	}
-
-	public void setScoreMode(Byte scoreMode)
-	{
-		this.scoreMode = scoreMode;
-	}
-
-	public String getPartName()
-	{
-		return this.partName;
-	}
-
-	public void setPartName(String partName)
-	{
-		this.partName = partName;
 	}
 
 	public Byte getMaxParts()
@@ -105,9 +87,14 @@ public class Sport implements java.io.Serializable
 		return this.maxParts;
 	}
 
-	public void setMaxParts(Byte maxParts)
+	public String getName()
 	{
-		this.maxParts = maxParts;
+		return this.name;
+	}
+
+	public String getPartName()
+	{
+		return this.partName;
 	}
 
 	public String getPlayOffName()
@@ -115,29 +102,9 @@ public class Sport implements java.io.Serializable
 		return this.playOffName;
 	}
 
-	public void setPlayOffName(String playOffName)
-	{
-		this.playOffName = playOffName;
-	}
-
-	public Byte getPointsWin()
-	{
-		return this.pointsWin;
-	}
-
-	public void setPointsWin(Byte pointsWin)
-	{
-		this.pointsWin = pointsWin;
-	}
-
 	public Byte getPointsDraw()
 	{
 		return this.pointsDraw;
-	}
-
-	public void setPointsDraw(Byte pointsDraw)
-	{
-		this.pointsDraw = pointsDraw;
 	}
 
 	public Byte getPointsLoose()
@@ -145,22 +112,26 @@ public class Sport implements java.io.Serializable
 		return this.pointsLoose;
 	}
 
-	public void setPointsLoose(Byte pointsLoose)
+	public Byte getPointsWin()
 	{
-		this.pointsLoose = pointsLoose;
+		return this.pointsWin;
 	}
-	
-	public static List<Sport> getAll()
+
+	public Byte getScoreMode()
 	{
-		List<Sport> sports;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
-		sports = session.createQuery("from Sport").list();
-		session.getTransaction().commit();
-		return sports;	
+		return this.scoreMode;
 	}
-	
-	
+
+	public String getSeoName()
+	{
+		return this.seoName;
+	}
+
+	public Set getTeams()
+	{
+		return this.teams;
+	}
+
 	public void save()
 	{
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -169,12 +140,65 @@ public class Sport implements java.io.Serializable
 		session.getTransaction().commit();
 	}
 
-	public void delete()
+	public void setCompetitions(Set competitions)
 	{
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
-		session.delete(this);
-		session.getTransaction().commit();
+		this.competitions = competitions;
+	}
+
+	public void setId(short id)
+	{
+		this.id = id;
+	}
+
+	public void setMaxParts(Byte maxParts)
+	{
+		this.maxParts = maxParts;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+
+	public void setPartName(String partName)
+	{
+		this.partName = partName;
+	}
+	
+	public void setPlayOffName(String playOffName)
+	{
+		this.playOffName = playOffName;
+	}
+	
+	public void setPointsDraw(Byte pointsDraw)
+	{
+		this.pointsDraw = pointsDraw;
+	}
+	
+	
+	public void setPointsLoose(Byte pointsLoose)
+	{
+		this.pointsLoose = pointsLoose;
+	}
+
+	public void setPointsWin(Byte pointsWin)
+	{
+		this.pointsWin = pointsWin;
+	}
+
+	public void setScoreMode(Byte scoreMode)
+	{
+		this.scoreMode = scoreMode;
+	}
+
+	public void setSeoName(String seoName)
+	{
+		this.seoName = seoName;
+	}
+
+	public void setTeams(Set teams)
+	{
+		this.teams = teams;
 	}
 
 }
