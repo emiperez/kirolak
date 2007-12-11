@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.kirolak.Group" table="groups" catalog="pruebas">
+    <class name="com.kirolak.Group" table="groups" >
         <id name="id" type="int">
             <column name="id" />
             <generator class="assigned" />

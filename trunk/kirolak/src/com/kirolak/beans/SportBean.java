@@ -7,11 +7,8 @@ import java.util.Observer;
 
 import javax.faces.component.UIData;
 
-import org.hibernate.Session;
-
-
 import com.kirolak.Sport;
-import com.kirolak.util.HibernateUtil;
+import com.sun.faces.util.MessageFactory;
 
 public class SportBean extends Observable implements Serializable
 {
@@ -25,6 +22,17 @@ public class SportBean extends Observable implements Serializable
 	public UIData getSportData()
 	{
 		return sportData;
+	}
+
+	public String getTitle()
+	{
+		if (this.sport.getId() > -1)
+		{
+			return this.sport.getName();
+		} else
+		{
+			return MessageFactory.getMessage("new_sport").getDetail();
+		}
 	}
 
 	public void setSportData(UIData sportData)
@@ -89,7 +97,7 @@ public class SportBean extends Observable implements Serializable
 
 	public void setMaxParts(Byte maxParts)
 	{
-		this.setMaxParts(maxParts);
+		this.sport.setMaxParts(maxParts);
 	}
 
 	public String getPlayOffName()

@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.kirolak.ScoreMode" table="score_modes" catalog="pruebas">
+    <class name="com.kirolak.ScoreMode" table="score_modes" >
         <id name="id" type="java.lang.Byte" unsaved-value="-1">
             <column name="id" />
             <generator class="native" />

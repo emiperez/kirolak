@@ -10,6 +10,7 @@ public class Team implements java.io.Serializable {
 	private int id;
 	private Short sportId;
 	private String name;
+	private String seoName;
 
 	public Team() {
 	}
@@ -47,6 +48,14 @@ public class Team implements java.io.Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getSeoName() {
+		return this.seoName;
+	}
+
+	public void setSeoName(String seoName) {
+		this.seoName = seoName;
 	}
 
 }

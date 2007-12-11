@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.kirolak.CompetitionTeam" table="competition_teams" catalog="pruebas">
+    <class name="com.kirolak.CompetitionTeam" table="competition_teams" >
         <composite-id name="id" class="com.kirolak.CompetitionTeamId">
             <key-property name="competitionId" type="int">
                 <column name="competition_id" />

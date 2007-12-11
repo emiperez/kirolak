@@ -27,7 +27,6 @@ public class Kirolak implements Observer, Serializable
 		if (this.scoreModes == null)
 		{
 			this.scoreModes = ScoreMode.getAll();
-			this.scoreModesSelectItems = new ArrayList<SelectItem>();
 		}		
 		return this.scoreModes;
 	}
@@ -41,6 +40,7 @@ public class Kirolak implements Observer, Serializable
 		}
 		if (this.scoreModesSelectItems == null)
 		{
+			this.scoreModesSelectItems = new ArrayList<SelectItem>();
 			Iterator<ScoreMode> scoreModesIterator = scoreModes.iterator();
 			while(scoreModesIterator.hasNext())
 			{

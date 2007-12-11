@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.kirolak.Stage" table="stages" catalog="pruebas">
+    <class name="com.kirolak.Stage" table="stages" >
         <id name="id" type="int">
             <column name="id" />
             <generator class="assigned" />
@@ -15,7 +15,7 @@
             <column name="name" length="25" not-null="true" />
         </property>
         <property name="seoName" type="string">
-            <column name="seo_name" length="15" not-null="true" />
+            <column name="seo_name" length="25" not-null="true" />
         </property>
         <property name="type" type="java.lang.Byte">
             <column name="type">
