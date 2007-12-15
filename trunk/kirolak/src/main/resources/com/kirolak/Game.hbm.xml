@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.kirolak.Game" table="games" >
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="roundId" type="java.lang.Short">
+            <column name="round_id" />
+        </property>
+        <property name="groupId" type="java.lang.Integer">
+            <column name="group_id" />
+        </property>
+        <property name="homeTeamId" type="java.lang.Integer">
+            <column name="home_team_id" />
+        </property>
+        <property name="visitingTeamId" type="java.lang.Integer">
+            <column name="visiting_team_id" />
+        </property>
+        <property name="homeTeamScore" type="java.lang.Short">
+            <column name="home_team_score" />
+        </property>
+        <property name="visitingTeamScore" type="java.lang.Short">
+            <column name="visiting_team_score" />
+        </property>
+        <property name="gameStatus" type="java.lang.Byte">
+            <column name="game_status">
+                <comment>playing, finished, cancelled...</comment>
+            </column>
+        </property>
+        <property name="scheduled" type="timestamp">
+            <column name="scheduled" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>
