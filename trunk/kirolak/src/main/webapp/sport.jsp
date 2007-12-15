@@ -1,6 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
-<f:loadBundle basename="com.kirolak.bundle.messages" var="msg" />
 <f:view>
 	<html>
 	<head>
