@@ -5,7 +5,8 @@
   <artifactId>kirolak</artifactId>
   <packaging>war</packaging>
   <version>0.1-DEV</version>
-  <name>kirolak Maven Webapp</name>
+  <name>kirolak</name>
+  
   <url>http://maven.apache.org</url>
 	<repositories>
 	<repository>
@@ -29,6 +30,17 @@
       <version>4.4</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.1.2</version>
+	</dependency>
+	
+    <dependency>
+    <groupId>apache-taglibs</groupId>
+    <artifactId>standard</artifactId>
+    <version>1.1.2</version>
+	</dependency>
     <dependency>
     <groupId>javax.faces</groupId>
     <artifactId>jsf-api</artifactId>
@@ -64,4 +76,5 @@
   </plugins>
     <finalName>kirolak</finalName>
   </build>
+
 </project>

@@ -5,7 +5,7 @@
 			<default-locale>en</default-locale>
 		</locale-config>			
         <resource-bundle>
-        	<base-name>com.kirolak.bundle.messages</base-name>
+        	<base-name>messages</base-name>
         	<var>msg</var>
         </resource-bundle>
 	</application>
