@@ -14,6 +14,9 @@
         <property name="seoName" type="string">
             <column name="seo_name" length="25" not-null="true" />
         </property>
+        <property name="acronym" type="string">
+            <column name="acronym" length="3" not-null="true" />
+        </property>
         <many-to-one name="sport" column="sport_id" class="com.kirolak.Sport">
         </many-to-one>
     </class>

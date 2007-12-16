@@ -1,8 +1,5 @@
 package com.kirolak;
 
-import org.hibernate.Session;
-
-import com.kirolak.util.HibernateUtil;
 
 // Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1
 
@@ -12,35 +9,16 @@ import com.kirolak.util.HibernateUtil;
 public class Team extends KirolakObject {
 
 	private int id;
-	private Short sportId;
 	private String name;
 	private String seoName;
+	private String acronym;
 	private Sport sport;
 
-	public Sport getSport()
-	{
-		return sport;
-	}
-
-	public void setSport(Sport sport)
-	{
-		this.sport = sport;
-	}
 
 	public Team() {
 		this.id=-1;
 	}
 
-	public Team(int id, String name) {
-		this.id = id;
-		this.name = name;
-	}
-
-	public Team(int id, Short sportId, String name) {
-		this.id = id;
-		this.sportId = sportId;
-		this.name = name;
-	}
 
 	public int getId() {
 		return this.id;
@@ -48,14 +26,6 @@ public class Team extends KirolakObject {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public Short getSportId() {
-		return this.sportId;
-	}
-
-	public void setSportId(Short sportId) {
-		this.sportId = sportId;
 	}
 
 	public String getName() {
@@ -74,5 +44,25 @@ public class Team extends KirolakObject {
 		this.seoName = seoName;
 	}
 
+	public String getAcronym()
+	{
+		return acronym;
+	}
+
+	public void setAcronym(String acronym)
+	{
+		this.acronym = acronym;
+	}
+
+
+	public Sport getSport()
+	{
+		return sport;
+	}
+
+	public void setSport(Sport sport)
+	{
+		this.sport = sport;
+	}
 
 }
