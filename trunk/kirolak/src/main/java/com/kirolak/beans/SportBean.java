@@ -1,209 +1,100 @@
 package com.kirolak.beans;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Set;
 
 import javax.faces.component.UIData;
 
+import org.hibernate.Session;
+
 import com.kirolak.Sport;
 import com.kirolak.Team;
+import com.kirolak.util.HibernateUtil;
 import com.sun.faces.util.MessageFactory;
 
-public class SportBean extends Observable implements Serializable
+public class SportBean extends GenericBean
 {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Sport sport = new Sport();
-	private UIData sportData;
+	private Sport item = new Sport();
+	private UIData itemData;
 	private List<Team> teams;
 
-	public UIData getSportData()
+	public UIData getItemData()
 	{
-		return sportData;
+		return itemData;
 	}
 
 	public String getTitle()
 	{
-		if (this.sport.getId() > -1)
+		if (this.item.getId() > -1)
 		{
-			return this.sport.getName();
+			return this.item.getName();
 		} else
 		{
 			return MessageFactory.getMessage("new_sport").getDetail();
 		}
 	}
 
-	public void setSportData(UIData sportData)
+	public void setItemData(UIData sportData)
 	{
-		this.sportData = sportData;
+		this.itemData = sportData;
 	}
 
-	public short getId()
-	{
-		return sport.getId();
-	}
-
-	public void setId(short id)
-	{
-		this.sport.setId(id);
-	}
-
-	public String getName()
-	{
-		return this.sport.getName();
-	}
-
-	public void setName(String name)
-	{
-		this.sport.setName(name);
-	}
-
-	public String getSeoName()
-	{
-		return this.sport.getSeoName();
-	}
-
-	public void setSeoName(String seoName)
-	{
-		this.sport.setSeoName(seoName);
-	}
-
-	public Byte getScoreMode()
-	{
-		return this.sport.getScoreMode();
-	}
-
-	public void setScoreMode(Byte scoreMode)
-	{
-		this.sport.setScoreMode(scoreMode);
-	}
-
-	public String getPartName()
-	{
-		return this.sport.getPartName();
-	}
-
-	public void setPartName(String partName)
-	{
-		this.sport.setPartName(partName);
-	}
-
-	public Byte getMaxParts()
-	{
-		return this.sport.getMaxParts();
-	}
-
-	public void setMaxParts(Byte maxParts)
-	{
-		this.sport.setMaxParts(maxParts);
-	}
-
-	public String getPlayOffName()
-	{
-		return this.sport.getPlayOffName();
-	}
-
-	public void setPlayOffName(String playOffName)
-	{
-		this.sport.setPlayOffName(playOffName);
-	}
-
-	public Byte getPointsWin()
-	{
-		return this.sport.getPointsWin();
-	}
-
-	public void setPointsWin(Byte pointsWin)
-	{
-		this.sport.setPointsWin(pointsWin);
-	}
-
-	public Byte getPointsDraw()
-	{
-		return this.sport.getPointsDraw();
-	}
-
-	public void setPointsDraw(Byte pointsDraw)
-	{
-		this.sport.setPointsDraw(pointsDraw);
-	}
-
-	public Byte getPointsLoose()
-	{
-		return this.sport.getPointsLoose();
-	}
-
-	public void setPointsLoose(Byte pointsLoose)
-	{
-		this.sport.setPointsLoose(pointsLoose);
-	}
 	
+	public Sport getItem()
+	{
+		return item;
+	}
+
+	public void setSport(Sport item)
+	{
+		this.item = item;
+	}
+
 	public List<Team> getTeams()
 	{
 		if(this.teams==null)
 		{
-			this.teams = this.sport.getTeams();
+			//TODO it should be done using Hibernate's Lazy Load (Custom Session Management)
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			this.teams = session.createQuery("from Team t where sport_id = :id").setParameter("id", this.item.getId()).list();
+			session.getTransaction().commit();
 		}
 		return this.teams;
 	}
 
 
-	public String newSport()
+	public String newItem()
 	{
-		this.sport = new Sport();
+		this.item = new Sport();
 		return "edit";
 	}
 
 	public String edit()
 	{
-		this.sport = (Sport) sportData.getRowData();
+		this.item = (Sport) itemData.getRowData();
 		return "edit";
 	}
 
 	public String save()
 	{
-		this.sport.save();
-		// Notify to the observers
-		setChanged();
-		notifyObservers();
-
-		return "saved";
+		return super.save(this.item);
 	}
 	
 	public String goteams()
 	{
-		this.sport = (Sport) sportData.getRowData();
+		this.item = (Sport) itemData.getRowData();
 		return "teams";
 	}
 
 	public String delete()
 	{
-		this.sport = (Sport) sportData.getRowData();
-		this.sport.delete();
-
-		// Notify to the observers
-		setChanged();
-		notifyObservers();
-
-		return "deleted";
+		this.item = (Sport) itemData.getRowData();
+		return super.delete(this.item);
 	}
 
-	/**
-	 * Set the observers listed in faces-config.xml for this managed-bean
-	 * 
-	 * @param observers
-	 */
-	public void setObservers(ArrayList<Observer> observers)
-	{
-		for (Observer o : observers)
-		{
-			addObserver(o);
-		}
-	}
 }

@@ -4,9 +4,9 @@
 <!-- Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1 -->
 <hibernate-mapping>
     <class name="com.kirolak.Team" table="teams" >
-        <id name="id" type="int">
+        <id name="id" type="int" unsaved-value="-1">
             <column name="id" />
-            <generator class="assigned" />
+			<generator class="native" />
         </id>
         <property name="name" type="string">
             <column name="name" length="25" not-null="true" />
