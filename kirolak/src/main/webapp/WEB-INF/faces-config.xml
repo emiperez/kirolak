@@ -21,7 +21,7 @@
 			<to-view-id>/sport.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>newSport</from-outcome>
+			<from-outcome>newItem</from-outcome>
 			<to-view-id>/sport.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
@@ -50,7 +50,7 @@
 			<to-view-id>/team.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>newTeam</from-outcome>
+			<from-outcome>newItem</from-outcome>
 			<to-view-id>/team.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
@@ -69,7 +69,7 @@
 
 	<!-- BEANS -->
 	<managed-bean>
-		<managed-bean-name>sport</managed-bean-name>
+		<managed-bean-name>sportBean</managed-bean-name>
 		<managed-bean-class>
 			com.kirolak.beans.SportBean
 		</managed-bean-class>
@@ -82,7 +82,7 @@
 		</managed-property>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>team</managed-bean-name>
+		<managed-bean-name>teamBean</managed-bean-name>
 		<managed-bean-class>
 			com.kirolak.beans.TeamBean
 		</managed-bean-class>
@@ -96,14 +96,7 @@
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
 
-	<managed-bean>
-		<managed-bean-name>makeList</managed-bean-name>
-		<managed-bean-class>
-			com.kirolak.beans.ListFromCollection
-		</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
-	</managed-bean>
-
+	<!-- VALIDATORS -->
 	<validator>
 		<validator-id>kirolak.seoNameValidator</validator-id>
 		<validator-class>
@@ -111,6 +104,7 @@
 		</validator-class>
 	</validator>
 
+	<!-- CONVERTERS -->
 	<converter>
 		<converter-for-class>com.kirolak.Sport</converter-for-class>
 		<converter-class>

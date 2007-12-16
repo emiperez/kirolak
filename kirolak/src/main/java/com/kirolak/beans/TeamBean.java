@@ -1,116 +1,73 @@
 package com.kirolak.beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 import javax.faces.component.UIData;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+import org.hibernate.Session;
 
 import com.kirolak.Sport;
 import com.kirolak.Team;
+import com.kirolak.util.FacesUtil;
+import com.kirolak.util.HibernateUtil;
 import com.sun.faces.util.MessageFactory;
 
-public class TeamBean implements Serializable
+public class TeamBean extends GenericBean
 {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
-	private Team team = new Team();
-	private UIData teamData;
-
-	public UIData getTeamData()
-	{
-		return teamData;
-	}
+	private Team item = new Team();
 
 	public String getTitle()
 	{
-		if (this.team.getId() > -1)
+		if (this.item.getId() > -1)
 		{
-			return this.team.getName();
+			return this.item.getName();
 		} else
 		{
 			return MessageFactory.getMessage("new_team").getDetail();
 		}
 	}
 
-	public void setTeamData(UIData teamData)
+	public void newItem(ActionEvent event)
 	{
-		this.teamData = teamData;
-	}
-
-	public int getId()
-	{
-		return this.team.getId();
-	}
-
-	public void setId(int id)
-	{
-		this.team.setId(id);
-	}
-
-	public String getName()
-	{
-		return this.team.getName();
-	}
-
-	public void setName(String name)
-	{
-		this.team.setName(name);
-	}
-
-	public String getSeoName()
-	{
-		return this.team.getSeoName();
-	}
-
-	public void setSeoName(String seoName)
-	{
-		this.team.setSeoName(seoName);
+		this.item = new Team();
+		Short sportId = Short.parseShort(FacesUtil.getRequestParameter("sportId"));
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		Sport teamSport = (Sport)session.get(Sport.class, sportId);
+		session.getTransaction().commit();
+		this.item.setSport(teamSport);
 	}
 	
-	public String getAcronym()
-	{
-		return this.team.getAcronym();
-	}
-
-	public void setAcronym(String acronym)
-	{
-		this.team.setAcronym(acronym);
-	}
-
-	public Sport getSport()
-	{
-		return this.team.getSport();
-	}
-
-	public void setSport(Sport sport)
-	{
-		this.team.setSport(sport);
-	}
-
-	public String newTeam()
-	{
-		this.team = new Team();
-		return "team";
-	}
 
 	public String edit()
 	{
-		this.team = (Team) teamData.getRowData();
+		this.item = (Team) itemData.getRowData();
 		return "edit";
 	}
 
 	public String save()
 	{
-		this.team.save();
-		return "saved";
+		return super.save(this.item);
 	}
-	
+
 	public String delete()
 	{
-		this.team.save();
-		return "saved";
+		this.item = (Team) itemData.getRowData();
+		return super.delete(this.item);
 	}
-	
+
+	public Team getItem()
+	{
+		return item;
+	}
+
+	public void setItem(Team item)
+	{
+		this.item = item;
+	}
+
 }

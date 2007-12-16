@@ -52,6 +52,11 @@
     <version>1.2_04-p02</version>
 	</dependency>
 	<dependency>
+    <groupId>javax.el</groupId>
+    <artifactId>el-api</artifactId>
+    <version>1.0</version>
+	</dependency>
+	<dependency>
     <groupId>javax.transaction</groupId>
     <artifactId>jta</artifactId>
     <version>1.0.1B</version>

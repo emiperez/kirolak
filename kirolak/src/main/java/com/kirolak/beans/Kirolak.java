@@ -11,8 +11,11 @@ import java.util.Observer;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
+import org.hibernate.Session;
+
 import com.kirolak.ScoreMode;
 import com.kirolak.Sport;
+import com.kirolak.util.HibernateUtil;
 
 public class Kirolak implements Observer, Serializable
 {
@@ -56,7 +59,10 @@ public class Kirolak implements Observer, Serializable
 	{
 		if (this.sports == null)
 		{
-			this.sports = Sport.getAll();
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			this.sports = session.createQuery("from Sport s").list();
+			session.getTransaction().commit();
 		}
 		return this.sports;
 	}
@@ -68,14 +74,14 @@ public class Kirolak implements Observer, Serializable
 		{
 			getSports();
 		}
-		if (this.sports == null)
+		if (this.sportsSelectItems == null)
 		{
 			this.sportsSelectItems = new ArrayList<SelectItem>();
 			Iterator<Sport> sportsIterator = sports.iterator();
 			while(sportsIterator.hasNext())
 			{
 				Sport sport = sportsIterator.next();
-				this.sportsSelectItems.add(new SelectItem(sport.getId(),sport.getName()));			
+				this.sportsSelectItems.add(new SelectItem(sport,sport.getName()));			
 			}
 		}
 		return this.sportsSelectItems;
