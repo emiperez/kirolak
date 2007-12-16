@@ -9,7 +9,6 @@ public class KirolakObject implements java.io.Serializable
 
 	public void delete()
 	{
-		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.delete(this);
 		session.getTransaction().commit();
@@ -17,7 +16,6 @@ public class KirolakObject implements java.io.Serializable
 	
 	public void save()
 	{
-		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.saveOrUpdate(this);
 		session.getTransaction().commit();

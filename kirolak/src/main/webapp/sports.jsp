@@ -36,7 +36,7 @@
 			<h:commandLink id="delete" action="#{sport.delete}" onclick="return confirm('#{msg.sure}')"><h:outputText value="#{msg.delete}" /></h:commandLink>
 		</h:column>
 		<h:column>
-			<h:commandLink id="teams" action="#{sport.teams}"><h:outputText value="#{msg.teams}" /></h:commandLink>
+			<h:commandLink id="teams" action="#{sport.goteams}"><h:outputText value="#{msg.teams}" /></h:commandLink>
 		</h:column>
 	</h:dataTable>
 	</h:form>

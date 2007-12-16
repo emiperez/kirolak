@@ -29,7 +29,6 @@ public class Sport extends KirolakObject
 	private Byte scoreMode;
 	private String seoName;
 	
-	private Set<Team> teams = new HashSet<Team>();
 
 
 	public static List<Sport> getAll()
@@ -169,15 +168,14 @@ public class Sport extends KirolakObject
 		this.seoName = seoName;
 	}
 
-	public Set<Team> getTeams()
+	public List<Team> getTeams()
 	{
-		return this.teams;
+		//TODO it should be done using Hibernate's Lazy Load (Custom Session Management)
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		List<Team> teams = session.createQuery("from Team t where sport_id = :id").setParameter("id", this.getId()).list();
+		session.getTransaction().commit();
+		return teams;
 	}
-
-	public void setTeams(Set<Team> teams)
-	{
-		this.teams = teams;
-	}
-
 
 }
