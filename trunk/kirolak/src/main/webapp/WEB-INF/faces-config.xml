@@ -1,13 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
 	<application>
 		<locale-config>
 			<default-locale>en</default-locale>
-		</locale-config>			
-        <resource-bundle>
-        	<base-name>messages</base-name>
-        	<var>msg</var>
-        </resource-bundle>
+		</locale-config>
+		<resource-bundle>
+			<base-name>messages</base-name>
+			<var>msg</var>
+		</resource-bundle>
 	</application>
 
 
@@ -39,17 +41,17 @@
 			<to-view-id>/sports.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<!-- TEAMS -->
 	<navigation-rule>
-		<from-view-id>/sports.jsp</from-view-id>
+		<from-view-id>/teams.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>edit</from-outcome>
-			<to-view-id>/sport.jsp</to-view-id>
+			<to-view-id>/team.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>newSport</from-outcome>
-			<to-view-id>/sport.jsp</to-view-id>
+			<from-outcome>newTeam</from-outcome>
+			<to-view-id>/team.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>deleted</from-outcome>
@@ -93,16 +95,14 @@
 		</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
-	
+
 	<managed-bean>
-    <managed-bean-name>makeList</managed-bean-name>
-    <managed-bean-class>
-       com.kirolak.beans.ListFromCollection
-    </managed-bean-class>
-    <managed-bean-scope>
-       request
-    </managed-bean-scope>
- </managed-bean>
+		<managed-bean-name>makeList</managed-bean-name>
+		<managed-bean-class>
+			com.kirolak.beans.ListFromCollection
+		</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 
 	<validator>
 		<validator-id>kirolak.seoNameValidator</validator-id>
@@ -110,5 +110,11 @@
 			com.kirolak.jsf.validators.SeoNameValidator
 		</validator-class>
 	</validator>
-	
+
+	<converter>
+		<converter-for-class>com.kirolak.Sport</converter-for-class>
+		<converter-class>
+			com.kirolak.jsf.converters.SportConverter
+		</converter-class>
+	</converter>
 </faces-config>

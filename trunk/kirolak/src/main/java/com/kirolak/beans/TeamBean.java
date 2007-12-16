@@ -68,6 +68,16 @@ public class TeamBean implements Serializable
 	{
 		this.team.setSeoName(seoName);
 	}
+	
+	public String getAcronym()
+	{
+		return this.team.getAcronym();
+	}
+
+	public void setAcronym(String acronym)
+	{
+		this.team.setAcronym(acronym);
+	}
 
 	public Sport getSport()
 	{

@@ -21,6 +21,7 @@ public class Kirolak implements Observer, Serializable
 	private List<Sport> sports;
 	private List<ScoreMode> scoreModes;
 	private List<SelectItem> scoreModesSelectItems;
+	private List<SelectItem> sportsSelectItems;
 
 	public List<ScoreMode> getScoreModes()
 	{		
@@ -58,6 +59,26 @@ public class Kirolak implements Observer, Serializable
 			this.sports = Sport.getAll();
 		}
 		return this.sports;
+	}
+	
+	public List<SelectItem> getSportsSelectItems()
+	{
+		
+		if (this.sports == null)
+		{
+			getSports();
+		}
+		if (this.sports == null)
+		{
+			this.sportsSelectItems = new ArrayList<SelectItem>();
+			Iterator<Sport> sportsIterator = sports.iterator();
+			while(sportsIterator.hasNext())
+			{
+				Sport sport = sportsIterator.next();
+				this.sportsSelectItems.add(new SelectItem(sport.getId(),sport.getName()));			
+			}
+		}
+		return this.sportsSelectItems;
 	}
 	
 	public Iterator<Locale> getSupportedLocales()
