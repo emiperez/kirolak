@@ -37,9 +37,5 @@
 		<property name="pointsLoose" type="java.lang.Byte">
 			<column name="points_loose" />
 		</property>
-		<set name="teams" lazy="true" inverse="true">
-			<key column="sport_id"/>
-			<one-to-many class="com.kirolak.Team"/>
-		</set>
 	</class>
 </hibernate-mapping>

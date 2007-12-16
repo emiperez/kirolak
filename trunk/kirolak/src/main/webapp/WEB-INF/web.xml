@@ -3,7 +3,6 @@
   "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" 
   "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
-
 	<context-param>
 		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
 		<param-value>server</param-value>
@@ -34,15 +33,16 @@
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
 
-<!-- 
-	<security-constraint>
+
+	<!-- 
+		<security-constraint>
 		<web-resource-collection>
-			<web-resource-name />
-			<url-pattern>/*</url-pattern>
+		<web-resource-name />
+		<url-pattern>/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>kirolak</role-name>
+		<role-name>kirolak</role-name>
 		</auth-constraint>
-	</security-constraint>
--->
+		</security-constraint>
+	-->
 </web-app>

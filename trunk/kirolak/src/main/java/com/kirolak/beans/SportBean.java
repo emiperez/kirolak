@@ -21,6 +21,7 @@ public class SportBean extends Observable implements Serializable
 	private static final long serialVersionUID = 1L;
 	private Sport sport = new Sport();
 	private UIData sportData;
+	private List<Team> teams;
 
 	public UIData getSportData()
 	{
@@ -145,13 +146,13 @@ public class SportBean extends Observable implements Serializable
 	
 	public List<Team> getTeams()
 	{
-		return new ArrayList(this.sport.getTeams());
+		if(this.teams==null)
+		{
+			this.teams = this.sport.getTeams();
+		}
+		return this.teams;
 	}
-	
-	public void setTeams(Set<Team> teams)
-	{
-		this.sport.setTeams(teams);
-	}
+
 
 	public String newSport()
 	{
@@ -175,7 +176,7 @@ public class SportBean extends Observable implements Serializable
 		return "saved";
 	}
 	
-	public String teams()
+	public String goteams()
 	{
 		this.sport = (Sport) sportData.getRowData();
 		return "teams";

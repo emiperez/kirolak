@@ -10,7 +10,7 @@
 	<body>
 	<h:form id="sports">
 	<h:commandLink action="newTeam" value="#{msg.new}"/>
-	<h:dataTable value="#{makeList.list[sport.teams]}" var="item" binding="#{team.teamData}">	
+	<h:dataTable value="#{sport.teams}" var="item" binding="#{team.teamData}">	
 		<h:column>
 			<f:facet name="header">
 				<h:outputText value="#{msg.id}" />
