@@ -9,7 +9,7 @@
 
 	<body>
 	<h:form id="sports">
-	<h:commandLink action="newItem" value="#{msg.new}"/>
+	<h:commandLink action="#{sportBean.newItem}" value="#{msg.new}"/>
 	<h:dataTable value="#{app.sports}" var="item" binding="#{sportBean.itemData}">	
 		<h:column>
 			<f:facet name="header">
@@ -30,10 +30,10 @@
 			<h:outputText value="#{item.seoName}" />
 		</h:column>	
 		<h:column>
-			<h:commandLink id="edit" action="#{sportBean.edit}"><h:outputText value="#{msg.edit}" /></h:commandLink>
+			<h:commandLink id="edit" action="#{sportBean.editItem}"><h:outputText value="#{msg.edit}" /></h:commandLink>
 		</h:column>
 		<h:column>
-			<h:commandLink id="delete" action="#{sportBean.delete}" onclick="return confirm('#{msg.sure}')"><h:outputText value="#{msg.delete}" /></h:commandLink>
+			<h:commandLink id="delete" action="#{sportBean.deleteItem}" onclick="return confirm('#{msg.sure}')"><h:outputText value="#{msg.delete}" /></h:commandLink>
 		</h:column>
 		<h:column>
 			<h:commandLink id="teams" action="#{sportBean.goteams}"><h:outputText value="#{msg.teams}" /></h:commandLink>

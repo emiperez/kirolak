@@ -28,21 +28,18 @@
 			<h:message id="seoNameError" for="seo" styleClass="error" />
 			
 			<h:outputText styleClass="label" value="#{msg.acronym}" />
-			<h:inputText id="acronym" value="#{teamBean.item.acronym}" size="3">				
+			<h:inputText id="acronym" value="#{teamBean.item.acronym}" size="15">
 				<f:validateLength minimum="3" maximum="3" />
 			</h:inputText>
 			<h:message id="acronymError" for="acronym" styleClass="error" />
-
 			
 			<h:outputText styleClass="label" value="#{msg.sport}" />
-			<h:selectOneMenu id="sport" value="#{teamBean.item.sport}" required="true">
+			<h:selectOneMenu id="teamSport" value="#{teamBean.item.sport}" required="true">
 				<f:selectItems value="#{app.sportsSelectItems}" />
 			</h:selectOneMenu>
-			<h:message id="sportError" for="sport" styleClass="error" />
-			
-			
+			<h:message id="teamSportError" for="teamSport" styleClass="error" />
 		</h:panelGrid>
-		<h:commandButton value="#{msg.save}" action="#{teamBean.item.save}" />
+		<h:commandButton value="#{msg.save}" action="#{teamBean.saveItem}" />
 	</h:form>
 	</body>
 	</html>

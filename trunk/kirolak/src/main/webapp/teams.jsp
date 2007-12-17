@@ -4,14 +4,12 @@
 <f:view>
 	<html>
 	<head>
-	<title><h:outputText value="#{sportBean.item.name} - #{msg.teams}" /></title>
+	<title><h:outputText value="#{msg.teams}" /></title>
 	</head>
 
 	<body>
 	<h:form id="teams">
-	<h:commandLink action="newItem" actionListener="#{teamBean.newItem}" value="#{msg.new}">
-		<f:param name="sportId" value="#{sportBean.item.id}" />
-	</h:commandLink>
+	<h:commandLink action="#{teamBean.newItem}" value="#{msg.new}"/>
 	<h:dataTable value="#{sportBean.teams}" var="item" binding="#{teamBean.itemData}">	
 		<h:column>
 			<f:facet name="header">
@@ -32,10 +30,10 @@
 			<h:outputText value="#{item.seoName}" />
 		</h:column>	
 		<h:column>
-			<h:commandLink id="edit" action="#{teamBean.edit}" value="#{msg.edit}" />
+			<h:commandLink id="edit" action="#{teamBean.editItem}"><h:outputText value="#{msg.edit}" /></h:commandLink>
 		</h:column>
 		<h:column>
-			<h:commandLink id="delete" action="#{teamBean.delete}" onclick="return confirm('#{msg.sure}')" value="#{msg.delete}" />
+			<h:commandLink id="delete" action="#{teamBean.deleteItem}" onclick="return confirm('#{msg.sure}')"><h:outputText value="#{msg.delete}" /></h:commandLink>
 		</h:column>
 	</h:dataTable>
 	</h:form>

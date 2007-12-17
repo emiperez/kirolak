@@ -21,10 +21,6 @@
 			<to-view-id>/sport.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>newItem</from-outcome>
-			<to-view-id>/sport.jsp</to-view-id>
-		</navigation-case>
-		<navigation-case>
 			<from-outcome>deleted</from-outcome>
 			<to-view-id>/sports.jsp</to-view-id>
 		</navigation-case>
@@ -42,15 +38,10 @@
 		</navigation-case>
 	</navigation-rule>
 
-	<!-- TEAMS -->
 	<navigation-rule>
 		<from-view-id>/teams.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>edit</from-outcome>
-			<to-view-id>/team.jsp</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>newItem</from-outcome>
 			<to-view-id>/team.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
@@ -87,6 +78,10 @@
 			com.kirolak.beans.TeamBean
 		</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>observers</property-name>
+			<list-entries></list-entries>
+		</managed-property>
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>app</managed-bean-name>
