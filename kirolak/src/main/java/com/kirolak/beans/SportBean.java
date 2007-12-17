@@ -19,13 +19,8 @@ public class SportBean extends GenericBean
 	 */
 	private static final long serialVersionUID = 1L;
 	private Sport item = new Sport();
-	private UIData itemData;
 	private List<Team> teams;
 
-	public UIData getItemData()
-	{
-		return itemData;
-	}
 
 	public String getTitle()
 	{
@@ -36,11 +31,6 @@ public class SportBean extends GenericBean
 		{
 			return MessageFactory.getMessage("new_sport").getDetail();
 		}
-	}
-
-	public void setItemData(UIData sportData)
-	{
-		this.itemData = sportData;
 	}
 
 	
@@ -74,13 +64,13 @@ public class SportBean extends GenericBean
 		return "edit";
 	}
 
-	public String edit()
+	public String editItem()
 	{
 		this.item = (Sport) itemData.getRowData();
 		return "edit";
 	}
 
-	public String save()
+	public String saveItem()
 	{
 		return super.save(this.item);
 	}
@@ -91,7 +81,7 @@ public class SportBean extends GenericBean
 		return "teams";
 	}
 
-	public String delete()
+	public String deleteItem()
 	{
 		this.item = (Sport) itemData.getRowData();
 		return super.delete(this.item);

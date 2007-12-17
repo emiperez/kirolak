@@ -65,7 +65,7 @@
 			<h:message id="pointsLooseError" for="pointsLoose" styleClass="error" />
 			
 		</h:panelGrid>
-		<h:commandButton value="#{msg.save}" action="#{sportBean.save}" />
+		<h:commandButton value="#{msg.save}" action="#{sportBean.saveItem}" />
 	</h:form>
 	</body>
 	</html>

@@ -32,7 +32,7 @@ public class GenericBean extends Observable implements Serializable
 	{
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		session.saveOrUpdate(obj);
+		session.delete(obj);
 		session.getTransaction().commit();
 
 		// Notify to the observers
