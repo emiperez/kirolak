@@ -1,62 +1,55 @@
 package com.kirolak.beans;
 
+import java.util.List;
 
+import javax.faces.event.ActionEvent;
+
+import com.kirolak.KirolakObject;
+import com.kirolak.Sport;
 import com.kirolak.Team;
-import com.sun.faces.util.MessageFactory;
+import com.kirolak.dao.SportDAO;
+import com.kirolak.dao.TeamDAO;
+import com.kirolak.util.FacesUtil;
+import com.kirolak.util.Messages;
 
-public class TeamBean extends GenericBean
+public class TeamBean extends KirolakSession
 {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private Team item = new Team();
-
-
 	public String getTitle()
 	{
-		if (this.item.getId() > -1)
+		if (this.item.getIntId() > -1)
 		{
 			return this.item.getName();
 		} else
 		{
-			return MessageFactory.getMessage("new_team").getDetail();
+			return Messages.getString("messages", "new_team");
 		}
 	}
 	
-	public Team getItem()
+	public void load(ActionEvent event)
 	{
-		return item;
+		this.parent = SportDAO.get(Short.parseShort(""+FacesUtil.getRequestParameter("parent")));
+		this.items = null;
 	}
-
-	public void setTeam(Team item)
+	
+	public List<KirolakObject> getItems()
 	{
-		this.item = item;
+		if(this.items==null)
+		{
+			this.items = TeamDAO.listBySport((Sport)this.parent);
+		}
+		return this.items;
 	}
-
 
 	public String newItem()
 	{
 		this.item = new Team();
 		return "edit";
 	}
-
-	public String editItem()
+	
+	@Override
+	public void setParent(KirolakObject parent)
 	{
-		this.item = (Team) itemData.getRowData();
-		return "edit";
+		this.parent = parent;
+		((Team)this.item).setSport((Sport)parent);
 	}
-
-	public String saveItem()
-	{
-		return super.save(this.item);
-	}	
-
-	public String deleteItem()
-	{
-		this.item = (Team) itemData.getRowData();
-		return super.delete(this.item);
-	}
-
 }
-

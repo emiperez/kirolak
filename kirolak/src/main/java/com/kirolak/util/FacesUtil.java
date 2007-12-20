@@ -18,8 +18,8 @@ public class FacesUtil
 		return FacesContext.getCurrentInstance().getExternalContext().getRequestMap().get(key);
 	}
 	
-	public static String getRequestParameter(String name) {
-        return (String) FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get(name);
+	public static Object getRequestParameter(String name) {
+        return FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get(name);
     }
 
 	// Setters

@@ -7,7 +7,28 @@ create table score_modes
 insert into score_modes values(10,'Accumulative');
 insert into score_modes values(20,'Winned Parts');
 
+
+drop table if exists stage_types;
+create table stage_types
+(
+	id tinyint unsigned PRIMARY KEY,
+	name char(15)
+);
+insert into stage_types values(10,'Heats');
+insert into stage_types values(20,'Points');
+insert into stage_types values(30,'Race');
+
+drop table if exists standings;
+drop table if exists games;
+drop table if exists rounds;
+drop table if exists group_teams;
+drop table if exists competition_teams;
+drop table if exists teams;
+drop table if exists groups;
+drop table if exists stages;
+drop table if exists competitions;
 drop table if exists sports;
+
 create table sports
 (
 	id smallint unsigned PRIMARY KEY AUTO_INCREMENT,
@@ -20,9 +41,8 @@ create table sports
 	points_win tinyint,
 	points_draw tinyint,
 	points_loose tinyint
-);
+) ENGINE=InnoDB;
 
-drop table if exists competitions;
 create table competitions
 (
 	id int unsigned PRIMARY KEY AUTO_INCREMENT,
@@ -36,19 +56,9 @@ create table competitions
 	INDEX comp_start (start_date),
 	INDEX comp_finish (finish_date),
 	FOREIGN KEY (sport_id) REFERENCES sports(id) ON DELETE CASCADE
-);
+)ENGINE=InnoDB;
 
-drop table if exists stage_types;
-create table stage_types
-(
-	id tinyint unsigned PRIMARY KEY,
-	name char(15)
-);
-insert into stage_types values(10,'Heats');
-insert into stage_types values(20,'Points');
-insert into stage_types values(30,'Race');
 
-drop table if exists stages;
 create table stages
 (
 	id int unsigned PRIMARY KEY AUTO_INCREMENT,
@@ -69,9 +79,8 @@ create table stages
 	INDEX stage_start (start_date),
 	INDEX stage_finish (finish_date),
 	FOREIGN KEY (competition_id) REFERENCES competitions(id) ON DELETE CASCADE
-);
+)ENGINE=InnoDB;
 
-drop table if exists groups;
 create table groups
 (
 	id int unsigned PRIMARY KEY AUTO_INCREMENT,
@@ -80,9 +89,8 @@ create table groups
 	INDEX group_name (name),
 	INDEX group_stage (stage_id),
 	FOREIGN KEY (stage_id) REFERENCES stages(id) ON DELETE CASCADE
-);
+)ENGINE=InnoDB;
 
-drop table if exists teams;
 create table teams
 (
 	id int unsigned PRIMARY KEY AUTO_INCREMENT,
@@ -95,9 +103,8 @@ create table teams
 	INDEX team_sport (sport_id),
 	FOREIGN KEY (sport_id) REFERENCES sports(id) ON DELETE CASCADE
 	
-);
+)ENGINE=InnoDB;
 
-drop table if exists competition_teams;
 create table competition_teams
 (
 	competition_id int unsigned,
@@ -105,9 +112,8 @@ create table competition_teams
 	PRIMARY KEY(competition_id, team_id),
 	FOREIGN KEY (competition_id) REFERENCES competitions(id) ON DELETE CASCADE,
 	FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE
-);
+)ENGINE=InnoDB;
 
-drop table if exists group_teams;
 create table group_teams
 (
 	group_id int unsigned,
@@ -115,9 +121,8 @@ create table group_teams
 	PRIMARY KEY(group_id, team_id),
 	FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
 	FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE
-);
+)ENGINE=InnoDB;
 
-drop table if exists rounds;
 create table rounds
 (
 	id smallint unsigned AUTO_INCREMENT,
@@ -125,9 +130,8 @@ create table rounds
 	day date,
 	PRIMARY KEY(id, group_id),
 	FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE
-);
+)ENGINE=InnoDB;
 
-drop table if exists games;
 create table games
 (
 	id int unsigned PRIMARY KEY AUTO_INCREMENT,
@@ -144,9 +148,8 @@ create table games
 	FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
 	FOREIGN KEY (home_team_id) REFERENCES teams(id) ON DELETE CASCADE,
 	FOREIGN KEY (visiting_team_id) REFERENCES teams(id) ON DELETE CASCADE 
-);
+)ENGINE=InnoDB;
 
-drop table if exists standings;
 create table standings
 (
 	team_id int unsigned,
@@ -187,7 +190,7 @@ create table standings
 	FOREIGN KEY (round_id) REFERENCES rounds(id) ON DELETE CASCADE,
 	FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
 	FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE
-);
+)ENGINE=InnoDB;
 
 --drop trigger if exists update_game;
 create trigger update_game AFTER UPDATE ON games

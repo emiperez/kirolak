@@ -8,9 +8,6 @@ package com.kirolak;
  */
 public class Team extends KirolakObject {
 
-	private int id;
-	private String name;
-	private String seoName;
 	private String acronym;
 	private Sport sport;
 
@@ -18,30 +15,10 @@ public class Team extends KirolakObject {
 	public Team() {
 		this.id=-1;
 	}
-
-
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 	
-	public String getSeoName() {
-		return this.seoName;
-	}
-
-	public void setSeoName(String seoName) {
-		this.seoName = seoName;
+	public int getId()
+	{
+		return this.id;
 	}
 
 	public String getAcronym()
