@@ -1,90 +1,38 @@
 package com.kirolak.beans;
 
-
 import java.util.List;
 
-import javax.faces.component.UIData;
-
-import org.hibernate.Session;
-
+import com.kirolak.KirolakObject;
 import com.kirolak.Sport;
-import com.kirolak.Team;
-import com.kirolak.util.HibernateUtil;
-import com.sun.faces.util.MessageFactory;
+import com.kirolak.dao.SportDAO;
+import com.kirolak.util.Messages;
 
-public class SportBean extends GenericBean
+public class SportBean extends KirolakSession
 {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private Sport item = new Sport();
-	private List<Team> teams;
-
-
 	public String getTitle()
 	{
-		if (this.item.getId() > -1)
+		if (this.item.getIntId() > -1)
 		{
 			return this.item.getName();
 		} else
 		{
-			return MessageFactory.getMessage("new_sport").getDetail();
+			return Messages.getString("messages", "new_sport");
 		}
 	}
-
 	
-	public Sport getItem()
+	public List<KirolakObject> getItems()
 	{
-		return item;
-	}
-
-	public void setSport(Sport item)
-	{
-		this.item = item;
-	}
-
-	public List<Team> getTeams()
-	{
-		if(this.teams==null)
+		if(this.items==null)
 		{
-			//TODO it should be done using Hibernate's Lazy Load (Custom Session Management)
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-			session.beginTransaction();
-			this.teams = session.createQuery("from Team t where sport_id = :id").setParameter("id", this.item.getId()).list();
-			session.getTransaction().commit();
+			this.items = SportDAO.list();
 		}
-		return this.teams;
+		return this.items;
 	}
-
 
 	public String newItem()
 	{
 		this.item = new Sport();
 		return "edit";
 	}
-
-	public String editItem()
-	{
-		this.item = (Sport) itemData.getRowData();
-		return "edit";
-	}
-
-	public String saveItem()
-	{
-		return super.save(this.item);
-	}
 	
-	public String goteams()
-	{
-		this.item = (Sport) itemData.getRowData();
-		return "teams";
-	}
-
-	public String deleteItem()
-	{
-		this.item = (Sport) itemData.getRowData();
-		return super.delete(this.item);
-	}
-
 }

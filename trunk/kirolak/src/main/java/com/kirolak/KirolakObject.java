@@ -1,24 +1,68 @@
 package com.kirolak;
 
-import org.hibernate.Session;
-import com.kirolak.util.HibernateUtil;
+import java.lang.reflect.Constructor;
 
-public class KirolakObject implements java.io.Serializable
+public abstract class KirolakObject implements java.io.Serializable
 {
-	protected Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	protected KirolakObject parent;
+	protected int id;
+	protected String name;
+	protected String seoName;
 
-	public void delete()
-	{
-		session.beginTransaction();
-		session.delete(this);
-		session.getTransaction().commit();
-	}
+	public static final String SPORT = "Sport";
+	public static final String TEAM = "Team";
 	
-	public void save()
+	public static KirolakObject newInstance(String className)
 	{
-		session.beginTransaction();
-		session.saveOrUpdate(this);
-		session.getTransaction().commit();
+		KirolakObject retobj = null;
+		try
+		{
+			Class cls = Class.forName("com.kirolak."+className);
+			Class partypes[] = new Class[0];
+			Constructor ct = cls.getConstructor(partypes);
+			Object arglist[] = new Object[0];
+			retobj = (KirolakObject)ct.newInstance(arglist);
+		} catch (Throwable e)
+		{
+			// TODO: Manage Exception
+		}
+		return retobj;
 	}
 
+	public int getIntId()
+	{
+		return id;
+	}
+
+	public void setId(int id)
+	{
+		this.id = id;
+	}
+
+	public String getName()
+	{
+		return this.name;
+	}
+
+	public String getSeoName()
+	{
+		return this.seoName;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+
+	public void setSeoName(String seoName)
+	{
+		this.seoName = seoName;
+	}
+
+	
+	
+	public boolean equals(KirolakObject obj)
+	{
+		return (obj != null && obj.id == this.id);
+	}
 }

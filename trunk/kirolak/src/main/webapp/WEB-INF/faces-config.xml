@@ -59,36 +59,27 @@
 	</navigation-rule>
 
 	<!-- BEANS -->
-	<managed-bean>
-		<managed-bean-name>sportBean</managed-bean-name>
-		<managed-bean-class>
-			com.kirolak.beans.SportBean
-		</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
-		<managed-property>
-			<property-name>observers</property-name>
-			<list-entries>
-				<value>#{app}</value>
-			</list-entries>
-		</managed-property>
-	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>teamBean</managed-bean-name>
-		<managed-bean-class>
-			com.kirolak.beans.TeamBean
-		</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
-		<managed-property>
-			<property-name>observers</property-name>
-			<list-entries></list-entries>
-		</managed-property>
-	</managed-bean>
+
 	<managed-bean>
 		<managed-bean-name>app</managed-bean-name>
 		<managed-bean-class>
 			com.kirolak.beans.Kirolak
 		</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>sport</managed-bean-name>
+		<managed-bean-class>
+			com.kirolak.beans.SportBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>team</managed-bean-name>
+		<managed-bean-class>
+			com.kirolak.beans.TeamBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 
 	<!-- VALIDATORS -->
@@ -101,7 +92,7 @@
 
 	<!-- CONVERTERS -->
 	<converter>
-		<converter-for-class>com.kirolak.Sport</converter-for-class>
+		<converter-id>kirolak.sportConverter</converter-id>
 		<converter-class>
 			com.kirolak.jsf.converters.SportConverter
 		</converter-class>
