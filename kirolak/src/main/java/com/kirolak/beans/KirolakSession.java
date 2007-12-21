@@ -56,6 +56,7 @@ public abstract class KirolakSession
 	public String editItem()
 	{
 		this.item = (KirolakObject) itemData.getRowData();
+		this.items = null;
 		return "edit";
 	}
 
@@ -63,8 +64,7 @@ public abstract class KirolakSession
 	{
 		KirolakDAO.save(this.item);
 		// Notify to the observers
-		this.items = null;
-		return "saved";
+		return "list";
 	}
 
 	public String deleteItem()
@@ -73,7 +73,7 @@ public abstract class KirolakSession
 		KirolakDAO.delete(this.item);
 		this.items = null;
 
-		return "deleted";
+		return "list";
 	}
 	
 	public List<SelectItem> getSelectItems()
