@@ -4,15 +4,15 @@
 <f:view>
 	<html>
 	<head>
-		<meta http-equiv="pragma" content="no-cache">
-		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache"/>
+		<meta http-equiv="cache-control" content="no-cache"/>
 		<title><h:outputText value="#{msg.sports}" /></title>
-		<link href="css/forms.css" rel="stylesheet" type="text/css">
+		<link href="css/forms.css" rel="stylesheet" type="text/css"/>
 	</head>
 
 	<body>
 	<h:form id="sports">
-		<h:commandLink action="#{sport.newItem}" value="#{msg.new}"/>
+		<h:commandButton action="#{sport.newItem}" value="#{msg.new}"/>
 		<h:dataTable value="#{sport.items}" var="item"
 			binding="#{sport.itemData}" rowClasses="row">
 			<h:column>
@@ -28,15 +28,11 @@
 				<h:outputText value="#{item.seoName}" />
 			</h:column>
 			<h:column>
-				<h:commandLink id="edit" action="#{sport.editItem}">
-					<h:outputText value="#{msg.edit}" />
-				</h:commandLink>
+				<h:commandButton id="edit" action="#{sport.editItem}" value="#{msg.edit}" />
 			</h:column>
 			<h:column>
-				<h:commandLink id="delete" action="#{sport.deleteItem}"
-					onclick="return confirm('#{msg.sure}')">
-					<h:outputText value="#{msg.delete}" />
-				</h:commandLink>
+				<h:commandButton id="delete" action="#{sport.deleteItem}"
+					onclick="return confirm('#{msg.sure}')" value="#{msg.delete}" />
 			</h:column>
 			<h:column>
 				<h:commandLink id="teams" action="teams"

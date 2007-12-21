@@ -4,14 +4,30 @@
 <f:view>
 	<html>
 	<head>
-	<title><h:outputText value="#{team.parent.name} #{msg.teams}" /></title>
+	<title>
+		<h:outputFormat value="#{msg.teams_title}">
+			<f:param value="#{team.parent.name}"/>
+		</h:outputFormat>
+	</title>	
+	<link href="css/forms.css" rel="stylesheet" type="text/css"/>
 	</head>
 
 	<body>
 	<h:form id="teams">
-	<h:commandLink action="#{team.newItem}" value="#{msg.new}"/>
+	
+	<div class="navigation_bar">
+		<h:outputLink id="sports_url" value="#{facesContext.externalContext.requestContextPath}">
+			<h:outputText value="#{msg.sports}"/>
+		</h:outputLink> 
+		&gt; 
+		<h:outputFormat value="#{msg.teams_title}">
+			<f:param value="#{team.parent.name}"/>
+		</h:outputFormat>
+	</div>
+	
+	<h:commandButton action="#{team.newItem}" value="#{msg.new}"/>
 	<h:dataTable value="#{team.items}" var="item"
-			binding="#{team.itemData}">
+			binding="#{team.itemData}" rowClasses="row">
 		<f:param name="teamId" value="#{item.id}" />	
 		<h:column>
 			<f:facet name="header">
@@ -26,10 +42,10 @@
 			<h:outputText value="#{item.seoName}" />
 		</h:column>	
 		<h:column>
-			<h:commandLink id="edit" action="#{team.editItem}"><h:outputText value="#{msg.edit}" /></h:commandLink>
+			<h:commandButton id="edit" action="#{team.editItem}" value="#{msg.edit}" />
 		</h:column>
 		<h:column>
-			<h:commandLink id="delete" action="#{team.deleteItem}" onclick="return confirm('#{msg.sure}')"><h:outputText value="#{msg.delete}" /></h:commandLink>
+			<h:commandButton id="delete" action="#{team.deleteItem}" onclick="return confirm('#{msg.sure}')" value="#{msg.delete}" />
 		</h:column>
 	</h:dataTable>
 	</h:form>

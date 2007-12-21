@@ -8,8 +8,14 @@
 	</head>
 
 	<body bgcolor="white">
-	<h:outputText styleClass="title" value="#{sport.title}" />
 	<h:form id="saveSport">
+		<div class="navigation_bar">
+		<h:outputLink id="sports_url" value="#{facesContext.externalContext.requestContextPath}">
+			<h:outputText value="#{msg.sports}"/>
+		</h:outputLink> 
+		&gt; 
+		<h:outputText value="#{sport.title}" />
+		</div>
 		<h:inputHidden id="id" value="#{sport.item.id}" />
 		
 		<h:panelGrid columns="3" >
@@ -66,6 +72,7 @@
 			
 		</h:panelGrid>
 		<h:commandButton value="#{msg.save}" action="#{sport.saveItem}" />
+		<h:commandButton value="#{msg.cancel}" action="list" />
 	</h:form>
 	</body>
 	</html>

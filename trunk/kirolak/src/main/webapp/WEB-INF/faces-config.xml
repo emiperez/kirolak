@@ -21,7 +21,7 @@
 			<to-view-id>/sport.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>deleted</from-outcome>
+			<from-outcome>list</from-outcome>
 			<to-view-id>/sports.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
@@ -33,7 +33,7 @@
 	<navigation-rule>
 		<from-view-id>/sport.jsp</from-view-id>
 		<navigation-case>
-			<from-outcome>saved</from-outcome>
+			<from-outcome>list</from-outcome>
 			<to-view-id>/sports.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -45,7 +45,7 @@
 			<to-view-id>/team.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>deleted</from-outcome>
+			<from-outcome>list</from-outcome>
 			<to-view-id>/teams.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -53,7 +53,7 @@
 	<navigation-rule>
 		<from-view-id>/team.jsp</from-view-id>
 		<navigation-case>
-			<from-outcome>saved</from-outcome>
+			<from-outcome>list</from-outcome>
 			<to-view-id>/teams.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
