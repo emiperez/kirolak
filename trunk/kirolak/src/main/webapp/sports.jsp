@@ -8,6 +8,7 @@
 		<meta http-equiv="cache-control" content="no-cache"/>
 		<title><h:outputText value="#{msg.sports}" /></title>
 		<link href="css/forms.css" rel="stylesheet" type="text/css"/>
+		<link rel="shortcut icon" href="favicon.ico" />
 	</head>
 
 	<body>

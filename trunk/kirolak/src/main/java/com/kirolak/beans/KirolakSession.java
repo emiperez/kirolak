@@ -56,14 +56,13 @@ public abstract class KirolakSession
 	public String editItem()
 	{
 		this.item = (KirolakObject) itemData.getRowData();
-		this.items = null;
 		return "edit";
 	}
 
 	public String saveItem()
 	{
 		KirolakDAO.save(this.item);
-		// Notify to the observers
+		this.items = null;
 		return "list";
 	}
 
