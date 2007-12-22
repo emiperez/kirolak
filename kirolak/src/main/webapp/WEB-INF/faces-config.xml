@@ -97,4 +97,11 @@
 			com.kirolak.jsf.converters.SportConverter
 		</converter-class>
 	</converter>
+	
+	<!-- PHASE LISTENERS -->
+	<lifecycle>
+        <phase-listener>com.kirolak.jsf.listeners.ErrorFieldListener</phase-listener>
+    </lifecycle>
+
+	
 </faces-config>
