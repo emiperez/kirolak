@@ -42,6 +42,13 @@
 					<h:outputText value="#{msg.teams}" />
 				</h:commandLink>
 			</h:column>
+			<h:column>
+				<h:commandLink id="competitions" action="competitions"
+					actionListener="#{competition.load}">
+					<f:param name="parent" value="#{item.id}"/>
+					<h:outputText value="#{msg.competitions}" />
+				</h:commandLink>
+			</h:column>
 		</h:dataTable>
 	</h:form>
 	</body>

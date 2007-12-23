@@ -28,6 +28,10 @@
 			<from-outcome>teams</from-outcome>
 			<to-view-id>/teams.jsp</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>competitions</from-outcome>
+			<to-view-id>/competitions.jsp</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule>
@@ -57,6 +61,26 @@
 			<to-view-id>/teams.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/competitions.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>edit</from-outcome>
+			<to-view-id>/competition.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>list</from-outcome>
+			<to-view-id>/competitions.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/competition.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>list</from-outcome>
+			<to-view-id>/competitions.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 	<!-- BEANS -->
 
@@ -81,6 +105,13 @@
 		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>competition</managed-bean-name>
+		<managed-bean-class>
+			com.kirolak.beans.CompetitionBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 	<!-- VALIDATORS -->
 	<validator>
@@ -97,11 +128,6 @@
 			com.kirolak.jsf.converters.SportConverter
 		</converter-class>
 	</converter>
-	
-	<!-- PHASE LISTENERS -->
-	<lifecycle>
-        <phase-listener>com.kirolak.jsf.listeners.ErrorFieldListener</phase-listener>
-    </lifecycle>
 
 	
 </faces-config>

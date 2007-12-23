@@ -4,18 +4,23 @@
 <!-- Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1 -->
 <hibernate-mapping>
     <class name="com.kirolak.Competition" table="competitions" >
-        <id name="id" type="int">
+        <id name="id" type="int" unsaved-value="-1">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
-        <property name="sportId" type="java.lang.Short">
-            <column name="sport_id" />
-        </property>
         <property name="name" type="string">
             <column name="name" length="25" not-null="true" />
         </property>
         <property name="seoName" type="string">
             <column name="seo_name" length="25" not-null="true" />
         </property>
+        <property name="startDate" type="java.util.Date">
+            <column name="start_date" not-null="true" />
+        </property>
+        <property name="finishDate" type="java.util.Date">
+            <column name="finish_date" not-null="true" />
+        </property>
+        <many-to-one name="sport" column="sport_id" class="com.kirolak.Sport" lazy="false">
+        </many-to-one>
     </class>
 </hibernate-mapping>
