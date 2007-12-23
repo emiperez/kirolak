@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="js/forms.js"></script>	
 	</head>
 
-	<body onload="setFocus('saveSport:name','${errorField}');">
+	<body onload="setFocus('saveTeam:name','${errorField}');">
 	<h:form id="saveTeam">
 		<div class="navigation_bar">
 		<h:outputLink id="sports_url"
@@ -41,8 +41,8 @@
 			<h:message id="nameError" for="name" styleClass="error" />
 
 			<h:outputText styleClass="label" value="#{msg.seo_name}" />
-			<h:inputText id="seo" value="#{team.item.seoName}" size="15" required="true">
-				<f:validateLength minimum="3" maximum="15" />
+			<h:inputText id="seo" value="#{team.item.seoName}" size="25" required="true">
+				<f:validateLength minimum="3" maximum="25" />
 				<f:validator validatorId="kirolak.seoNameValidator" />
 			</h:inputText>
 			<h:message id="seoNameError" for="seo" styleClass="error" />
@@ -54,7 +54,7 @@
 			<h:message id="acronymError" for="acronym" styleClass="error" />
 
 			<h:outputText styleClass="label" value="#{msg.sport}" />
-			<h:selectOneMenu id="teamSport" value="#{team.item.sport}"
+			<h:selectOneMenu id="teamSport" value="#{team.parent}"
 				required="true" converter="kirolak.sportConverter">
 				<f:selectItems value="#{sport.selectItems}" />
 			</h:selectOneMenu>

@@ -57,12 +57,7 @@ public abstract class KirolakObject implements java.io.Serializable
 	public void setSeoName(String seoName)
 	{
 		this.seoName = seoName;
-	}
+	}	
 
-	
-	
-	public boolean equals(KirolakObject obj)
-	{
-		return (obj != null && obj.id == this.id);
-	}
+
 }
