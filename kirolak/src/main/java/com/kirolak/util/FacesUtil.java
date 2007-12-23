@@ -9,18 +9,20 @@ public class FacesUtil
 	// Getters
 	// -----------------------------------------------------------------------------------
 
-	public static String getActionAttribute(ActionEvent event, String name) {
-        return (String) event.getComponent().getAttributes().get(name);
-    }
-	
+	public static String getActionAttribute(ActionEvent event, String name)
+	{
+		return (String) event.getComponent().getAttributes().get(name);
+	}
+
 	public static Object getRequestMapValue(String key)
 	{
 		return FacesContext.getCurrentInstance().getExternalContext().getRequestMap().get(key);
 	}
-	
-	public static Object getRequestParameter(String name) {
-        return FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get(name);
-    }
+
+	public static Object getRequestParameter(String name)
+	{
+		return FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get(name);
+	}
 
 	// Setters
 	// -----------------------------------------------------------------------------------

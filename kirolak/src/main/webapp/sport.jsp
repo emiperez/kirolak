@@ -81,8 +81,5 @@
 		<h:commandButton value="#{msg.cancel}" action="list" immediate="true" />
 	</h:form>
 	</body>	
-	</f:view>	
-	<script>
-	       setFocus('${focus}');	
-	</script>
+	</f:view>
 	</html>

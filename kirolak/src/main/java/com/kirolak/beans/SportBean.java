@@ -19,10 +19,10 @@ public class SportBean extends KirolakSession
 			return Messages.getString("messages", "new_sport");
 		}
 	}
-	
+
 	public List<KirolakObject> getItems()
 	{
-		if(this.items==null)
+		if (this.items == null)
 		{
 			this.items = SportDAO.list();
 		}
@@ -34,5 +34,5 @@ public class SportBean extends KirolakSession
 		this.item = new Sport();
 		return "edit";
 	}
-	
+
 }

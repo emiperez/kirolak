@@ -19,17 +19,17 @@ public class Kirolak implements Serializable
 	private List<SelectItem> scoreModesSelectItems;
 
 	public List<ScoreMode> getScoreModes()
-	{		
+	{
 		if (this.scoreModes == null)
 		{
 			this.scoreModes = ScoreMode.getAll();
-		}		
+		}
 		return this.scoreModes;
 	}
-	
+
 	public List<SelectItem> getScoreModesSelectItems()
 	{
-		
+
 		if (this.scoreModes == null)
 		{
 			getScoreModes();
@@ -38,10 +38,10 @@ public class Kirolak implements Serializable
 		{
 			this.scoreModesSelectItems = new ArrayList<SelectItem>();
 			Iterator<ScoreMode> scoreModesIterator = scoreModes.iterator();
-			while(scoreModesIterator.hasNext())
+			while (scoreModesIterator.hasNext())
 			{
 				ScoreMode scoreMode = scoreModesIterator.next();
-				this.scoreModesSelectItems.add(new SelectItem(scoreMode.getId(),scoreMode.getName()));			
+				this.scoreModesSelectItems.add(new SelectItem(scoreMode.getId(), scoreMode.getName()));
 			}
 		}
 		return this.scoreModesSelectItems;
@@ -51,6 +51,5 @@ public class Kirolak implements Serializable
 	{
 		return FacesContext.getCurrentInstance().getApplication().getSupportedLocales();
 	}
-
 
 }

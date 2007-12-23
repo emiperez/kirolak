@@ -22,7 +22,7 @@ public abstract class KirolakSession
 	protected UIData itemData;
 
 	public abstract List<KirolakObject> getItems();
-	
+
 	public KirolakObject getItem()
 	{
 		return item;
@@ -32,7 +32,7 @@ public abstract class KirolakSession
 	{
 		this.item = item;
 	}
-	
+
 	public KirolakObject getParent()
 	{
 		return parent;
@@ -74,19 +74,19 @@ public abstract class KirolakSession
 
 		return "list";
 	}
-	
+
 	public List<SelectItem> getSelectItems()
 	{
 		if (this.items == null)
 		{
 			getItems();
 		}
-		List <SelectItem> selectItems = new ArrayList<SelectItem>();
+		List<SelectItem> selectItems = new ArrayList<SelectItem>();
 		Iterator<KirolakObject> iterator = this.items.iterator();
-		while(iterator.hasNext())
+		while (iterator.hasNext())
 		{
 			KirolakObject obj = iterator.next();
-			selectItems.add(new SelectItem(obj,obj.getName()));			
+			selectItems.add(new SelectItem(obj, obj.getName()));
 		}
 		return selectItems;
 	}

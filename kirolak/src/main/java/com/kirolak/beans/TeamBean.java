@@ -24,18 +24,18 @@ public class TeamBean extends KirolakSession
 			return Messages.getString("messages", "new_team");
 		}
 	}
-	
+
 	public void load(ActionEvent event)
 	{
-		this.parent = SportDAO.get(Short.parseShort(""+FacesUtil.getRequestParameter("parent")));
+		this.parent = SportDAO.get(Short.parseShort("" + FacesUtil.getRequestParameter("parent")));
 		this.items = null;
 	}
-	
+
 	public List<KirolakObject> getItems()
 	{
-		if(this.items==null)
+		if (this.items == null)
 		{
-			this.items = TeamDAO.listBySport((Sport)this.parent);
+			this.items = TeamDAO.listBySport((Sport) this.parent);
 		}
 		return this.items;
 	}
@@ -45,11 +45,11 @@ public class TeamBean extends KirolakSession
 		this.item = new Team();
 		return "edit";
 	}
-	
+
 	@Override
 	public void setParent(KirolakObject parent)
 	{
 		this.parent = parent;
-		((Team)this.item).setSport((Sport)parent);
+		((Team) this.item).setSport((Sport) parent);
 	}
 }
