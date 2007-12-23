@@ -25,18 +25,18 @@ public class CompetitionBean extends KirolakSession
 			return Messages.getString("messages", "new_competition");
 		}
 	}
-	
+
 	public void load(ActionEvent event)
 	{
-		this.parent = SportDAO.get(Short.parseShort(""+FacesUtil.getRequestParameter("parent")));
+		this.parent = SportDAO.get(Short.parseShort("" + FacesUtil.getRequestParameter("parent")));
 		this.items = null;
 	}
-	
+
 	public List<KirolakObject> getItems()
 	{
-		if(this.items==null)
+		if (this.items == null)
 		{
-			this.items = CompetitionDAO.listBySport((Sport)this.parent);
+			this.items = CompetitionDAO.listBySport((Sport) this.parent);
 		}
 		return this.items;
 	}
@@ -46,11 +46,11 @@ public class CompetitionBean extends KirolakSession
 		this.item = new Competition();
 		return "edit";
 	}
-	
+
 	@Override
 	public void setParent(KirolakObject parent)
 	{
 		this.parent = parent;
-		((Competition)this.item).setSport((Sport)parent);
+		((Competition) this.item).setSport((Sport) parent);
 	}
 }

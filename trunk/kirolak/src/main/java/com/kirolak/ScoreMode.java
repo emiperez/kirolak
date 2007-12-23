@@ -37,7 +37,7 @@ public class ScoreMode implements java.io.Serializable
 	{
 		return this.id;
 	}
-	
+
 	public void setId(Byte id)
 	{
 		this.id = id;
@@ -47,13 +47,12 @@ public class ScoreMode implements java.io.Serializable
 	{
 		return this.name;
 	}
-	
+
 	public void setName(String name)
 	{
 		this.name = name;
 	}
 
-	
 	public static List<ScoreMode> getAll()
 	{
 		List<ScoreMode> sports;
@@ -61,9 +60,7 @@ public class ScoreMode implements java.io.Serializable
 		session.beginTransaction();
 		sports = session.createQuery("from ScoreMode").list();
 		session.getTransaction().commit();
-		return sports;	
+		return sports;
 	}
-	
-
 
 }

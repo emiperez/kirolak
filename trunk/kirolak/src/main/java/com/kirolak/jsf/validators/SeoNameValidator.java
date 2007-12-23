@@ -17,7 +17,7 @@ public class SeoNameValidator implements Validator
 
 		if (!KirolakValidator.validateSeoName((String) value))
 		{
-			FacesMessage message = MessageFactory.getMessage(context,"seo_name_error", FacesMessage.SEVERITY_ERROR, new Object[] {});
+			FacesMessage message = MessageFactory.getMessage(context, "seo_name_error", FacesMessage.SEVERITY_ERROR, new Object[] {});
 			throw new ValidatorException(message);
 		}
 	}
