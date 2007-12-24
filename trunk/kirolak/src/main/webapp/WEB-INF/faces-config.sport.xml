@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+	<!-- NAVIGATION RULES -->
+	<navigation-rule>
+		<from-view-id>/admin/sports.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>edit</from-outcome>
+			<to-view-id>/admin/sport.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>list</from-outcome>
+			<to-view-id>/admin/sports.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>teams</from-outcome>
+			<to-view-id>/admin/teams.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>competitions</from-outcome>
+			<to-view-id>/admin/competitions.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/admin/sport.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>list</from-outcome>
+			<to-view-id>/admin/sports.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- BEANS -->
+	<managed-bean>
+		<managed-bean-name>sport</managed-bean-name>
+		<managed-bean-class>
+			com.kirolak.beans.SportBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- CONVERTERS -->
+	<converter>
+		<converter-id>kirolak.sportConverter</converter-id>
+		<converter-class>
+			com.kirolak.jsf.converters.SportConverter
+		</converter-class>
+	</converter>
+	
+</faces-config>
