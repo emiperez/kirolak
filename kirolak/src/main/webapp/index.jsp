@@ -1,5 +1,5 @@
 <html>
  <body>
-  <jsp:forward page="/sports.jsf?class=Sport" />
+  <jsp:forward page="/admin/sports.jsf" />
  </body>
 </html>

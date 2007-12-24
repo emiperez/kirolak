@@ -14,71 +14,24 @@
 
 
 	<!-- NAVIGATION RULES -->
+
 	<navigation-rule>
-		<from-view-id>/sports.jsp</from-view-id>
+		<from-view-id>/admin/*</from-view-id>
 		<navigation-case>
-			<from-outcome>edit</from-outcome>
-			<to-view-id>/sport.jsp</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>list</from-outcome>
-			<to-view-id>/sports.jsp</to-view-id>
+			<from-outcome>sports</from-outcome>
+			<to-view-id>/admin/sports.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>teams</from-outcome>
-			<to-view-id>/teams.jsp</to-view-id>
+			<to-view-id>/admin/teams.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>competitions</from-outcome>
-			<to-view-id>/competitions.jsp</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<from-view-id>/sport.jsp</from-view-id>
-		<navigation-case>
-			<from-outcome>list</from-outcome>
-			<to-view-id>/sports.jsp</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<from-view-id>/teams.jsp</from-view-id>
-		<navigation-case>
-			<from-outcome>edit</from-outcome>
-			<to-view-id>/team.jsp</to-view-id>
+			<to-view-id>/admin/competitions.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>list</from-outcome>
-			<to-view-id>/teams.jsp</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<from-view-id>/team.jsp</from-view-id>
-		<navigation-case>
-			<from-outcome>list</from-outcome>
-			<to-view-id>/teams.jsp</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	
-	<navigation-rule>
-		<from-view-id>/competitions.jsp</from-view-id>
-		<navigation-case>
-			<from-outcome>edit</from-outcome>
-			<to-view-id>/competition.jsp</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>list</from-outcome>
-			<to-view-id>/competitions.jsp</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<from-view-id>/competition.jsp</from-view-id>
-		<navigation-case>
-			<from-outcome>list</from-outcome>
-			<to-view-id>/competitions.jsp</to-view-id>
+			<from-outcome>stages</from-outcome>
+			<to-view-id>/admin/stages.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
@@ -86,48 +39,21 @@
 
 	<managed-bean>
 		<managed-bean-name>app</managed-bean-name>
-		<managed-bean-class>
-			com.kirolak.beans.Kirolak
-		</managed-bean-class>
+		<managed-bean-class>com.kirolak.beans.Kirolak</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
-	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>sport</managed-bean-name>
-		<managed-bean-class>
-			com.kirolak.beans.SportBean
-		</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>team</managed-bean-name>
-		<managed-bean-class>
-			com.kirolak.beans.TeamBean
-		</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>competition</managed-bean-name>
-		<managed-bean-class>
-			com.kirolak.beans.CompetitionBean
-		</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 
 	<!-- VALIDATORS -->
 	<validator>
 		<validator-id>kirolak.seoNameValidator</validator-id>
-		<validator-class>
-			com.kirolak.jsf.validators.SeoNameValidator
-		</validator-class>
+		<validator-class>com.kirolak.jsf.validators.SeoNameValidator</validator-class>
 	</validator>
 
 	<!-- CONVERTERS -->
-	<converter>
-		<converter-id>kirolak.sportConverter</converter-id>
-		<converter-class>
-			com.kirolak.jsf.converters.SportConverter
-		</converter-class>
-	</converter>
-
 	
+	<!-- LISTENERS -->
+	<lifecycle>
+        <phase-listener>com.kirolak.jsf.listeners.ErrorFieldListener</phase-listener>
+    </lifecycle>
+
 </faces-config>

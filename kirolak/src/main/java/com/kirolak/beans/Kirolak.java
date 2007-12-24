@@ -11,7 +11,9 @@ import javax.faces.model.SelectItem;
 
 import com.kirolak.KirolakObject;
 import com.kirolak.ScoreMode;
+import com.kirolak.StageType;
 import com.kirolak.dao.ScoreModeDAO;
+import com.kirolak.dao.StageTypeDAO;
 
 public class Kirolak implements Serializable
 {
@@ -19,6 +21,9 @@ public class Kirolak implements Serializable
 	private static final long serialVersionUID = 1L;
 	private List<KirolakObject> scoreModes;
 	private List<SelectItem> scoreModesSelectItems;
+	private List<KirolakObject> stageTypes;
+	private List<SelectItem> stageTypesSelectItems;
+	
 
 	public List<KirolakObject> getScoreModes()
 	{
@@ -47,6 +52,35 @@ public class Kirolak implements Serializable
 			}
 		}
 		return this.scoreModesSelectItems;
+	}
+	
+	public List<KirolakObject> getStageTypes()
+	{
+		if (this.stageTypes == null)
+		{
+			this.stageTypes = StageTypeDAO.list();
+		}
+		return this.stageTypes;
+	}
+
+	public List<SelectItem> getStageTypesSelectItems()
+	{
+
+		if (this.stageTypes == null)
+		{
+			getStageTypes();
+		}
+		if (this.stageTypesSelectItems == null)
+		{
+			this.stageTypesSelectItems = new ArrayList<SelectItem>();
+			Iterator<KirolakObject> stageTypesIterator = stageTypes.iterator();
+			while (stageTypesIterator.hasNext())
+			{
+				KirolakObject stageType = stageTypesIterator.next();
+				this.stageTypesSelectItems.add(new SelectItem(((StageType)stageType).getId(), stageType.getName()));
+			}
+		}
+		return this.stageTypesSelectItems;
 	}
 
 	public Iterator<Locale> getSupportedLocales()
