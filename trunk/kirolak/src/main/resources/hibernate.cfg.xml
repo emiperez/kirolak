@@ -30,6 +30,7 @@
         <mapping resource="com/kirolak/Stage.hbm.xml" />
         <mapping resource="com/kirolak/Sport.hbm.xml" />
         <mapping resource="com/kirolak/ScoreMode.hbm.xml" />
+        <mapping resource="com/kirolak/StageType.hbm.xml" />
         <mapping resource="com/kirolak/Competition.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

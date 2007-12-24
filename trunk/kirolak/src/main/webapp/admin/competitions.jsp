@@ -16,9 +16,7 @@
 	<h:form id="competitions">
 	
 	<div class="navigation_bar">
-		<h:outputLink id="sports_url" value="#{facesContext.externalContext.requestContextPath}">
-			<h:outputText value="#{msg.sports}"/>
-		</h:outputLink> 
+		<h:commandLink id="sports_link" action="sports" value="#{msg.sports}" immediate="true" />
 		&gt; 
 		<h:outputFormat value="#{msg.competitions_title}">
 			<f:param value="#{competition.parent.name}"/>
@@ -63,6 +61,20 @@
 		<h:column>
 			<h:commandButton id="delete" action="#{competition.deleteItem}" onclick="return confirm('#{msg.sure}')" value="#{msg.delete}" />
 		</h:column>
+		<h:column>
+				<h:commandLink id="teams" action="teams"
+					actionListener="#{team.load}">
+					<f:param name="parent" value="#{item.id}"/>
+					<h:outputText value="#{msg.teams}" />
+				</h:commandLink>
+			</h:column>
+			<h:column>
+				<h:commandLink id="stages" action="stages"
+					actionListener="#{stage.load}">
+					<f:param name="parent" value="#{item.id}"/>
+					<h:outputText value="#{msg.stages}" />
+				</h:commandLink>
+			</h:column>
 	</h:dataTable>
 	</h:form>
 	</body>

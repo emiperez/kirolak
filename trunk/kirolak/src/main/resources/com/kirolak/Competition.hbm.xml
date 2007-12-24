@@ -20,7 +20,7 @@
         <property name="finishDate" type="java.util.Date">
             <column name="finish_date" not-null="true" />
         </property>
-        <many-to-one name="sport" column="sport_id" class="com.kirolak.Sport" lazy="false">
+        <many-to-one name="sport" column="sport_id" class="com.kirolak.Sport">
         </many-to-one>
     </class>
 </hibernate-mapping>

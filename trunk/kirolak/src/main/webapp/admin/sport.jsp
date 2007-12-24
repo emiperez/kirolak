@@ -12,10 +12,8 @@
 
 	<body onload="setFocus('saveSport:name','${errorField}');">
 	<h:form id="saveSport">
-		<div class="navigation_bar"><h:outputLink id="sports_url"
-			value="#{facesContext.externalContext.requestContextPath}">
-			<h:outputText value="#{msg.sports}" />
-		</h:outputLink> &gt; <h:outputText value="#{sport.title}" /></div>
+		<div class="navigation_bar">
+		<h:commandLink id="sports_link" action="sports" value="#{msg.sports}" immediate="true" /> &gt; <h:outputText value="#{sport.title}" /></div>
 		<h:inputHidden id="id" value="#{sport.item.id}" />
 		<h:panelGrid columns="3">
 			<h:outputText styleClass="label" value="#{msg.name}" />

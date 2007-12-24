@@ -16,12 +16,9 @@
 	<body onload="setFocus('saveCompetition:name','${errorField}');">
 	<h:form id="saveTeam">
 		<div class="navigation_bar">
-		<h:outputLink id="sports_url"
-			value="#{facesContext.externalContext.requestContextPath}">
-			<h:outputText value="#{msg.sports}" />
-		</h:outputLink> 
+		<h:commandLink id="sports_link" action="sports" value="#{msg.sports}" immediate="true" />
 		&gt; 
-		<h:commandLink id="teams_url" action="list" immediate="true">
+		<h:commandLink id="competitions_link" action="competitions" immediate="true">
 			<h:outputFormat value="#{msg.competitions_title}">
 				<f:param value="#{competition.parent.name}" />
 			</h:outputFormat>
