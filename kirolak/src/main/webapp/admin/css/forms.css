@@ -1,0 +1,57 @@
+input,textarea,select {
+	border: 1px solid #BBBBBB;
+	font-size: 10px;
+	background: #F0F8FF;
+	color: black;
+}
+
+input[type='submit'],input[type='button'] {
+	background: #4477AA;
+	color: white;
+	margin: 5px;
+	border-color: gray;
+}
+
+
+th {
+	background: silver;
+	color: white;
+	text-align: left;
+	font-family: sans-serif;	
+	padding: 3px;
+}
+
+td {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.row {
+	background: #EAF0FD;
+	color: black;
+	text-align: left;
+	font-family: sans-serif;
+}
+
+
+.title {
+	padding: 5px;
+	font-size: 14px;
+	font-weight: bold;
+	color: black;
+}
+
+.label {
+	font-size: 11px;
+	font-weight: bold;
+	color: gray;
+}
+
+.error {
+	font-size: 11px;
+	margin-left: 20px;
+	margin-top: 5px;
+	float: left;
+	padding: 5px;
+	border: 1px solid red;
+}
