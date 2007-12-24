@@ -9,20 +9,22 @@ import java.util.Locale;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
+import com.kirolak.KirolakObject;
 import com.kirolak.ScoreMode;
+import com.kirolak.dao.ScoreModeDAO;
 
 public class Kirolak implements Serializable
 {
 
 	private static final long serialVersionUID = 1L;
-	private List<ScoreMode> scoreModes;
+	private List<KirolakObject> scoreModes;
 	private List<SelectItem> scoreModesSelectItems;
 
-	public List<ScoreMode> getScoreModes()
+	public List<KirolakObject> getScoreModes()
 	{
 		if (this.scoreModes == null)
 		{
-			this.scoreModes = ScoreMode.getAll();
+			this.scoreModes = ScoreModeDAO.list();
 		}
 		return this.scoreModes;
 	}
@@ -37,11 +39,11 @@ public class Kirolak implements Serializable
 		if (this.scoreModesSelectItems == null)
 		{
 			this.scoreModesSelectItems = new ArrayList<SelectItem>();
-			Iterator<ScoreMode> scoreModesIterator = scoreModes.iterator();
+			Iterator<KirolakObject> scoreModesIterator = scoreModes.iterator();
 			while (scoreModesIterator.hasNext())
 			{
-				ScoreMode scoreMode = scoreModesIterator.next();
-				this.scoreModesSelectItems.add(new SelectItem(scoreMode.getId(), scoreMode.getName()));
+				KirolakObject scoreMode = scoreModesIterator.next();
+				this.scoreModesSelectItems.add(new SelectItem(((ScoreMode)scoreMode).getId(), scoreMode.getName()));
 			}
 		}
 		return this.scoreModesSelectItems;
