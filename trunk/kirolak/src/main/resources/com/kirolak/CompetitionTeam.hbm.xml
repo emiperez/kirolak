@@ -5,12 +5,8 @@
 <hibernate-mapping>
     <class name="com.kirolak.CompetitionTeam" table="competition_teams" >
         <composite-id name="id" class="com.kirolak.CompetitionTeamId">
-            <key-property name="competitionId" type="int">
-                <column name="competition_id" />
-            </key-property>
-            <key-property name="teamId" type="int">
-                <column name="team_id" />
-            </key-property>
+        	<key-many-to-one name="competitionId" column="competition_id" class="com.kirolak.Competition" lazy="false"/>
+        	<key-many-to-one name="teamId" column="team_id" class="com.kirolak.Team" lazy="false"/>
         </composite-id>
     </class>
 </hibernate-mapping>

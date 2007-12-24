@@ -30,7 +30,15 @@
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
 
+	<filter>
+        <filter-name>HibernateFilter</filter-name>
+        <filter-class>com.kirolak.filters.HibernateSessionRequestFilter</filter-class>
+    </filter>
 
+    <filter-mapping>
+        <filter-name>HibernateFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 	<!-- 
 		<security-constraint>
 		<web-resource-collection>

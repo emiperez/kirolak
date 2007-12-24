@@ -4,22 +4,22 @@ import java.util.List;
 
 import org.hibernate.Session;
 import com.kirolak.KirolakObject;
-import com.kirolak.Sport;
+import com.kirolak.ScoreMode;
 import com.kirolak.util.HibernateUtil;
 
-public class SportDAO extends KirolakDAO
+public class ScoreModeDAO extends KirolakDAO
 {
 
 	public static KirolakObject get(short id)
 	{
-		return KirolakDAO.get(Sport.class, id);
+		return KirolakDAO.get(ScoreMode.class, id);
 	}
 
 	public static List<KirolakObject> list()
 	{
 		// TODO it should be done using Hibernate's Lazy Load
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		List<KirolakObject> items = session.createQuery("from Sport s").list();
+		List<KirolakObject> items = session.createQuery("from ScoreMode s").list();
 		return items;
 	}
 
