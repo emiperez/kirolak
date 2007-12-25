@@ -28,11 +28,17 @@
 	<managed-bean>
 		<managed-bean-name>team</managed-bean-name>
 		<managed-bean-class>
-			com.kirolak.beans.TeamBean
+			com.kirolak.jsf.beans.TeamBean
 		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 
 	<!-- CONVERTERS -->
 	
+	<converter>
+		<converter-id>kirolak.teamConverter</converter-id>
+		<converter-class>
+			com.kirolak.jsf.converters.TeamConverter
+		</converter-class>
+	</converter>
 </faces-config>

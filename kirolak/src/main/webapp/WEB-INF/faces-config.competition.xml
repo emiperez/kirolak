@@ -19,6 +19,10 @@
 			<from-outcome>stages</from-outcome>
 			<to-view-id>/admin/stages.jsp</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>competition-teams</from-outcome>
+			<to-view-id>/admin/competition-teams.jsp</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule>
@@ -33,7 +37,7 @@
 	<managed-bean>
 		<managed-bean-name>competition</managed-bean-name>
 		<managed-bean-class>
-			com.kirolak.beans.CompetitionBean
+			com.kirolak.jsf.beans.CompetitionBean
 		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>

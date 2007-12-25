@@ -19,7 +19,7 @@ public class ScoreModeDAO extends KirolakDAO
 	{
 		// TODO it should be done using Hibernate's Lazy Load
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		List<KirolakObject> items = session.createQuery("from ScoreMode s").list();
+		List<KirolakObject> items = session.createQuery("from ScoreMode").list();
 		return items;
 	}
 

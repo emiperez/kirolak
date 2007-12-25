@@ -1,6 +1,7 @@
 package com.kirolak;
 
 import java.util.Date;
+import java.util.Set;
 
 // Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1
 
@@ -15,6 +16,7 @@ public class Competition extends KirolakObject
 	private String seoName;
 	private Date startDate;
 	private Date finishDate;
+	private Set<Team> teams;
 
 	public Competition()
 	{
@@ -94,6 +96,16 @@ public class Competition extends KirolakObject
 	public void setFinishDate(Date finishDate)
 	{
 		this.finishDate = finishDate;
+	}
+
+	public Set getTeams()
+	{
+		return teams;
+	}
+
+	public void setTeams(Set teams)
+	{
+		this.teams = teams;
 	}
 
 }

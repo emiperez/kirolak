@@ -25,8 +25,7 @@
 	
 	<h:commandButton action="#{team.newItem}" value="#{msg.new}"/>
 	<h:dataTable value="#{team.items}" var="item"
-			binding="#{team.itemData}" rowClasses="row">
-		<f:param name="teamId" value="#{item.id}" />	
+			binding="#{team.itemData}" rowClasses="row">	
 		<h:column>
 			<f:facet name="header">
 				<h:outputText value="#{msg.name}" />

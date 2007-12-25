@@ -18,7 +18,7 @@ public class StageDAO extends KirolakDAO
 		// TODO it should be done using Hibernate's Lazy Load (Custom Session
 		// Management)
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		List<KirolakObject> items = session.createQuery("from Stage s where competition_id = :id").setParameter("id", competition.getId()).list();
+		List<KirolakObject> items = session.createQuery("from Stage where competition_id = :id").setParameter("id", competition.getId()).list();
 		return items;
 	}
 }

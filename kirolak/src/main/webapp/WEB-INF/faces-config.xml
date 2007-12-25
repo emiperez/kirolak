@@ -39,7 +39,7 @@
 
 	<managed-bean>
 		<managed-bean-name>app</managed-bean-name>
-		<managed-bean-class>com.kirolak.beans.Kirolak</managed-bean-class>
+		<managed-bean-class>com.kirolak.jsf.beans.Kirolak</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
 
