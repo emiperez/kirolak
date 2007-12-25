@@ -18,10 +18,9 @@ public class CompetitionDAO extends KirolakDAO
 	
 	public static List<KirolakObject> listBySport(Sport sport)
 	{
-		// TODO it should be done using Hibernate's Lazy Load (Custom Session
-		// Management)
+		// TODO it should be done using Hibernate's Lazy Load
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		List<KirolakObject> items = session.createQuery("from Competition c where sport_id = :id").setParameter("id", sport.getId()).list();
+		List<KirolakObject> items = session.createQuery("from Competition where sport_id = :id").setParameter("id", sport.getId()).list();
 		return items;
 	}
 }

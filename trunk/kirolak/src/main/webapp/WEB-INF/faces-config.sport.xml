@@ -36,7 +36,7 @@
 	<managed-bean>
 		<managed-bean-name>sport</managed-bean-name>
 		<managed-bean-class>
-			com.kirolak.beans.SportBean
+			com.kirolak.jsf.beans.SportBean
 		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>

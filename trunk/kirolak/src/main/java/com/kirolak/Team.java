@@ -40,5 +40,10 @@ public class Team extends KirolakObject
 	{
 		this.sport = sport;
 	}
+	
+	public boolean equals(Object obj)
+	{
+		return (this == obj || (obj != null && (obj instanceof Team) && ((Team) obj).id == this.id));
+	}
 
 }

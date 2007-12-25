@@ -29,7 +29,7 @@
 	<managed-bean>
 		<managed-bean-name>stage</managed-bean-name>
 		<managed-bean-class>
-			com.kirolak.beans.StageBean
+			com.kirolak.jsf.beans.StageBean
 		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>

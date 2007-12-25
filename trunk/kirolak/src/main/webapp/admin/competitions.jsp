@@ -26,7 +26,6 @@
 	<h:commandButton action="#{competition.newItem}" value="#{msg.new}"/>
 	<h:dataTable value="#{competition.items}" var="item"
 			binding="#{competition.itemData}" rowClasses="row">
-		<f:param name="competitionId" value="#{item.id}" />	
 		<h:column>
 			<f:facet name="header">
 				<h:outputText value="#{msg.name}" />
@@ -62,9 +61,7 @@
 			<h:commandButton id="delete" action="#{competition.deleteItem}" onclick="return confirm('#{msg.sure}')" value="#{msg.delete}" />
 		</h:column>
 		<h:column>
-				<h:commandLink id="teams" action="teams"
-					actionListener="#{team.load}">
-					<f:param name="parent" value="#{item.id}"/>
+				<h:commandLink id="teams" action="#{competition.teams}">
 					<h:outputText value="#{msg.teams}" />
 				</h:commandLink>
 			</h:column>

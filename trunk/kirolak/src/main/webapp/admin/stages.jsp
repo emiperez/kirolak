@@ -35,7 +35,6 @@
 	<h:commandButton action="#{stage.newItem}" value="#{msg.new}"/>
 	<h:dataTable value="#{stage.items}" var="item"
 			binding="#{stage.itemData}" rowClasses="row">
-		<f:param name="stageId" value="#{item.id}" />	
 		<h:column>
 			<f:facet name="header">
 				<h:outputText value="#{msg.name}" />
