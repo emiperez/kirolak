@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+	<!-- NAVIGATION RULES -->
+	
+	<navigation-rule>
+		<from-view-id>/admin/groups.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>edit</from-outcome>
+			<to-view-id>/admin/group.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>list</from-outcome>
+			<to-view-id>/admin/groups.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>rounds</from-outcome>
+			<to-view-id>/admin/rounds.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>group-teams</from-outcome>
+			<to-view-id>/admin/group-teams.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/admin/group.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>list</from-outcome>
+			<to-view-id>/admin/groups.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- BEANS -->
+	<managed-bean>
+		<managed-bean-name>group</managed-bean-name>
+		<managed-bean-class>
+			com.kirolak.jsf.beans.GroupBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- CONVERTERS -->
+	
+</faces-config>
