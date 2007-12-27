@@ -4,15 +4,13 @@
 <!-- Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1 -->
 <hibernate-mapping>
     <class name="com.kirolak.Group" table="groups" >
-        <id name="id" type="int">
+        <id name="id" type="int" unsaved-value="-1">
             <column name="id" />
-            <generator class="assigned" />
+			<generator class="native" />
         </id>
-        <property name="stageId" type="java.lang.Integer">
-            <column name="stage_id" />
-        </property>
         <property name="name" type="string">
             <column name="name" length="25" not-null="true" />
         </property>
+        <many-to-one name="stage" column="stage_id" class="com.kirolak.Stage"/>
     </class>
 </hibernate-mapping>

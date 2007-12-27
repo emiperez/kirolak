@@ -45,7 +45,7 @@ public class Sport extends KirolakObject implements java.io.Serializable
 
 	public short getId()
 	{
-		return Integer.valueOf(super.id).shortValue();
+		return Integer.valueOf(this.id).shortValue();
 	}
 
 	public Byte getMaxParts()
