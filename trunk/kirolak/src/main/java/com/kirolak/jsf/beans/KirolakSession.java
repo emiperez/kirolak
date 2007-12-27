@@ -74,6 +74,15 @@ public abstract class KirolakSession
 
 		return "list";
 	}
+	
+	public int getLines()
+	{
+		if(this.items == null)
+		{
+			getItems();
+		}
+		return this.items.size();
+	}
 
 	public List<SelectItem> getSelectItems()
 	{

@@ -33,6 +33,10 @@
 			<from-outcome>stages</from-outcome>
 			<to-view-id>/admin/stages.jsp</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>groups</from-outcome>
+			<to-view-id>/admin/groups.jsp</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 	<!-- BEANS -->

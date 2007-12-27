@@ -11,7 +11,8 @@
             /WEB-INF/faces-config.sport.xml,
             /WEB-INF/faces-config.team.xml,
             /WEB-INF/faces-config.competition.xml,
-            /WEB-INF/faces-config.stage.xml</param-value>
+            /WEB-INF/faces-config.stage.xml,
+            /WEB-INF/faces-config.group.xml</param-value>
 	</context-param>
 
 	<listener>
