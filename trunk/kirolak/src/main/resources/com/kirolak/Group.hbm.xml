@@ -12,5 +12,9 @@
             <column name="name" length="25" not-null="true" />
         </property>
         <many-to-one name="stage" column="stage_id" class="com.kirolak.Stage"/>
+		<set name="teams" table="group_teams">
+			<key column="group_id" />
+			<many-to-many column="team_id" class="com.kirolak.Team" />
+		</set>
     </class>
 </hibernate-mapping>
