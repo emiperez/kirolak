@@ -1,9 +1,11 @@
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 
-<f:view>
+<f:view >
 	<html>
 	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<title>
 		<h:outputFormat value="#{msg.teams_title}">
 			<f:param value="#{team.parent.name}"/>
@@ -26,6 +28,12 @@
 	<h:commandButton action="#{team.newItem}" value="#{msg.new}"/>
 	<h:dataTable value="#{team.items}" var="item"
 			binding="#{team.itemData}" rowClasses="row">	
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="#{msg.acronym}" />
+			</f:facet>
+			<h:outputText value="#{item.acronym}" />
+		</h:column>	
 		<h:column>
 			<f:facet name="header">
 				<h:outputText value="#{msg.name}" />

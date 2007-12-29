@@ -1,9 +1,11 @@
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 
 <f:view>
 	<html>
 	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<title><h:outputFormat value="#{msg.stages_title}">
 		<f:param value="#{stage.parent.name}" />
 	</h:outputFormat></title>
@@ -13,9 +15,8 @@
 	<body>
 	<h:form id="stages">
 
-		<div class="navigation_bar"><h:outputLink id="sports_url"
-			value="#{facesContext.externalContext.requestContextPath}">
-			<h:outputText value="#{msg.sports}" />
+		<div class="navigation_bar">
+			<h:commandLink id="sports_link" action="sports" value="#{msg.sports}" immediate="true" />
 		</h:outputLink> &gt; <h:commandLink id="competitions_link" action="competitions"
 			immediate="true">
 			<h:outputFormat value="#{msg.competitions_title}">

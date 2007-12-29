@@ -1,9 +1,11 @@
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 
 <f:view>
 	<html>
 	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<title><h:outputFormat value="#{msg.groups_title}">
 		<f:param value="#{group.parent.name}" />
 	</h:outputFormat></title>
@@ -13,9 +15,8 @@
 	<body>
 	<h:form id="groups">
 
-		<div class="navigation_bar"><h:outputLink id="sports_url"
-			value="#{facesContext.externalContext.requestContextPath}">
-			<h:outputText value="#{msg.sports}" />
+		<div class="navigation_bar">
+			<h:commandLink id="sports_link" action="sports" value="#{msg.sports}" immediate="true" />
 		</h:outputLink>
 		 &gt; 
 		 <h:commandLink id="competitions_link" action="competitions"
@@ -53,6 +54,11 @@
 			<h:column>
 				<h:commandButton id="delete" action="#{group.deleteItem}"
 					onclick="return confirm('#{msg.sure}')" value="#{msg.delete}" />
+			</h:column>
+			<h:column>
+				<h:commandLink id="group-teams" action="#{group.teams}">
+					<h:outputText value="#{msg.teams}" />
+				</h:commandLink>
 			</h:column>
 		</h:dataTable>
 	</h:form>

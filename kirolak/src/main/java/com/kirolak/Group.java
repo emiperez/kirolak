@@ -1,5 +1,7 @@
 package com.kirolak;
 
+import java.util.Set;
+
 // Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1
 
 /**
@@ -7,8 +9,8 @@ package com.kirolak;
  */
 public class Group extends KirolakObject
 {
-
 	private Stage stage;
+	private Set<Team> teams;
 
 	public Group()
 	{
@@ -46,6 +48,16 @@ public class Group extends KirolakObject
 	public void setStage(Stage stage)
 	{
 		this.stage = stage;
+	}
+
+	public Set<Team> getTeams()
+	{
+		return teams;
+	}
+
+	public void setTeams(Set<Team> teams)
+	{
+		this.teams = teams;
 	}
 
 }

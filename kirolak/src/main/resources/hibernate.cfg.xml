@@ -4,12 +4,21 @@
 "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+    
+    	<!-- properties -->
+        <property name="connection.datasource">java:/comp/env/jdbc/dbKirolaK</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.useUnicode">true</property>
+        <property name="hibernate.connection.characterEncoding">UTF-8</property> 
+    
+    <!--
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/pruebas</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/pruebas?useUnicode=true&amp;characterEncoding=UTF-8</property>
         <property name="hibernate.connection.username">root</property>
         <property name="connection.password"></property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="connection.pool_size">5</property>
+        -->
         
         <!-- Enable Hibernate's automatic session context management -->
         <property name="current_session_context_class">thread</property>
@@ -21,7 +30,7 @@
         <property name="show_sql">true</property>
         
         <mapping resource="com/kirolak/Standing.hbm.xml" />
-        <mapping resource="com/kirolak/Game.hbm.xml" />
+        <mapping resource="com/kirolak/Match.hbm.xml" />
         <mapping resource="com/kirolak/Team.hbm.xml" />
         <mapping resource="com/kirolak/GroupTeam.hbm.xml" />
         <mapping resource="com/kirolak/CompetitionTeam.hbm.xml" />

@@ -1,8 +1,10 @@
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 <f:view>
 	<html>
 	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<title>
 		<h:outputFormat value="#{msg.team_title}">
 			<f:param value="#{team.parent.name}"/>
@@ -32,7 +34,7 @@
 		<h:panelGrid columns="3">
 
 			<h:outputText styleClass="label" value="#{msg.name}" />
-			<h:inputText id="name" value="#{team.item.name}" size="25" required="true">
+			<h:inputText id="name" value="#{team.item.name}" size="25" required="true" >
 				<f:validateLength minimum="3" maximum="25" />
 			</h:inputText>
 			<h:message id="nameError" for="name" styleClass="error" />

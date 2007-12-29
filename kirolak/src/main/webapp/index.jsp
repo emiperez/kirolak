@@ -1,5 +1,5 @@
 <html>
  <body>
-  <jsp:forward page="/admin/sports.jsf" />
+  Hello World
  </body>
 </html>

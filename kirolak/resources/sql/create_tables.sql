@@ -19,7 +19,7 @@ insert into stage_types values(20,'Points');
 insert into stage_types values(30,'Race');
 
 drop table if exists standings;
-drop table if exists games;
+drop table if exists matches;
 drop table if exists rounds;
 drop table if exists group_teams;
 drop table if exists competition_teams;
@@ -132,7 +132,7 @@ create table rounds
 	FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE
 )ENGINE=InnoDB;
 
-create table games
+create table matches
 (
 	id int unsigned PRIMARY KEY AUTO_INCREMENT,
 	round_id smallint unsigned,
@@ -141,9 +141,14 @@ create table games
 	visiting_team_id int unsigned,
 	home_team_score smallint unsigned,
 	visiting_team_score smallint unsigned,
-	game_status tinyint COMMENT 'playing, finished, cancelled...',
+	match_status tinyint COMMENT 'playing, finished, cancelled...',
 	scheduled datetime,
-	INDEX game_round(round_id, group_id),
+	updated datetime,
+	INDEX match_round(round_id, group_id),
+	INDEX match_home_team(home_team_id),
+	INDEX match_visiting_team(visiting_team_id),
+	INDEX match_scheduled(scheduled),
+	INDEX match_updated(updated),
 	FOREIGN KEY (round_id) REFERENCES rounds(id) ON DELETE CASCADE,
 	FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
 	FOREIGN KEY (home_team_id) REFERENCES teams(id) ON DELETE CASCADE,
@@ -193,6 +198,6 @@ create table standings
 )ENGINE=InnoDB;
 
 --drop trigger if exists update_game;
-create trigger update_game AFTER UPDATE ON games
+create trigger update_match AFTER UPDATE ON matches
 FOR EACH ROW
 	insert into standings (team_id, round_id, group_id) values (NEW.home_team_id, NEW.round_id, NEW.group_id);
