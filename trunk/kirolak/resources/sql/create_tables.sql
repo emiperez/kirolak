@@ -125,7 +125,7 @@ create table group_teams
 
 create table rounds
 (
-	id smallint unsigned AUTO_INCREMENT,
+	id smallint unsigned,
 	group_id int unsigned,
 	day date,
 	PRIMARY KEY(id, group_id),
@@ -142,12 +142,12 @@ create table matches
 	home_team_score smallint unsigned,
 	visiting_team_score smallint unsigned,
 	match_status tinyint COMMENT 'playing, finished, cancelled...',
-	scheduled datetime,
+	day_time datetime,
 	updated datetime,
 	INDEX match_round(round_id, group_id),
 	INDEX match_home_team(home_team_id),
 	INDEX match_visiting_team(visiting_team_id),
-	INDEX match_scheduled(scheduled),
+	INDEX match_day_time(day_time),
 	INDEX match_updated(updated),
 	FOREIGN KEY (round_id) REFERENCES rounds(id) ON DELETE CASCADE,
 	FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,

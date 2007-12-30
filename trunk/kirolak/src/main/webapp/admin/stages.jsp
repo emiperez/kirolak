@@ -17,7 +17,7 @@
 
 		<div class="navigation_bar">
 			<h:commandLink id="sports_link" action="sports" value="#{msg.sports}" immediate="true" />
-		</h:outputLink> &gt; <h:commandLink id="competitions_link" action="competitions"
+		&gt; <h:commandLink id="competitions_link" action="competitions"
 			immediate="true">
 			<h:outputFormat value="#{msg.competitions_title}">
 				<f:param value="#{competition.parent.name}" />

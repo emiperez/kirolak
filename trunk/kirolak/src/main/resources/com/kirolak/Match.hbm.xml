@@ -34,5 +34,8 @@
         <property name="scheduled" type="timestamp">
             <column name="scheduled" length="0" />
         </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="0" />
+        </property>
     </class>
 </hibernate-mapping>
