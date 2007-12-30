@@ -6,13 +6,13 @@
 	<f:view>
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<title><h:outputText value="#{group.title}" /></title>
+	<title><h:outputText value="#{round.title}" /></title>
 	<link href="css/forms.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="js/forms.js"></script>	
 	
 	</head>
 
-	<body onload="setFocus('saveGroup:name','${errorField}');">
+	<body onload="setFocus('saveRound:name','${errorField}');">
 	<h:form id="saveRound">
 		<div class="navigation_bar">
 		<h:commandLink id="sports_link" action="sports"value="#{msg.sports}" immediate="true" />
@@ -28,21 +28,31 @@
 				<f:param value="#{group.parent.name}" />
 			</h:outputFormat>
 		</h:commandLink>
+		&gt; 
+		<h:commandLink id="rounds_link" action="rounds" immediate="true">
+			<h:outputFormat value="#{msg.rounds_title}">
+				<f:param value="#{round.parent.name}" />
+			</h:outputFormat>
+		</h:commandLink>
 		&gt;
-		<h:outputText value="#{group.title}" />
+		<h:outputText value="#{round.title}" />
 		</div>
 		
-		<h:inputHidden id="id" value="#{group.item.id}" />
 		<h:panelGrid columns="3">
-			<h:outputText styleClass="label" value="#{msg.name}" />
-			<h:inputText id="name" value="#{group.item.name}" size="25"
+			<h:outputText styleClass="label" value="#{msg.round}" />
+			<h:inputText id="id" value="#{round.item.compositeId.id}" size="3"
 				required="true">
-				<f:validateLength maximum="25" />
 			</h:inputText>
-			<h:message id="nameError" for="name" styleClass="error" />
+			<h:message id="idError" for="id" styleClass="error" />
+
+			<h:outputText styleClass="label" value="#{msg.date}" />
+			<h:inputText id="day" value="#{round.item.day}" size="12" required="true">
+				<f:convertDateTime dateStyle="short"/>
+			</h:inputText>
+			<h:message id="dayError" for="day" styleClass="error" />
 
 		</h:panelGrid>
-		<h:commandButton value="#{msg.save}" action="#{group.saveItem}" />
+		<h:commandButton value="#{msg.save}" action="#{round.saveItem}" />
 		<h:commandButton value="#{msg.cancel}" action="list" immediate="true" />
 	</h:form>
 	</body>	

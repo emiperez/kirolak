@@ -4,23 +4,14 @@
 <!-- Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1 -->
 <hibernate-mapping>
     <class name="com.kirolak.Round" table="rounds" >
-        <composite-id name="id" class="com.kirolak.RoundId">
+        <composite-id name="compositeId" class="com.kirolak.RoundId">
             <key-property name="id" type="short">
                 <column name="id" />
             </key-property>
-            <key-property name="groupId" type="int">
-                <column name="group_id" />
-            </key-property>
+            <key-many-to-one name="group" class="com.kirolak.Group" column="group_id" />
         </composite-id>
         <property name="day" type="date">
             <column name="day" length="0" />
         </property>
-		<set name="matches" table="matches">
-			<key>
-				<column name="round_id"/>
-				<column name="group_id"/>
-			</key>
-			<many-to-many column="match_id" class="com.kirolak.Match" />
-		</set>
     </class>
 </hibernate-mapping>

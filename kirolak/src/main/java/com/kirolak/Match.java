@@ -19,6 +19,7 @@ public class Match implements java.io.Serializable
 	private Short visitingTeamScore;
 	private Byte gameStatus;
 	private Date scheduled;
+	private Date updated;
 
 	public Match()
 	{
@@ -131,6 +132,16 @@ public class Match implements java.io.Serializable
 	public void setScheduled(Date scheduled)
 	{
 		this.scheduled = scheduled;
+	}
+
+	public Date getUpdated()
+	{
+		return updated;
+	}
+
+	public void setUpdated(Date updated)
+	{
+		this.updated = updated;
 	}
 
 }

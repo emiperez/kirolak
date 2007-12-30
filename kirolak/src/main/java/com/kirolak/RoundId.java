@@ -9,7 +9,7 @@ public class RoundId implements java.io.Serializable
 {
 
 	private short id;
-	private int groupId;
+	private Group group;
 
 	public RoundId()
 	{
@@ -18,7 +18,6 @@ public class RoundId implements java.io.Serializable
 	public RoundId(short id, int groupId)
 	{
 		this.id = id;
-		this.groupId = groupId;
 	}
 
 	public short getId()
@@ -31,16 +30,6 @@ public class RoundId implements java.io.Serializable
 		this.id = id;
 	}
 
-	public int getGroupId()
-	{
-		return this.groupId;
-	}
-
-	public void setGroupId(int groupId)
-	{
-		this.groupId = groupId;
-	}
-
 	public boolean equals(Object other)
 	{
 		if ((this == other))
@@ -51,7 +40,7 @@ public class RoundId implements java.io.Serializable
 			return false;
 		RoundId castOther = (RoundId) other;
 
-		return (this.getId() == castOther.getId()) && (this.getGroupId() == castOther.getGroupId());
+		return (this.getId() == castOther.getId()) && (this.group.id == castOther.getGroup().getId());
 	}
 
 	public int hashCode()
@@ -59,8 +48,18 @@ public class RoundId implements java.io.Serializable
 		int result = 17;
 
 		result = 37 * result + this.getId();
-		result = 37 * result + this.getGroupId();
+		result = 37 * result + this.getGroup().getId();
 		return result;
+	}
+
+	public Group getGroup()
+	{
+		return group;
+	}
+
+	public void setGroup(Group group)
+	{
+		this.group = group;
 	}
 
 }
