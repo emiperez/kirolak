@@ -6,8 +6,7 @@ import com.kirolak.KirolakObject;
 import com.kirolak.util.HibernateUtil;
 
 public abstract class KirolakDAO
-{
-	
+{	
 
 	public static void save(Object obj)
 	{

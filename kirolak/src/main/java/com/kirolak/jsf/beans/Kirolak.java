@@ -10,8 +10,10 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import com.kirolak.KirolakObject;
+import com.kirolak.MatchStatus;
 import com.kirolak.ScoreMode;
 import com.kirolak.StageType;
+import com.kirolak.dao.MatchStatusDAO;
 import com.kirolak.dao.ScoreModeDAO;
 import com.kirolak.dao.StageTypeDAO;
 
@@ -23,6 +25,8 @@ public class Kirolak implements Serializable
 	private List<SelectItem> scoreModesSelectItems;
 	private List<KirolakObject> stageTypes;
 	private List<SelectItem> stageTypesSelectItems;
+	private List<KirolakObject> matchStatus;
+	private List<SelectItem> matchStatusSelectItems;
 	
 
 	public List<KirolakObject> getScoreModes()
@@ -81,6 +85,35 @@ public class Kirolak implements Serializable
 			}
 		}
 		return this.stageTypesSelectItems;
+	}
+	
+	public List<KirolakObject> getMatchStatus()
+	{
+		if (this.matchStatus == null)
+		{
+			this.matchStatus = MatchStatusDAO.list();
+		}
+		return this.matchStatus;
+	}
+
+	public List<SelectItem> getMatchStatusSelectItems()
+	{
+
+		if (this.matchStatus == null)
+		{
+			getMatchStatus();
+		}
+		if (this.matchStatusSelectItems == null)
+		{
+			this.matchStatusSelectItems = new ArrayList<SelectItem>();
+			Iterator<KirolakObject> iterator = matchStatus.iterator();
+			while (iterator.hasNext())
+			{
+				KirolakObject matchStatus = iterator.next();
+				this.matchStatusSelectItems.add(new SelectItem(((MatchStatus)matchStatus).getId(), matchStatus.getName()));
+			}
+		}
+		return this.matchStatusSelectItems;
 	}
 
 	public Iterator<Locale> getSupportedLocales()
