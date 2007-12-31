@@ -76,7 +76,7 @@ public class Round extends KirolakObject
 		String name = "" + this.getNumber();
 		if (this.day != null)
 		{
-			name += this.day.toString();
+			name += " - " + this.day.toString();
 		}
 		return name;
 	}

@@ -3,21 +3,19 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.kirolak.Match" table="games" >
+    <class name="com.kirolak.Match" table="matches" >
         <id name="id" type="int">
             <column name="id" />
             <generator class="assigned" />
-        </id>
-        <property name="roundId" type="java.lang.Short">
-            <column name="round_id" />
-        </property>
-        <property name="groupId" type="java.lang.Integer">
-            <column name="group_id" />
-        </property>
-        <property name="homeTeamId" type="java.lang.Integer">
+        </id>        
+        <many-to-one name="round" class="com.kirolak.Round">
+        	<column name="round_id" />
+        	<column name="group_id" />
+        </many-to-one>
+        <property name="homeTeam" type="com.kirolak.Team">
             <column name="home_team_id" />
         </property>
-        <property name="visitingTeamId" type="java.lang.Integer">
+        <property name="visitingTeam" type="com.kirolak.Team">
             <column name="visiting_team_id" />
         </property>
         <property name="homeTeamScore" type="java.lang.Short">
@@ -26,13 +24,13 @@
         <property name="visitingTeamScore" type="java.lang.Short">
             <column name="visiting_team_score" />
         </property>
-        <property name="gameStatus" type="java.lang.Byte">
-            <column name="game_status">
+        <property name="matchStatus" type="java.lang.Byte">
+            <column name="match_status">
                 <comment>playing, finished, cancelled...</comment>
             </column>
         </property>
-        <property name="scheduled" type="timestamp">
-            <column name="scheduled" length="0" />
+        <property name="dayTime" type="timestamp">
+            <column name="day_time" length="0" />
         </property>
         <property name="updated" type="timestamp">
             <column name="updated" length="0" />

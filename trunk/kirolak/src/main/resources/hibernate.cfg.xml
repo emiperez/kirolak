@@ -10,15 +10,6 @@
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.useUnicode">true</property>
         <property name="hibernate.connection.characterEncoding">UTF-8</property> 
-    
-    <!--
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/pruebas?useUnicode=true&amp;characterEncoding=UTF-8</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="connection.password"></property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="connection.pool_size">5</property>
-        -->
         
         <!-- Enable Hibernate's automatic session context management -->
         <property name="current_session_context_class">thread</property>
@@ -40,6 +31,7 @@
         <mapping resource="com/kirolak/Sport.hbm.xml" />
         <mapping resource="com/kirolak/ScoreMode.hbm.xml" />
         <mapping resource="com/kirolak/StageType.hbm.xml" />
+        <mapping resource="com/kirolak/MatchStatus.hbm.xml" />
         <mapping resource="com/kirolak/Competition.hbm.xml" />
     </session-factory>
 </hibernate-configuration>
