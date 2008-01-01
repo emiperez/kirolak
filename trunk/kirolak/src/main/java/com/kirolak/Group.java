@@ -73,18 +73,18 @@ public class Group extends KirolakObject
 		int teamCount = teamList.size();
 		if (teamCount > 0)
 		{
-			//Round-Robin Algorithm
+			// Round-Robin Algorithm
 			
 			Team firstTeam = (Team)teamList.get(0);
 			teamList.remove(0);
-			//Add a Null team if the number of teams is not an even number
+			// Add a Null team if the number of teams is not an even number
 			if((teamCount % 2) > 0)
 			{
 				teamList.add(null);
 				++teamCount;
 			}
 			
-			//The number of rounds
+			// The number of rounds
 			int beginTeam = (new Random()).nextInt(teamCount);
 			short roundNumber = 1;
 			while(roundNumber < teamCount)
@@ -93,7 +93,7 @@ public class Group extends KirolakObject
 				
 				Match match = new Match();
 				
-				//Rotate Home - visiting for the first Team
+				// Rotate Home - visiting for the first Team
 				if(roundNumber % 2 == 0)
 				{
 					match.setHomeTeam(firstTeam);
@@ -110,7 +110,7 @@ public class Group extends KirolakObject
 				{
 					match = new Match();
 					
-					//Rotate Home - visiting for the first Team
+					// Rotate Home - visiting for the first Team
 					if(roundNumber % 2 == 0)
 					{
 						match.setHomeTeam((Team)teamList.get( (roundNumber + beginTeam + teamNumber) % (teamCount-1) ));
@@ -127,30 +127,34 @@ public class Group extends KirolakObject
 				++roundNumber;
 			}
 			
-			//When the same teams play more than once in the current stage.
+			// When the same teams play more than once in the current stage.
 			for(int n=1;n < this.stage.getMatches(); n++)
 			{
+				// Rounds per encounter
 				for(int i=0 ; i<(teamCount-1) ; i++)
 				{
 					Round round = new Round(new RoundId(roundNumber,this));
-					if(n % 2 > 0)
+					List<Match> newMatches = new ArrayList<Match>();
+					Iterator<Match> iterator = roundList.get(i).getMatches().iterator();
+					while(iterator.hasNext())
 					{
-						List<Match> newMatches = new ArrayList<Match>();
-						Iterator<Match> iterator = roundList.get(i).getMatches().iterator();
-						while(iterator.hasNext())
+						Match newMatch = new Match();
+						Match currentMatch = iterator.next();
+						// Rotate home / visiting for Even encounters.
+						if(n % 2 > 0)
 						{
-							Match newMatch = new Match();
-							Match currentMatch = iterator.next();
+													
 							newMatch.setHomeTeam(currentMatch.getVisitingTeam());
 							newMatch.setVisitingTeam(currentMatch.getHomeTeam());
-							newMatches.add(newMatch);
 						}
-						round.setMatches(newMatches);
+						else
+						{
+							newMatch.setHomeTeam(currentMatch.getHomeTeam());
+							newMatch.setVisitingTeam(currentMatch.getVisitingTeam());
+						}
+						newMatches.add(newMatch);
 					}
-					else
-					{
-						round.setMatches(roundList.get(i).getMatches());
-					}
+					round.setMatches(newMatches);
 					roundList.add(round);
 					roundNumber++;
 				}
