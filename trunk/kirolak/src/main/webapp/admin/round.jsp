@@ -46,13 +46,14 @@
 
 		</h:panelGrid>
 
-		<h:dataTable value="#{round.matches}" var="item"
-			binding="#{round.itemData}" rowClasses="row">
+		<h:dataTable value="#{round.listMatch}" var="item" rowClasses="row">
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="#{msg.day_time}" />
 				</f:facet>
-				<h:inputText id="dayTime" value="#{item.dayTime}" />
+				<h:inputText id="dayTime" value="#{item.dayTime}">
+					<f:convertDateTime dateStyle="short" timeStyle="short" />
+				</h:inputText>
 			</h:column>
 			<h:column>
 				<f:facet name="header">
@@ -67,7 +68,7 @@
 				<f:facet name="header">
 					<h:outputText value="#{msg.score}" />
 				</f:facet>
-				<h:inputText id="homeTeamScore" value="#{item.homeTeamScore}" />
+				<h:inputText id="homeTeamScore" value="#{item.homeTeamScore}" size="5"/>
 			</h:column>
 			<h:column>
 				<f:facet name="header">
@@ -82,19 +83,19 @@
 				<f:facet name="header">
 					<h:outputText value="#{msg.score}" />
 				</f:facet>
-				<h:inputText id="visitingTeamScore" value="#{item.visitingTeamScore}" />
+				<h:inputText id="visitingTeamScore" value="#{item.visitingTeamScore}" size="5"/>
 			</h:column>
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="#{msg.status}" />
 				</f:facet>
-				<h:selectOneMenu id="mode" value="#{item.status}" required="true">
+				<h:selectOneMenu id="mode" value="#{item.matchStatus}" required="true">
 					<f:selectItems value="#{app.matchStatusSelectItems}" />
 				</h:selectOneMenu>
 			</h:column>
 		</h:dataTable>
 		<h:messages />
-		<h:commandButton value="#{msg.save}" action="#{round.saveItem}" />
+		<h:commandButton value="#{msg.save}" action="#{round.saveRound}" />
 		<h:commandButton value="#{msg.cancel}" action="list" immediate="true" />
 	</h:form>
 	</body>

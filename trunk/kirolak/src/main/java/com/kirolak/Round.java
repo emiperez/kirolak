@@ -2,6 +2,8 @@ package com.kirolak;
 
 // Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1
 
+import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -76,7 +78,7 @@ public class Round extends KirolakObject
 		String name = "" + this.getNumber();
 		if (this.day != null)
 		{
-			name += " - " + this.day.toString();
+			name += " - " + DateFormat.getDateInstance().format(this.day);
 		}
 		return name;
 	}
@@ -90,5 +92,15 @@ public class Round extends KirolakObject
 	{
 		this.matches = matches;
 	}
+	
+	public void addMatch(Match match)
+	{
+		if(this.matches == null)
+		{
+			this.matches = new ArrayList<Match>();
+		}
+		this.matches.add(match);
+	}
+		
 
 }

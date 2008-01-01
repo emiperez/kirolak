@@ -12,12 +12,20 @@ public class TeamConverter implements Converter
 
 	public Object getAsObject(FacesContext fcontext, UIComponent uic, String value)
 	{
+		if(value.equals(""))
+		{
+			return null;
+		}
 		Team team = (Team) KirolakDAO.get(Team.class, Integer.parseInt(value));
 		return team;
 	}
 
 	public String getAsString(FacesContext fcontext, UIComponent uic, Object obj)
 	{
+		if(obj==null)
+		{
+			return "";
+		}
 		return String.valueOf(((Team) obj).getId());
 	}
 

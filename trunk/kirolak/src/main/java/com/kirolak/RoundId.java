@@ -15,9 +15,10 @@ public class RoundId implements java.io.Serializable
 	{
 	}
 
-	public RoundId(short id, int groupId)
+	public RoundId(short id, Group group)
 	{
 		this.id = id;
+		this.group = group;
 	}
 
 	public short getId()

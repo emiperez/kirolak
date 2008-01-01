@@ -68,6 +68,10 @@ public class Stage extends KirolakObject
 		this.type = type;
 	}
 
+	/**
+	 * 
+	 * @return how many matches play the same contenders for current stage
+	 */
 	public Byte getMatches()
 	{
 		return this.matches;
