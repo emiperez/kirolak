@@ -18,6 +18,16 @@ insert into stage_types values(10,'Heats');
 insert into stage_types values(20,'Points');
 insert into stage_types values(30,'Race');
 
+drop table if exists match_status;
+create table match_status
+(
+	id tinyint unsigned PRIMARY KEY,
+	name char(15)
+);
+insert into match_status values(10,'To Begin');
+insert into match_status values(20,'Playing');
+insert into match_status values(30,'Finished');
+
 drop table if exists standings;
 drop table if exists matches;
 drop table if exists rounds;
@@ -196,8 +206,3 @@ create table standings
 	FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
 	FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE
 )ENGINE=InnoDB;
-
---drop trigger if exists update_game;
-create trigger update_match AFTER UPDATE ON matches
-FOR EACH ROW
-	insert into standings (team_id, round_id, group_id) values (NEW.home_team_id, NEW.round_id, NEW.group_id);

@@ -4,20 +4,20 @@
 <!-- Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1 -->
 <hibernate-mapping>
     <class name="com.kirolak.Match" table="matches" >
-        <id name="id" type="int">
+        <id name="id" type="int" unsaved-value="-1">
             <column name="id" />
-            <generator class="assigned" />
-        </id>        
+			<generator class="native" />
+        </id>      
         <many-to-one name="round" class="com.kirolak.Round">
         	<column name="round_id" />
         	<column name="group_id" />
         </many-to-one>
-        <property name="homeTeam" type="com.kirolak.Team">
+        <many-to-one name="homeTeam" class="com.kirolak.Team" lazy="false">
             <column name="home_team_id" />
-        </property>
-        <property name="visitingTeam" type="com.kirolak.Team">
+        </many-to-one>
+        <many-to-one name="visitingTeam" class="com.kirolak.Team" lazy="false">
             <column name="visiting_team_id" />
-        </property>
+        </many-to-one>
         <property name="homeTeamScore" type="java.lang.Short">
             <column name="home_team_score" />
         </property>

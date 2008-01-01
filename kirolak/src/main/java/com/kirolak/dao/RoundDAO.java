@@ -13,14 +13,20 @@ import com.kirolak.util.HibernateUtil;
 
 public class RoundDAO extends KirolakDAO
 {
-	public static void save(Round round)
+	
+	public static void saveRound(Round round)
 	{
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.saveOrUpdate(round);
-		Iterator<Match> iterator = round.getMatches().iterator();
-		while(iterator.hasNext())
+		if(round.getMatches()!=null)
 		{
-			session.saveOrUpdate(iterator.next());
+			Iterator<Match> iterator = round.getMatches().iterator();
+			while(iterator.hasNext())
+			{
+				Match match = (Match)iterator.next();
+				match.setRound(round);
+				session.saveOrUpdate(match);
+			}
 		}
 	}
 	
