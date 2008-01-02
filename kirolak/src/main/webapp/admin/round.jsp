@@ -14,21 +14,39 @@
 
 	<body onload="setFocus('saveRound:name','${errorField}');">
 	<h:form id="saveRound">
-		<div class="navigation_bar"><h:commandLink id="sports_link"
-			action="sports" value="#{msg.sports}" immediate="true" /> &gt; <h:commandLink
-			id="competitions_link" action="competitions" immediate="true">
+		<div class="navigation_bar"><h:commandLink id="sports_link" action="#{sport.load}" value="#{msg.sports}" immediate="true" />
+		&gt; 
+		<h:commandLink id="competitions_link" action="#{competition.load}"	immediate="true">			
+			<f:param name="parent" value="#{competition.parent.id}"/>
 			<h:outputFormat value="#{msg.competitions_title}">
 				<f:param value="#{competition.parent.name}" />
 			</h:outputFormat>
-		</h:commandLink> &gt; <h:commandLink id="groups_link" action="groups" immediate="true">
+		</h:commandLink>
+		&gt;  
+		<h:commandLink id="stages_link" action="#{stage.load}"	immediate="true">			
+			<f:param name="parent" value="#{stage.parent.id}"/>
+			<h:outputFormat value="#{msg.stages_title}">
+				<f:param value="#{stage.parent.name}" />
+			</h:outputFormat>
+		</h:commandLink>
+		&gt;  
+		<h:commandLink id="groups_link" action="#{group.load}"	immediate="true">			
+			<f:param name="parent" value="#{group.parent.id}"/>
 			<h:outputFormat value="#{msg.groups_title}">
 				<f:param value="#{group.parent.name}" />
 			</h:outputFormat>
-		</h:commandLink> &gt; <h:commandLink id="rounds_link" action="rounds" immediate="true">
+		</h:commandLink>
+		&gt;  
+		<h:commandLink id="rounds_link" action="#{round.load}"	immediate="true">			
+			<f:param name="parent" value="#{round.parent.id}"/>
 			<h:outputFormat value="#{msg.rounds_title}">
 				<f:param value="#{round.parent.name}" />
 			</h:outputFormat>
-		</h:commandLink> &gt; <h:outputText value="#{round.title}" /></div>
+		</h:commandLink>
+		&gt;
+		<h:outputText value="#{round.title}" />
+		</div>
+		<!-- END OF NAVIGATION_BAR -->
 
 		<h:panelGrid columns="3">
 			<h:outputText styleClass="label" value="#{msg.round}" />

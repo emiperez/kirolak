@@ -15,15 +15,17 @@
 	<body onload="setFocus('saveStage:name','${errorField}');">
 	<h:form id="saveStage">
 		<div class="navigation_bar">
-		<h:commandLink id="sports_link" action="sports"value="#{msg.sports}" immediate="true" />
+		<h:commandLink id="sports_link" action="#{sport.load}" value="#{msg.sports}" immediate="true" />
 		&gt; 
-		<h:commandLink id="competitions_link" action="competitions" immediate="true">
+		<h:commandLink id="competitions_link" action="#{competition.load}"	immediate="true">			
+			<f:param name="parent" value="#{competition.parent.id}"/>
 			<h:outputFormat value="#{msg.competitions_title}">
 				<f:param value="#{competition.parent.name}" />
 			</h:outputFormat>
 		</h:commandLink>
-		&gt; 
-		<h:commandLink id="stages_link" action="stages" immediate="true">
+		&gt;  
+		<h:commandLink id="stages_link" action="#{stage.load}"	immediate="true">			
+			<f:param name="parent" value="#{stage.parent.id}"/>
 			<h:outputFormat value="#{msg.stages_title}">
 				<f:param value="#{stage.parent.name}" />
 			</h:outputFormat>
@@ -73,7 +75,7 @@
 			<h:inputText id="matches" value="#{stage.item.matches}" size="2"
 				converter="javax.faces.Byte">
 			</h:inputText>
-			<h:message id="mmatchesError" for="matches" styleClass="error" />
+			<h:message id="matchesError" for="matches" styleClass="error" />
 
 			<h:outputText styleClass="label" value="#{msg.play_off_name}" />
 			<h:inputText id="playOffName" value="#{stage.item.playOffName}"

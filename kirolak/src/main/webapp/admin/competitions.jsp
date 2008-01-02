@@ -18,7 +18,7 @@
 	<h:form id="competitions">
 	
 	<div class="navigation_bar">
-		<h:commandLink id="sports_link" action="sports" value="#{msg.sports}" immediate="true" />
+		<h:commandLink id="sports_link" action="#{sport.load}" value="#{msg.sports}" immediate="true" />
 		&gt; 
 		<h:outputFormat value="#{msg.competitions_title}">
 			<f:param value="#{competition.parent.name}"/>
@@ -68,8 +68,7 @@
 				</h:commandLink>
 			</h:column>
 			<h:column>
-				<h:commandLink id="stages" action="stages"
-					actionListener="#{stage.load}">
+				<h:commandLink id="stages" action="#{stage.load}">
 					<f:param name="parent" value="#{item.id}"/>
 					<h:outputText value="#{msg.stages}" />
 				</h:commandLink>

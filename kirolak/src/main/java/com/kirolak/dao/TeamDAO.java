@@ -41,8 +41,7 @@ public class TeamDAO extends KirolakDAO
 	
 	public static List<KirolakObject> listByGroup(Group group)
 	{
-		List<KirolakObject> items = new ArrayList<KirolakObject>();
-		
+		List<KirolakObject> items = new ArrayList<KirolakObject>();		
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		items = session.createSQLQuery("Select teams.* " +
 					" from teams, group_teams " +

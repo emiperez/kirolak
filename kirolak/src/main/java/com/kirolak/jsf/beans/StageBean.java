@@ -1,8 +1,10 @@
 package com.kirolak.jsf.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.event.ActionEvent;
+import javax.faces.model.SelectItem;
 
 import com.kirolak.Competition;
 import com.kirolak.KirolakObject;
@@ -18,6 +20,7 @@ import com.kirolak.util.Messages;
 
 public class StageBean extends KirolakSession
 {
+	
 	public String getTitle()
 	{
 		if (this.item.getIntId() > -1)
@@ -29,10 +32,11 @@ public class StageBean extends KirolakSession
 		}
 	}
 
-	public void load(ActionEvent event)
+	public String load()
 	{
 		this.setParent(CompetitionDAO.get(Integer.parseInt("" + FacesUtil.getRequestParameter("parent"))));
 		this.items = null;
+		return "stages";
 	}
 
 	public List<KirolakObject> getItems()
@@ -46,8 +50,18 @@ public class StageBean extends KirolakSession
 
 	public String newItem()
 	{
-		this.item = new Stage();
-		((Stage)this.item).setCompetition((Competition)this.parent);
+		Stage stage = new Stage();
+		//TODO: Resolve why hibernate throws a Lazy Load Exception when accessing directly to parent.getSport()
+		Competition comp = (Competition)CompetitionDAO.get(this.parent.getIntId());
+		stage.setCompetition(comp);
+		stage.setStartDate(comp.getStartDate());
+		stage.setFinishDate(comp.getFinishDate());
+		stage.setMaxParts(comp.getSport().getMaxParts());
+		stage.setPlayOffName(comp.getSport().getPlayOffName());
+		stage.setPointsWin(comp.getSport().getPointsWin());
+		stage.setPointsDraw(comp.getSport().getPointsDraw());
+		stage.setPointsLoose(comp.getSport().getPointsLoose());
+		this.item = stage;
 		return "edit";
 	}
 
@@ -60,4 +74,6 @@ public class StageBean extends KirolakSession
 			((Stage) this.item).setCompetition((Competition)this.parent);
 		}
 	}
+	
+	
 }

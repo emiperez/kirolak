@@ -23,6 +23,10 @@
 			<from-outcome>group-teams</from-outcome>
 			<to-view-id>/admin/group-teams.jsp</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>auto</from-outcome>
+			<to-view-id>/admin/group-generator.jsp</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule>

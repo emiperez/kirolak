@@ -16,28 +16,28 @@
 	<h:form id="groups">
 
 		<div class="navigation_bar">
-			<h:commandLink id="sports_link" action="sports" value="#{msg.sports}" immediate="true" />
-		 &gt; 
-		 <h:commandLink id="competitions_link" action="competitions"
-			immediate="true">
+		<h:commandLink id="sports_link" action="#{sport.load}" value="#{msg.sports}" immediate="true" />
+		&gt; 
+		<h:commandLink id="competitions_link" action="#{competition.load}"	immediate="true">			
+			<f:param name="parent" value="#{competition.parent.id}"/>
 			<h:outputFormat value="#{msg.competitions_title}">
 				<f:param value="#{competition.parent.name}" />
 			</h:outputFormat>
 		</h:commandLink>
-		 &gt;  
-		 <h:commandLink id="stages_link" action="stages"
-			immediate="true">
+		&gt;  
+		<h:commandLink id="stages_link" action="#{stage.load}"	immediate="true">			
+			<f:param name="parent" value="#{stage.parent.id}"/>
 			<h:outputFormat value="#{msg.stages_title}">
 				<f:param value="#{stage.parent.name}" />
 			</h:outputFormat>
 		</h:commandLink>
-		 &gt;
+		&gt;
 		 <h:outputFormat value="#{msg.groups_title}">
 			<f:param value="#{group.parent.name}" />
 		</h:outputFormat></div>
 
 		<h:commandButton action="#{group.newItem}" value="#{msg.new}" />
-		<h:commandButton action="#{group.auto}" value="#{msg.auto}" rendered="#{group.lines == 0}" />
+		<h:commandButton action="auto" value="#{msg.auto}" rendered="#{group.lines == 0}" />
 		<h:dataTable value="#{group.items}" var="item"
 			binding="#{group.itemData}" rowClasses="row">
 			<h:column>
@@ -60,8 +60,7 @@
 				</h:commandLink>
 			</h:column>
 			<h:column>
-				<h:commandLink id="rounds" action="rounds"
-					actionListener="#{round.load}">
+				<h:commandLink id="rounds" action="#{round.load}">
 					<f:param name="parent" value="#{item.id}"/>
 					<h:outputText value="#{msg.rounds}" />
 				</h:commandLink>

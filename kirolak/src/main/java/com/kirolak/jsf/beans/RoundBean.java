@@ -71,10 +71,11 @@ public class RoundBean extends KirolakSession
 		}
 	}
 
-	public void load(ActionEvent event)
+	public String load()
 	{
 		this.setParent(GroupDAO.get(Integer.parseInt("" + FacesUtil.getRequestParameter("parent"))));
 		this.items = null;
+		return "rounds";
 	}
 	
 	public String auto()
@@ -86,7 +87,7 @@ public class RoundBean extends KirolakSession
 			RoundDAO.saveRound(iterator.next());
 		}
 		this.items = null;
-		return "list";
+		return "rounds";
 	}
 
 	public List<SelectItem> getSelectableTeams()

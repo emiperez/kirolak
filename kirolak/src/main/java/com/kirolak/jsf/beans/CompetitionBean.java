@@ -38,12 +38,13 @@ public class CompetitionBean extends KirolakSession
 		}
 	}
 
-	public void load(ActionEvent event)
+	public String load()
 	{
 		this.parent = SportDAO.get(Short.parseShort("" + FacesUtil.getRequestParameter("parent")));
 		this.items = null;
 		this.selectableTeams = null;
 		this.selectedTeams = null;
+		return "competitions";
 	}
 
 	public List<KirolakObject> getItems()
