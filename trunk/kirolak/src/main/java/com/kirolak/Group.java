@@ -110,7 +110,7 @@ public class Group extends KirolakObject
 				{
 					match = new Match();
 					
-					// Rotate Home - visiting for the first Team
+					// Rotate Home - visiting for the each Team
 					if(roundNumber % 2 == 0)
 					{
 						match.setHomeTeam((Team)teamList.get( (roundNumber + beginTeam + teamNumber) % (teamCount-1) ));
