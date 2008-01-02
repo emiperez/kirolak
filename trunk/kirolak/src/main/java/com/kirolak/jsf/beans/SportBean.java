@@ -34,5 +34,11 @@ public class SportBean extends KirolakSession
 		this.item = new Sport();
 		return "edit";
 	}
+	
+	public String load()
+	{
+		this.items = SportDAO.list();
+		return "sports";
+	}
 
 }

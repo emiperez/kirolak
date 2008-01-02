@@ -3,6 +3,7 @@ package com.kirolak.jsf.beans;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
@@ -10,11 +11,13 @@ import javax.faces.model.SelectItem;
 import com.kirolak.Competition;
 import com.kirolak.Group;
 import com.kirolak.KirolakObject;
+import com.kirolak.Round;
 import com.kirolak.Sport;
 import com.kirolak.Stage;
 import com.kirolak.Team;
 import com.kirolak.dao.CompetitionDAO;
 import com.kirolak.dao.GroupDAO;
+import com.kirolak.dao.RoundDAO;
 import com.kirolak.dao.SportDAO;
 import com.kirolak.dao.StageDAO;
 import com.kirolak.dao.TeamDAO;
@@ -23,6 +26,7 @@ import com.kirolak.util.Messages;
 
 public class GroupBean extends KirolakSession
 {	
+	private int groupNumber;
 	private List<KirolakObject> selectableTeams;
 	private List<KirolakObject> selectedTeams;
 	
@@ -37,12 +41,13 @@ public class GroupBean extends KirolakSession
 		}
 	}
 
-	public void load(ActionEvent event)
+	public String load()
 	{
 		this.setParent(StageDAO.get(Integer.parseInt("" + FacesUtil.getRequestParameter("parent"))));
 		this.items = null;
 		this.selectableTeams = null;
 		this.selectedTeams = null;
+		return "groups";
 	}
 
 	public List<KirolakObject> getItems()
@@ -83,6 +88,7 @@ public class GroupBean extends KirolakSession
 	public String teams()
 	{
 		this.item = (KirolakObject) itemData.getRowData();
+		this.selectedTeams = TeamDAO.listByGroup((Group)this.item);
 		return "group-teams";
 	}
 
@@ -125,6 +131,50 @@ public class GroupBean extends KirolakSession
 		{
 			group.getTeams().add(((Team)iterator.next()));
 		}
+		return "groups";
+	}
+	
+	public List<SelectItem> getGroupGeneratorSelectItems()
+	{
+		List<SelectItem> selectItems = new ArrayList<SelectItem>();
+		for (int n=0; n < (TeamDAO.listByCompetition(((Stage)this.parent).getCompetition()).size() /2 ); n++ )
+		{
+			String text = ""+(n+1);
+			selectItems.add(new SelectItem(n+1,text));
+		}
+		return selectItems;
+	}
+
+	/**
+	 * 
+	 * @return the number of groups the user wants for automatic generation of groups and schedules.
+	 */
+	public int getGroupNumber()
+	{
+		return groupNumber;
+	}
+
+	public void setGroupNumber(int groupNumber)
+	{
+		this.groupNumber = groupNumber;
+	}
+	
+	public String auto()
+	{
+		((Stage)this.parent).calculateGroups(getGroupNumber());
+		this.items = GroupDAO.listByStage((Stage)this.parent);
+		Iterator<KirolakObject> groups = this.items.iterator();
+		while(groups.hasNext())
+		{
+			Group group = (Group)groups.next();
+			List<Round> rounds = group.calculateSchedule();
+			Iterator<Round> iterator = rounds.iterator();
+			while(iterator.hasNext())
+			{
+				RoundDAO.saveRound(iterator.next());
+			}
+		}
+		this.items = null;
 		return "groups";
 	}
 }

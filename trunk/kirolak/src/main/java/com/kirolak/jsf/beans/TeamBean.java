@@ -25,10 +25,11 @@ public class TeamBean extends KirolakSession
 		}
 	}
 
-	public void load(ActionEvent event)
+	public String load()
 	{
 		this.parent = SportDAO.get(Short.parseShort("" + FacesUtil.getRequestParameter("parent")));
 		this.items = null;
+		return "teams";
 	}
 
 	public List<KirolakObject> getItems()

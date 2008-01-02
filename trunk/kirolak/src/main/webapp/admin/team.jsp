@@ -18,9 +18,10 @@
 	<body onload="setFocus('saveTeam:name','${errorField}');">
 	<h:form id="saveTeam">
 		<div class="navigation_bar">
-		<h:commandLink id="sports_link" action="sports"value="#{msg.sports}" immediate="true" />
+		<h:commandLink id="sports_link" action="#{sport.load}" value="#{msg.sports}" immediate="true" />
 		&gt; 
-		<h:commandLink id="teams_link" action="teams" immediate="true">
+		<h:commandLink id="teams_link" action="#{team.load}"	immediate="true">			
+			<f:param name="parent" value="#{team.parent.id}"/>
 			<h:outputFormat value="#{msg.teams_title}">
 				<f:param value="#{team.parent.name}" />
 			</h:outputFormat>

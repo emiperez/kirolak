@@ -38,15 +38,13 @@
 					onclick="return confirm('#{msg.sure}')" value="#{msg.delete}" />
 			</h:column>
 			<h:column>
-				<h:commandLink id="teams" action="teams"
-					actionListener="#{team.load}">
+				<h:commandLink id="teams" action="#{team.load}">
 					<f:param name="parent" value="#{item.id}"/>
 					<h:outputText value="#{msg.teams}" />
 				</h:commandLink>
 			</h:column>
 			<h:column>
-				<h:commandLink id="competitions" action="competitions"
-					actionListener="#{competition.load}">
+				<h:commandLink id="competitions" action="#{competition.load}">
 					<f:param name="parent" value="#{item.id}"/>
 					<h:outputText value="#{msg.competitions}" />
 				</h:commandLink>

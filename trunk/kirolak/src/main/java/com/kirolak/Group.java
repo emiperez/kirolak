@@ -1,10 +1,13 @@
 package com.kirolak;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+
+import org.hibernate.LazyInitializationException;
 
 import com.kirolak.dao.TeamDAO;
 
@@ -16,7 +19,7 @@ import com.kirolak.dao.TeamDAO;
 public class Group extends KirolakObject
 {
 	private Stage stage;
-	private Set<Team> teams;
+	private Set<Team> teams = new HashSet<Team>();
 
 	public Group()
 	{
@@ -69,7 +72,20 @@ public class Group extends KirolakObject
 	public List<Round> calculateSchedule()
 	{
 		List<Round> roundList = new ArrayList<Round>();
-		List<KirolakObject> teamList = TeamDAO.listByGroup(this);
+		List<KirolakObject> teamList = new ArrayList<KirolakObject>();
+		try
+		{
+			Iterator<Team> teamIterator = this.teams.iterator();
+			while(teamIterator.hasNext())
+			{
+				teamList.add(teamIterator.next());
+			}
+		}
+		//TODO: Find out why this Exception is happening
+		catch(LazyInitializationException lazy)
+		{
+			teamList = TeamDAO.listByGroup(this);
+		}
 		int teamCount = teamList.size();
 		if (teamCount > 0)
 		{

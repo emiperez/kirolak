@@ -18,7 +18,7 @@
 	<h:form id="teams">
 	
 	<div class="navigation_bar">
-		<h:commandLink id="sports_link" action="sports"value="#{msg.sports}" immediate="true" /> 
+		<h:commandLink id="sports_link" action="#{sport.load}"value="#{msg.sports}" immediate="true" /> 
 		&gt; 
 		<h:outputFormat value="#{msg.teams_title}">
 			<f:param value="#{team.parent.name}"/>

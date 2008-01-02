@@ -1,23 +1,21 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+<html>
 
 <f:view>
-	<html>
 	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<title>
-		<h:outputFormat value="#{msg.groups_title}">
-			<f:param value="#{group.parent.name}"/>
-		</h:outputFormat>
-	</title>	
-	<link href="css/forms.css" rel="stylesheet" type="text/css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><h:outputFormat value="#{msg.groups_title}">
+		<f:param value="#{group.parent.name}" />
+	</h:outputFormat></title>
+	<link href="css/forms.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="js/forms.js"></script>
+
 	</head>
 
-	<body>
-	<h:form id="group-teams">
-	
-	<div class="navigation_bar">
+	<body onload="setFocus('groupGenerator:groupNumber','${errorField}');">
+	<h:form id="groupGenerator">
 		<div class="navigation_bar">
 		<h:commandLink id="sports_link" action="#{sport.load}" value="#{msg.sports}" immediate="true" />
 		&gt; 
@@ -41,19 +39,21 @@
 				<f:param value="#{group.parent.name}" />
 			</h:outputFormat>
 		</h:commandLink>
-		&gt; 
-		<h:outputFormat value="#{msg.group_teams_title}">
-			<f:param value="#{group.item.name}"/>
-			<f:param value="#{msg.teams}" />
-		</h:outputFormat>
-	</div>
-	<h:selectManyCheckbox value="#{group.selectedTeams}" layout="pageDirection">
-		<f:converter converterId="kirolak.teamConverter"/>
-		<f:selectItems value="#{group.selectItemsTeams}" />
-	</h:selectManyCheckbox>
-		<h:commandButton value="#{msg.save}" action="#{group.saveTeams}" />
-		<h:commandButton value="#{msg.cancel}" action="groups" immediate="true" />
+		&gt;
+		<h:outputFormat value="#{msg.groups_generator_title}">
+			<f:param value="#{stage.item.name}" />
+		</h:outputFormat></div>
+
+		<h:panelGrid columns="3">
+			<h:outputText styleClass="label" value="#{msg.groups}" />
+			<h:selectOneMenu id="groupNumber" value="#{group.groupNumber}">
+				<f:selectItems value="#{group.groupGeneratorSelectItems}" />
+			</h:selectOneMenu>
+			<h:message id="nameError" for="name" styleClass="error" />
+		</h:panelGrid>
+		<h:commandButton value="#{msg.save}" action="#{group.auto}" />
+		<h:commandButton value="#{msg.cancel}" action="list" immediate="true" />
 	</h:form>
 	</body>
-	</html>
 </f:view>
+</html>
