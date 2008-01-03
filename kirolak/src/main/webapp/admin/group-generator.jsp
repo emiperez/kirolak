@@ -41,7 +41,7 @@
 		</h:commandLink>
 		&gt;
 		<h:outputFormat value="#{msg.groups_generator_title}">
-			<f:param value="#{stage.item.name}" />
+			<f:param value="#{group.parent.name}" />
 		</h:outputFormat></div>
 
 		<h:panelGrid columns="3">

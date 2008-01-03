@@ -47,6 +47,12 @@
 				<h:outputText value="#{item.name}" />
 			</h:column>
 			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.teams}" />
+				</f:facet>
+				<h:outputText value="#{item.teamNames}" />
+			</h:column>
+			<h:column>
 				<h:commandButton id="edit" action="#{group.editItem}"
 					value="#{msg.edit}" />
 			</h:column>
