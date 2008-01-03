@@ -16,5 +16,8 @@
 			<key column="group_id" />
 			<many-to-many column="team_id" class="com.kirolak.Team" />
 		</set>
+		<property name="lastPlayedRound" type="short">
+			<formula> (select max(m.round_id) from matches m where m.group_id=id and m.match_status=30)</formula>
+		</property>
     </class>
 </hibernate-mapping>

@@ -20,6 +20,7 @@ public class Group extends KirolakObject
 {
 	private Stage stage;
 	private Set<Team> teams = new HashSet<Team>();
+	private short lastPlayedRound;
 
 	public Group()
 	{
@@ -67,6 +68,21 @@ public class Group extends KirolakObject
 	public void setTeams(Set<Team> teams)
 	{
 		this.teams = teams;
+	}
+	
+	public String getTeamNames()
+	{
+		String returnValue = "";
+		Iterator<Team> iterator = getTeams().iterator();
+		if(iterator.hasNext())
+		{
+			returnValue = iterator.next().getName();
+			while(iterator.hasNext())
+			{
+				returnValue += ", " + iterator.next().getName();
+			}
+		}
+		return returnValue;
 	}
 	
 	public List<Round> calculateSchedule()
@@ -177,6 +193,16 @@ public class Group extends KirolakObject
 			}
 		}
 		return roundList;
+	}
+
+	public short getLastPlayedRound()
+	{
+		return lastPlayedRound;
+	}
+
+	public void setLastPlayedRound(short lastPlayedRound)
+	{
+		this.lastPlayedRound = lastPlayedRound;
 	}
 
 }

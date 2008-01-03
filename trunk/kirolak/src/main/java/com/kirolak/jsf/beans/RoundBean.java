@@ -27,7 +27,7 @@ public class RoundBean extends KirolakSession
 
 	public String saveRound()
 	{
-		Round round = (Round)this.item;
+		Round round = (Round) this.item;
 		round.setMatches(this.listMatch);
 		RoundDAO.saveRound(round);
 		this.items = null;
@@ -77,14 +77,17 @@ public class RoundBean extends KirolakSession
 		this.items = null;
 		return "rounds";
 	}
-	
+
 	public String auto()
 	{
-		List<Round> rounds = ((Group)this.parent).calculateSchedule();
-		Iterator<Round> iterator = rounds.iterator();
-		while(iterator.hasNext())
+		if (this.getItems().size() == 0)
 		{
-			RoundDAO.saveRound(iterator.next());
+			List<Round> rounds = ((Group) this.parent).calculateSchedule();
+			Iterator<Round> iterator = rounds.iterator();
+			while (iterator.hasNext())
+			{
+				RoundDAO.saveRound(iterator.next());
+			}
 		}
 		this.items = null;
 		return "rounds";
@@ -124,7 +127,5 @@ public class RoundBean extends KirolakSession
 	{
 		this.listMatch = listMatch;
 	}
-
-	
 
 }

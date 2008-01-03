@@ -62,6 +62,28 @@
 				</h:outputText>
 			</h:column>
 			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.matches}" />
+				</f:facet>
+				<h:dataTable value="#{item.matchList}" var="match">
+					<h:column>
+						<h:outputText value="#{match.homeTeam.acronym}" />
+					</h:column>					
+					<h:column>
+						<h:outputText value="#{match.homeTeamScore}" />
+					</h:column>										
+					<h:column>
+						<h:outputText value=" - " />
+					</h:column>
+					<h:column>
+						<h:outputText value="#{match.visitingTeamScore}" />
+					</h:column>
+					<h:column>
+						<h:outputText value="#{match.visitingTeam.acronym}" />
+					</h:column>
+				</h:dataTable>
+			</h:column>
+			<h:column>
 				<h:commandButton id="edit" action="#{round.editItem}"
 					value="#{msg.edit}" />
 			</h:column>
