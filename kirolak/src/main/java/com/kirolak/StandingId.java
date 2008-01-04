@@ -8,49 +8,37 @@ package com.kirolak;
 public class StandingId implements java.io.Serializable
 {
 
-	private int teamId;
-	private short roundId;
-	private int groupId;
+	private Team team;
+	private Round round;
 
 	public StandingId()
 	{
 	}
 
-	public StandingId(int teamId, short roundId, int groupId)
+	public StandingId(Team team, Round round)
 	{
-		this.teamId = teamId;
-		this.roundId = roundId;
-		this.groupId = groupId;
+		this.team = team;
+		this.round = round;
 	}
 
-	public int getTeamId()
+	public Team getTeam()
 	{
-		return this.teamId;
+		return this.team;
 	}
 
-	public void setTeamId(int teamId)
+	public void setTeam(Team team)
 	{
-		this.teamId = teamId;
+		this.team = team;
 	}
 
-	public short getRoundId()
+	public Round getRound()
 	{
-		return this.roundId;
+		return this.round;
 	}
 
-	public void setRoundId(short roundId)
+	public void setRound(Round round)
 	{
-		this.roundId = roundId;
-	}
-
-	public int getGroupId()
-	{
-		return this.groupId;
-	}
-
-	public void setGroupId(int groupId)
-	{
-		this.groupId = groupId;
+		this.round = round;
 	}
 
 	public boolean equals(Object other)
@@ -63,17 +51,16 @@ public class StandingId implements java.io.Serializable
 			return false;
 		StandingId castOther = (StandingId) other;
 
-		return (this.getTeamId() == castOther.getTeamId()) && (this.getRoundId() == castOther.getRoundId())
-				&& (this.getGroupId() == castOther.getGroupId());
+		return (this.getTeam().equals(castOther.getTeam()) && this.getRound().equals(castOther.getRound()));
 	}
 
 	public int hashCode()
 	{
 		int result = 17;
 
-		result = 37 * result + this.getTeamId();
-		result = 37 * result + this.getRoundId();
-		result = 37 * result + this.getGroupId();
+		result = 37 * result + this.getTeam().getId();
+		result = 37 * result + this.getRound().getNumber();
+		result = 37 * result + this.getRound().getGroup().getId();
 		return result;
 	}
 

@@ -1,5 +1,13 @@
 package com.kirolak;
 
+import java.util.Iterator;
+import java.util.List;
+
+import org.hibernate.LazyInitializationException;
+
+import com.kirolak.dao.StandingDAO;
+import com.kirolak.dao.TeamDAO;
+
 // Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1
 
 /**
@@ -299,6 +307,40 @@ public class Standing implements java.io.Serializable
 	public void setTieBreakPosition(Short tieBreakPosition)
 	{
 		this.tieBreakPosition = tieBreakPosition;
+	}
+	
+	/**
+	 * Creates empty rows for each team of a group in the standings table for a given round
+	 * @param round
+	 */
+	public static void create(Round round)
+	{
+		Iterator teams;
+		try
+		{
+			teams = round.getGroup().getTeams().iterator();
+		}
+		//TODO: try to figure out why this exception is thrown
+		catch(LazyInitializationException le)
+		{
+			teams = TeamDAO.listByGroup(round.getGroup()).iterator();
+		}
+		while(teams.hasNext())
+		{
+			Standing standing = new Standing();
+			standing.setId(new StandingId((Team)teams.next(),round));
+			StandingDAO.save(standing);
+		}
+	}
+	
+	public static void generate(Round round, Round lastUpdatedRound)
+	{
+		
+	}
+	
+	public List<Standing> calculate(Round round)
+	{
+		return null;
 	}
 
 }

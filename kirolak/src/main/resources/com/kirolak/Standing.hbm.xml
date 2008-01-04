@@ -5,15 +5,13 @@
 <hibernate-mapping>
     <class name="com.kirolak.Standing" table="standings" >
         <composite-id name="id" class="com.kirolak.StandingId">
-            <key-property name="teamId" type="int">
+            <key-many-to-one name="team" class="com.kirolak.Team">
                 <column name="team_id" />
-            </key-property>
-            <key-property name="roundId" type="short">
+            </key-many-to-one>
+            <key-many-to-one name="round" class="com.kirolak.Round">
                 <column name="round_id" />
-            </key-property>
-            <key-property name="groupId" type="int">
                 <column name="group_id" />
-            </key-property>
+            </key-many-to-one>
         </composite-id>
         <property name="games" type="java.lang.Short">
             <column name="games" />

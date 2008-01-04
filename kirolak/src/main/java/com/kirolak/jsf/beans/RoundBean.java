@@ -13,10 +13,13 @@ import com.kirolak.Group;
 import com.kirolak.KirolakObject;
 import com.kirolak.Match;
 import com.kirolak.Round;
+import com.kirolak.Standing;
+import com.kirolak.StandingId;
 import com.kirolak.Team;
 import com.kirolak.dao.GroupDAO;
 import com.kirolak.dao.MatchDAO;
 import com.kirolak.dao.RoundDAO;
+import com.kirolak.dao.StandingDAO;
 import com.kirolak.dao.TeamDAO;
 import com.kirolak.util.FacesUtil;
 import com.kirolak.util.Messages;
@@ -86,7 +89,9 @@ public class RoundBean extends KirolakSession
 			Iterator<Round> iterator = rounds.iterator();
 			while (iterator.hasNext())
 			{
-				RoundDAO.saveRound(iterator.next());
+				Round round = iterator.next();
+				RoundDAO.saveRound(round);
+				Standing.create(round);
 			}
 		}
 		this.items = null;

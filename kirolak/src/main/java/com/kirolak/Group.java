@@ -20,7 +20,7 @@ public class Group extends KirolakObject
 {
 	private Stage stage;
 	private Set<Team> teams = new HashSet<Team>();
-	private short lastPlayedRound;
+	private Short lastPlayedRound;
 
 	public Group()
 	{
@@ -195,13 +195,17 @@ public class Group extends KirolakObject
 		return roundList;
 	}
 
-	public short getLastPlayedRound()
+	public Short getLastPlayedRound()
 	{
 		return lastPlayedRound;
 	}
 
-	public void setLastPlayedRound(short lastPlayedRound)
+	public void setLastPlayedRound(Short lastPlayedRound)
 	{
+		if(lastPlayedRound == null)
+		{
+			lastPlayedRound = 0;
+		}
 		this.lastPlayedRound = lastPlayedRound;
 	}
 
