@@ -9,6 +9,7 @@ import com.kirolak.Group;
 import com.kirolak.KirolakObject;
 import com.kirolak.Match;
 import com.kirolak.Round;
+import com.kirolak.RoundId;
 import com.kirolak.util.HibernateUtil;
 
 public class RoundDAO extends KirolakDAO
@@ -30,9 +31,11 @@ public class RoundDAO extends KirolakDAO
 		}
 	}
 	
-	public static KirolakObject get(int id)
+	public static Round get(RoundId id)
 	{
-		return KirolakDAO.get(Round.class, id);
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Round returnValue = (Round)session.get(Round.class, id);
+		return returnValue;
 	}
 	
 	public static List<KirolakObject> listByGroup(Group group)

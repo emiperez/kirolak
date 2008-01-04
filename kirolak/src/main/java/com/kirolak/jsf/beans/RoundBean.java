@@ -30,7 +30,9 @@ public class RoundBean extends KirolakSession
 
 	public String saveRound()
 	{
+		
 		Round round = (Round) this.item;
+		Round oldRound = (Round)RoundDAO.get(round.getCompositeId());		
 		round.setMatches(this.listMatch);
 		RoundDAO.saveRound(round);
 		this.items = null;
@@ -126,6 +128,11 @@ public class RoundBean extends KirolakSession
 			}
 		}
 		return this.listMatch;
+	}
+	
+	public List<Standing> getStandings()
+	{
+		return StandingDAO.listByRound((Round)this.item);
 	}
 
 	public void setListMatch(List<Match> listMatch)
