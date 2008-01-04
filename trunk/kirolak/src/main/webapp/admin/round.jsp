@@ -64,7 +64,7 @@
 
 		</h:panelGrid>
 
-		<h:dataTable value="#{round.listMatch}" var="item" rowClasses="row">
+		<h:dataTable value="#{round.listMatch}" var="item">
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="#{msg.day_time}" />
@@ -111,10 +111,20 @@
 					<f:selectItems value="#{app.matchStatusSelectItems}" />
 				</h:selectOneMenu>
 			</h:column>
-		</h:dataTable>
+		</h:dataTable>		
 		<h:messages />
 		<h:commandButton value="#{msg.save}" action="#{round.saveRound}" />
 		<h:commandButton value="#{msg.cancel}" action="list" immediate="true" />
+		
+		<h:dataTable value="#{round.standings}" var="item" rowClasses="row">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.team}" />
+				</f:facet>
+				<h:outputText id="team" value="#{item.id.team.name}" />
+			</h:column>
+		</h:dataTable>
+		
 	</h:form>
 	</body>
 </f:view>

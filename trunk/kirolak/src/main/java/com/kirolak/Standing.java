@@ -17,28 +17,28 @@ public class Standing implements java.io.Serializable
 {
 
 	private StandingId id;
-	private Short games;
-	private Short gamesHome;
-	private Short gamesVisiting;
-	private Short wonGames;
-	private Short wonHome;
-	private Short wonVisiting;
-	private Short drawnGames;
-	private Short drawnHome;
-	private Short drawnVisiting;
-	private Short lostGames;
-	private Short lostHome;
-	private Short lostVisiting;
-	private Integer scoreTotal;
-	private Integer scoreHome;
-	private Integer scoreVisiting;
-	private Integer scoreAgainstTotal;
-	private Integer scoreAgainstHome;
-	private Integer scoreAgainstVisiting;
-	private Integer teamPoints;
-	private Integer homePoints;
-	private Integer visitingPoints;
-	private Short tieBreakPosition;
+	private Short games = 0;
+	private Short gamesHome = 0;
+	private Short gamesVisiting = 0;
+	private Short wonGames = 0;
+	private Short wonHome = 0;
+	private Short wonVisiting = 0;
+	private Short drawnGames = 0;
+	private Short drawnHome = 0;
+	private Short drawnVisiting = 0;
+	private Short lostGames = 0;
+	private Short lostHome = 0;
+	private Short lostVisiting = 0;
+	private Integer scoreTotal = 0;
+	private Integer scoreHome = 0;
+	private Integer scoreVisiting = 0;
+	private Integer scoreAgainstTotal = 0;
+	private Integer scoreAgainstHome = 0;
+	private Integer scoreAgainstVisiting = 0;
+	private Integer teamPoints = 0;
+	private Integer homePoints = 0;
+	private Integer visitingPoints = 0;
+	private Short tieBreakPosition = 0;
 
 	public Standing()
 	{
