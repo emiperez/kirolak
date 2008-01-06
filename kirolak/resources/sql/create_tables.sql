@@ -159,10 +159,7 @@ create table matches
 	INDEX match_visiting_team(visiting_team_id),
 	INDEX match_day_time(day_time),
 	INDEX match_updated(updated),
-	FOREIGN KEY (round_id) REFERENCES rounds(id) ON DELETE CASCADE,
-	FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
-	FOREIGN KEY (home_team_id) REFERENCES teams(id) ON DELETE CASCADE,
-	FOREIGN KEY (visiting_team_id) REFERENCES teams(id) ON DELETE CASCADE 
+	FOREIGN KEY (round_id,group_id) REFERENCES rounds(id, group_id) ON DELETE CASCADE
 )ENGINE=InnoDB;
 
 create table standings
@@ -171,38 +168,168 @@ create table standings
 	round_id smallint unsigned,
 	group_id int unsigned,
 
-	games smallint unsigned,
-	games_home smallint unsigned,
-	games_visiting smallint unsigned,
+	games smallint unsigned default 0,
+	games_home smallint unsigned default 0,
+	games_visiting smallint unsigned default 0,
 
-	won_games smallint unsigned,
-	won_home smallint unsigned,
-	won_visiting smallint unsigned,
+	won_games smallint unsigned default 0,
+	won_home smallint unsigned default 0,
+	won_visiting smallint unsigned default 0,
 
-	drawn_games smallint unsigned,
-	drawn_home smallint unsigned,
-	drawn_visiting smallint unsigned,
+	drawn_games smallint unsigned default 0,
+	drawn_home smallint unsigned default 0,
+	drawn_visiting smallint unsigned default 0,
 	
-	lost_games smallint unsigned,
-	lost_home smallint unsigned,
-	lost_visiting smallint unsigned,
+	lost_games smallint unsigned default 0,
+	lost_home smallint unsigned default 0,
+	lost_visiting smallint unsigned default 0,
 
-	score_total int unsigned,
-	score_home int unsigned,
-	score_visiting int unsigned,
+	score_total int unsigned default 0,
+	score_home int unsigned default 0,
+	score_visiting int unsigned default 0,
 
-	score_against_total int unsigned,
-	score_against_home int unsigned,
-	score_against_visiting int unsigned,
+	score_against_total int unsigned default 0,
+	score_against_home int unsigned default 0,
+	score_against_visiting int unsigned default 0,
 
-	team_points int unsigned,
-	home_points int unsigned,
-	visiting_points int unsigned,
+	team_points int unsigned default 0,
+	home_points int unsigned default 0,
+	visiting_points int unsigned default 0,
 
-	tie_break_position smallint unsigned,
+	tie_break_position smallint unsigned default 0,
 
 	PRIMARY KEY (team_id,round_id, group_id),
-	FOREIGN KEY (round_id) REFERENCES rounds(id) ON DELETE CASCADE,
-	FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
+	FOREIGN KEY (round_id,group_id) REFERENCES rounds(id, group_id) ON DELETE CASCADE,
 	FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE
 )ENGINE=InnoDB;
+
+drop procedure if exists calculate_round_standings;
+delimiter $$
+create procedure calculate_round_standings(p_group_id int, p_round_id smallint)
+BEGIN
+	declare finish int default 0;
+	declare ht, hts, vt, vts  int;
+	declare prev_round_id smallint default 0;
+	declare s_points_win, s_points_draw, s_points_loose tinyint;
+	declare cur_1 cursor for select home_team_id, home_team_score, visiting_team_id, visiting_team_score from matches where match_status = 30 and group_id = p_group_id and round_id = p_round_id;	
+	DECLARE CONTINUE HANDLER FOR SQLSTATE '02000' SET finish = 1;
+
+	select MAX(round_id) into prev_round_id from matches where group_id = p_group_id and round_id < p_round_id and match_status = 30;
+	select points_win, points_draw, points_loose into s_points_win, s_points_draw, s_points_loose from stages, groups where stages.id = groups.stage_id and groups.id = p_group_id;
+	delete from standings where group_id=p_group_id and round_id = p_round_id;
+	if(prev_round_id > 0) then
+		insert into standings 
+			select
+				team_id,
+				p_round_id,
+				p_group_id,
+				games,
+				games_home,
+				games_visiting,
+
+				won_games,
+				won_home,
+				won_visiting,
+
+				drawn_games,
+				drawn_home,
+				drawn_visiting,
+	
+				lost_games,
+				lost_home,
+				lost_visiting,
+
+				score_total,
+				score_home,
+				score_visiting,
+
+				score_against_total,
+				score_against_home,
+				score_against_visiting,
+
+				team_points,
+				home_points,
+				visiting_points,
+
+				tie_break_position
+		  	from standings where group_id = p_group_id and round_id = prev_round_id;
+	else
+		insert into standings 
+			select team_id, p_round_id, p_group_id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0 
+				from group_teams where group_id = p_group_id;
+	end if;
+	OPEN cur_1;
+	REPEAT
+		FETCH cur_1  into ht, hts, vt, vts;
+		if not finish then
+			if(hts > vts) then			
+				update standings 
+					set games = games +1, games_home = games_home + 1, won_games = won_games + 1, 
+						score_total = score_total + hts, score_home = score_home + hts, 
+						score_against_total = score_against_total + vts, score_against_home = score_against_home + vts,
+						team_points = team_points + s_points_win, home_points = home_points + s_points_win
+					where team_id = ht and group_id = p_group_id and round_id = p_round_id;
+		 		update standings 
+					set games = games +1, games_visiting = games_visiting + 1, lost_games = lost_games + 1, 
+						score_total = score_total + vts, score_visiting= score_visiting + vts, 
+						score_against_total = score_against_total + hts, score_against_visiting = score_against_visiting + hts,
+						team_points = team_points + s_points_loose, visiting_points = visiting_points + s_points_loose
+					where team_id = vt and group_id = p_group_id and round_id = p_round_id;
+			else if (hts < vts) then			
+				update standings 
+					set games = games +1, games_home = games_home + 1, lost_games = lost_games + 1, 
+						score_total = score_total + hts, score_home = score_home + hts, 
+						score_against_total = score_against_total + vts, score_against_home = score_against_home + vts,
+						team_points = team_points + s_points_loose, home_points = home_points + s_points_loose
+					where team_id = ht and group_id = p_group_id and round_id = p_round_id;
+		 		update standings 
+					set games = games +1, games_visiting = games_visiting + 1, won_games = won_games + 1, 
+						score_total = score_total + vts, score_visiting= score_visiting + vts, 
+						score_against_total = score_against_total + hts, score_against_visiting = score_against_visiting + hts,
+						team_points = team_points + s_points_win, visiting_points = visiting_points + s_points_win
+					where team_id = vt and group_id = p_group_id and round_id = p_round_id;
+				else
+				update standings 
+					set games = games +1, games_home = games_home + 1, drawn_games = drawn_games + 1, 
+						score_total = score_total + hts, score_home = score_home + hts, 
+						score_against_total = score_against_total + vts, score_against_home = score_against_home + vts,
+						team_points = team_points + s_points_draw, home_points = home_points + s_points_draw
+					where team_id = ht and group_id = p_group_id and round_id = p_round_id;
+		 		update standings 
+					set games = games +1, games_visiting = games_visiting + 1, drawn_games = drawn_games + 1, 
+						score_total = score_total + vts, score_visiting= score_visiting + vts, 
+						score_against_total = score_against_total + hts, score_against_visiting = score_against_visiting + hts,
+						team_points = team_points + s_points_draw, visiting_points = visiting_points + s_points_draw
+					where team_id = vt and group_id = p_group_id and round_id = p_round_id;
+				end if;
+			end if;
+		end if;
+		UNTIL finish
+	END REPEAT;
+	CLOSE cur_1;
+
+END$$
+
+drop procedure if exists calculate_standings$$
+create procedure calculate_standings(p_group_id int, p_round_id smallint)
+BEGIN
+	declare max_round_id smallint default 0;
+	declare current_round_id smallint;
+	set current_round_id = p_round_id;
+	select MAX(round_id) into max_round_id from matches where group_id = p_group_id and match_status = 30;
+	WHILE (current_round_id <= max_round_id) DO
+		call calculate_round_standings(p_group_id, current_round_id);
+		select MIN(round_id) into current_round_id from matches where group_id = p_group_id and round_id > current_round_id and match_status = 30;
+	END WHILE; 
+END$$
+
+drop procedure if exists get_standings$$
+create procedure get_standings(p_group_id int, p_round_id smallint)
+BEGIN
+	declare max_round_id smallint default 0;
+	select MAX(round_id) into max_round_id from matches where group_id = p_group_id and match_status = 30 and round_id <= p_round_id;
+	if(max_round_id is not null) then	
+		select * from standings where group_id = group_id and round_id = max_round_id order by team_points desc, score_total desc;
+	end if;
+END$$
+delimiter ;
