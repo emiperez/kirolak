@@ -123,6 +123,49 @@
 				</f:facet>
 				<h:outputText id="team" value="#{item.id.team.name}" />
 			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.games_abbr}" />
+				</f:facet>
+				<h:outputText id="games" value="#{item.games}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.won_abbr}" />
+				</f:facet>
+				<h:outputText id="won" value="#{item.wonGames}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.drawn_abbr}" />
+				</f:facet>
+				<h:outputText id="drawn" value="#{item.drawnGames}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.lost_abbr}" />
+				</f:facet>
+				<h:outputText id="lost" value="#{item.lostGames}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.scored_abbr}" />
+				</f:facet>
+				<h:outputText id="scored" value="#{item.scoreTotal}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.received_abbr}" />
+				</f:facet>
+				<h:outputText id="scoredAgainst" value="#{item.scoreAgainstTotal}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.points_abbr}" />
+				</f:facet>
+				<h:outputText id="points" value="#{item.teamPoints}" />
+			</h:column>
+			
 		</h:dataTable>
 		
 	</h:form>
