@@ -330,6 +330,8 @@ BEGIN
 	select MAX(round_id) into max_round_id from matches where group_id = p_group_id and match_status = 30 and round_id <= p_round_id;
 	if(max_round_id is not null) then	
 		select * from standings where group_id = group_id and round_id = max_round_id order by team_points desc, score_total desc;
+	else
+		select * from standings where group_id = 0 and round_id = 0 order by team_points desc, score_total desc;
 	end if;
 END$$
 delimiter ;
