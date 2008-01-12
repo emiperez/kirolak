@@ -153,7 +153,7 @@ create table matches
 	visiting_team_score smallint unsigned,
 	match_status tinyint COMMENT 'playing, finished, cancelled...',
 	day_time datetime,
-	updated datetime,
+	updated timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
 	INDEX match_round(round_id, group_id),
 	INDEX match_home_team(home_team_id),
 	INDEX match_visiting_team(visiting_team_id),
@@ -203,8 +203,12 @@ create table standings
 	FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE
 )ENGINE=InnoDB;
 
+
 drop procedure if exists calculate_round_standings;
 delimiter $$
+
+
+
 create procedure calculate_round_standings(p_group_id int, p_round_id smallint)
 BEGIN
 	declare finish int default 0;
@@ -331,7 +335,16 @@ BEGIN
 	if(max_round_id is not null) then	
 		select * from standings where group_id = group_id and round_id = max_round_id order by team_points desc, score_total desc;
 	else
-		select * from standings where group_id = 0 and round_id = 0 order by team_points desc, score_total desc;
+		select team_id, p_round_id round_id, p_group_id group_id, 
+			0 games, 0 games_home, 0 games_visiting, 
+			0 won_games, 0 won_home, 0 won_visiting, 
+			0 drawn_games, 0 drawn_home, 0 drawn_visiting, 
+			0 lost_games, 0 lost_home, 0 lost_visiting, 
+			0 score_total, 0 score_home, 0 score_visiting, 
+			0 score_against_total, 0 score_against_home, 0 score_against_visiting, 0 team_points, 0 home_points, 0 visiting_points, 0 tie_break_position 
+				from group_teams inner join teams on team_id = id where group_id = p_group_id order by teams.name;
 	end if;
 END$$
+
+
 delimiter ;
