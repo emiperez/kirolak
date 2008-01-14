@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.faces.component.UIData;
-import javax.faces.component.html.HtmlDataTable;
-import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 
 import com.kirolak.Group;
@@ -14,13 +11,14 @@ import com.kirolak.KirolakObject;
 import com.kirolak.Match;
 import com.kirolak.Round;
 import com.kirolak.Standing;
-import com.kirolak.StandingId;
 import com.kirolak.Team;
 import com.kirolak.dao.GroupDAO;
 import com.kirolak.dao.MatchDAO;
 import com.kirolak.dao.RoundDAO;
 import com.kirolak.dao.StandingDAO;
 import com.kirolak.dao.TeamDAO;
+import com.kirolak.extended.GroupExt;
+import com.kirolak.extended.StandingExt;
 import com.kirolak.util.FacesUtil;
 import com.kirolak.util.Messages;
 
@@ -29,8 +27,7 @@ public class RoundBean extends KirolakSession
 	private List<Match> listMatch;
 
 	public String saveRound()
-	{
-		
+	{		
 		Round round = (Round) this.item;	
 		round.setMatches(this.listMatch);
 		RoundDAO.saveRound(round);
@@ -87,13 +84,13 @@ public class RoundBean extends KirolakSession
 	{
 		if (this.getItems().size() == 0)
 		{
-			List<Round> rounds = ((Group) this.parent).calculateSchedule();
+			List<Round> rounds = GroupExt.calculateSchedule((Group)this.parent);
 			Iterator<Round> iterator = rounds.iterator();
 			while (iterator.hasNext())
 			{
 				Round round = iterator.next();
 				RoundDAO.saveRound(round);
-				Standing.create(round);
+				StandingExt.create(round);
 			}
 		}
 		this.items = null;
@@ -139,5 +136,6 @@ public class RoundBean extends KirolakSession
 	{
 		this.listMatch = listMatch;
 	}
+
 
 }
