@@ -1,31 +1,23 @@
 package com.kirolak.jsf.beans;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
 
-import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 
-import com.kirolak.Competition;
 import com.kirolak.Group;
 import com.kirolak.KirolakObject;
 import com.kirolak.Round;
-import com.kirolak.Sport;
 import com.kirolak.Stage;
-import com.kirolak.Standing;
-import com.kirolak.StandingId;
 import com.kirolak.Team;
-import com.kirolak.dao.CompetitionDAO;
 import com.kirolak.dao.GroupDAO;
 import com.kirolak.dao.RoundDAO;
-import com.kirolak.dao.SportDAO;
 import com.kirolak.dao.StageDAO;
-import com.kirolak.dao.StandingDAO;
 import com.kirolak.dao.TeamDAO;
+import com.kirolak.extended.GroupExt;
+import com.kirolak.extended.StageExt;
+import com.kirolak.extended.StandingExt;
 import com.kirolak.util.FacesUtil;
 import com.kirolak.util.Messages;
 
@@ -169,19 +161,19 @@ public class GroupBean extends KirolakSession
 	{
 		if (this.getItems().size() == 0)
 		{
-			((Stage) this.parent).calculateGroups(getGroupNumber());
-			this.items = GroupDAO.listByStage((Stage) this.parent);
+			Stage stage = (Stage) this.parent;
+			StageExt.calculateGroups(stage, getGroupNumber());
+			this.items = GroupDAO.listByStage(stage);
 			Iterator<KirolakObject> groups = this.items.iterator();
 			while (groups.hasNext())
 			{
-				Group group = (Group) groups.next();
-				List<Round> rounds = group.calculateSchedule();
+				List<Round> rounds = GroupExt.calculateSchedule((Group)groups.next());
 				Iterator<Round> iterator = rounds.iterator();
 				while (iterator.hasNext())
 				{
 					Round round = iterator.next();
 					RoundDAO.saveRound(round);
-					Standing.create(round);
+					StandingExt.create(round);
 				}
 			}
 		}

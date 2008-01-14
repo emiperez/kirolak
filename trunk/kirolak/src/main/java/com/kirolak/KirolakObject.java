@@ -9,26 +9,6 @@ public abstract class KirolakObject implements java.io.Serializable
 	protected String name;
 	protected String seoName;
 
-	public static final String SPORT = "Sport";
-	public static final String TEAM = "Team";
-
-	public static KirolakObject newInstance(String className)
-	{
-		KirolakObject retobj = null;
-		try
-		{
-			Class cls = Class.forName("com.kirolak." + className);
-			Class partypes[] = new Class[0];
-			Constructor ct = cls.getConstructor(partypes);
-			Object arglist[] = new Object[0];
-			retobj = (KirolakObject) ct.newInstance(arglist);
-		} catch (Throwable e)
-		{
-			// TODO: Manage Exception
-		}
-		return retobj;
-	}
-
 	public int getIntId()
 	{
 		return id;

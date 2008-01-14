@@ -1,14 +1,6 @@
 package com.kirolak;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
-
-import com.kirolak.dao.GroupDAO;
-import com.kirolak.dao.RoundDAO;
-import com.kirolak.dao.TeamDAO;
 
 // Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1
 
@@ -18,7 +10,7 @@ import com.kirolak.dao.TeamDAO;
 public class Stage extends KirolakObject
 {
 
-	private Competition competition;
+	protected Competition competition;
 	private String name;
 	private String seoName;
 	private Date startDate;
@@ -168,39 +160,6 @@ public class Stage extends KirolakObject
 	public void setFinishDate(Date finishDate)
 	{
 		this.finishDate = finishDate;
-	}
-	
-	public void calculateGroups(int groupNumber)
-	{
-		List<KirolakObject> selectableTeams = TeamDAO.listByCompetition(this.competition);
-		int totalTeams = selectableTeams.size();
-		int teamsPerGroup = totalTeams/groupNumber;
-		int extraTeams = totalTeams%groupNumber;
-		for (char n = 0; n < groupNumber; n++)
-		{
-			Group group = new Group();
-			group.setStage(this);
-			group.setName(new Character((char)(n+65)).toString());
-			GroupDAO.save(group);
-		}
-		List<KirolakObject> groups = GroupDAO.listByStage(this);
-		for (int n =0; n < groups.size(); n++)
-		{
-			Group group = (Group)groups.get(n);
-			int teamsInCurrentGroup = teamsPerGroup;
-			if(n < extraTeams)
-			{
-				teamsInCurrentGroup++;
-			}
-			for(int i=0; i<teamsInCurrentGroup; i++)
-			{
-				int teamNumber = (new Random()).nextInt(totalTeams);
-				Team currentTeam = (Team)selectableTeams.get(teamNumber);
-				selectableTeams.remove(teamNumber);
-				--totalTeams;
-				group.getTeams().add(currentTeam);
-			}
-		}
-	}
+	}	
 
 }
