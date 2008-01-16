@@ -74,6 +74,7 @@
       <version>3.2.5.ga</version>
       <scope>compile</scope>
     </dependency>
+    <!-- DEPENDENCIES FOR VELOCITY
     <dependency>
 	    <groupId>velocity-tools</groupId>
 	    <artifactId>velocity-tools-view</artifactId>	    
@@ -94,6 +95,7 @@
 	    <artifactId>commons-digester</artifactId>	    
     	<version>1.8</version>
 	</dependency>
+	-->
   </dependencies>
   <build>
 	<plugins>
