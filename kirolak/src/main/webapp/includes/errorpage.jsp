@@ -15,9 +15,6 @@ ${pageContext.errorData.throwable}
   <c:when test="${!empty pageContext.errorData.throwable.cause}">
   : ${pageContext.errorData.throwable.cause}
   </c:when>
-  <c:when test="${!empty pageContext.errorData.throwable.rootCause}">
-  : ${pageContext.errorData.throwable.rootCause}
-  </c:when>
 </c:choose>
 </body>
 </html>
