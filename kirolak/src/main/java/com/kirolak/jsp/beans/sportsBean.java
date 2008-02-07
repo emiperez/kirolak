@@ -11,11 +11,7 @@ public class sportsBean {
 		{
 			
 		}
-		
-		public String getTest()
-		{
-			return "Hola";
-		}
+
 		public List<KirolakObject> getSports()
 		{
 			return SportDAO.list();
