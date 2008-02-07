@@ -6,7 +6,8 @@ import com.kirolak.KirolakObject;
 import com.kirolak.util.HibernateUtil;
 
 public abstract class KirolakDAO
-{	
+{
+	public static final int MAX_ROWS = 10;
 
 	public static void save(Object obj)
 	{

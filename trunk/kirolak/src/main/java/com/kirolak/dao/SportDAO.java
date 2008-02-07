@@ -14,6 +14,13 @@ public class SportDAO extends KirolakDAO
 	{
 		return KirolakDAO.get(Sport.class, id);
 	}
+	
+	public static Sport getBySeoName(String seoName)
+	{
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Sport items = (Sport)session.createQuery("from Sport s where s.seoName = :seoName").setParameter("seoName", seoName).uniqueResult();
+		return items;
+	}
 
 	public static List<KirolakObject> list()
 	{
