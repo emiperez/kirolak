@@ -6,13 +6,13 @@
 <%@ attribute name="list" required="true" type="java.util.ArrayList" %>
 
 <div class="widget_title">
-	<fmt:message key="sports"/>
+	<fmt:message key="compeitions"/>
 </div>
-<div id="sports" class="widget">
+<div id="competitions" class="widget">
 	<ul>
-	<c:forEach items="${list}" var="sport">
+	<c:forEach items="${list}" var="competition">
 		<li>
-			<k:sportLink sport="${sport}" />
+			<k:competitionLink competition="${competition}" />
 		</li>
 	</c:forEach>
 	</ul>

@@ -38,7 +38,7 @@ public class MatchDAO extends KirolakDAO
 	{
 		// TODO it should be done using Hibernate's Lazy Load
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		List<Match> items = session.createQuery("from Match m  where m.round.group.stage.competition.sport = :sport order by m.updated desc").setParameter("sport", sport).setMaxResults(MAX_ROWS).list();
+		List<Match> items = session.createQuery("from Match m  where m.round.compositeId.group.stage.competition.sport = :sport and  m.matchStatus = 30 order by m.updated desc").setParameter("sport", sport).setMaxResults(MAX_ROWS).list();
 		return items;
 	}
 }

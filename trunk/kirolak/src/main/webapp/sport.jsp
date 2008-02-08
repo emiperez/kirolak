@@ -6,7 +6,11 @@
 
 <jsp:useBean id="results" class="com.kirolak.jsp.beans.resultsBean"/>
 <jsp:useBean id="sps" class="com.kirolak.jsp.beans.sportsBean"/>
+
+
 <c:set var="sports" value="${sps.sports}" />
+
+<jsp:setProperty name="results" property="sport" param="id"/> 
 <c:set var="lastResults" value="${results.lastResults}"/>
 
 <div class="nav_bar"><k:homeLink/></div>
