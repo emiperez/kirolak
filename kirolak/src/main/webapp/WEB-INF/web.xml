@@ -68,7 +68,7 @@
 		<jsp-property-group>
 			<display-name>kirolak</display-name>
 			<url-pattern>/index.jsp</url-pattern>
-			<url-pattern>/sports.jsp</url-pattern>
+			<url-pattern>/sport.jsp</url-pattern>
 			<el-ignored>false</el-ignored>
 			<scripting-invalid>false</scripting-invalid>
 			<is-xml>false</is-xml>

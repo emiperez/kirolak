@@ -11,8 +11,15 @@
 KirolaK
 </title>
 <link href="css/kirolak.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+	function widthChange()
+	{
+		document.getElementById("content").style.width = (document.body.offsetWidth - 330) + "px";
+	}
+</script>
+
 </head>
-<body  bgcolor="#FFFFFF">
+<body onResize="widthChange()" onLoad="widthChange()">
 <div id="header">
 <div id="banner"></div>
 </div>
