@@ -4,27 +4,24 @@
 <%@ attribute name="match" required="true" type="com.kirolak.Match" %>
 
 
-			<li><k:sportLink sport="${match.round.group.stage.competition.sport}"/></li>
+			<li><k:sportLink sport="${match.round.group.stage.competition.sport}"/><br/>
 
-<table class="match">
-<tr>
-<td class="match_day_time">
-	<fmt:formatDate value="${match.dayTime}" type="both" dateStyle="full" timeStyle="short"/>
-</td>
-<td class="match_team">
+<span class="match_day_time">
+	<fmt:formatDate value="${match.dayTime}" type="both" dateStyle="medium" timeStyle="short"/>
+</span>
+<span class="match_team">
 	<k:teamLink team="${match.homeTeam}"></k:teamLink>
-</td>
-<td class="score">
+</span>
+<span class="score">
 	${match.homeTeamScore}
-</td>
-<td class="score_separator">
+</span>
+<span class="score_separator">
 	-
-</td>
-<td class="score">
+</span>
+<span class="score">
 	${match.visitingTeamScore}
-</td>
-<td class="match_team">
+</span>
+<span class="match_team">
 	<k:teamLink team="${match.visitingTeam}"></k:teamLink>
-</td>
-</tr>
-</table>
+</span>
+</li>
