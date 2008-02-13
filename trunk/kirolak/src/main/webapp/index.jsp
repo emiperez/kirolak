@@ -9,12 +9,15 @@
 <c:set var="sports" value="${sps.sports}" />
 <c:set var="lastResults" value="${results.lastResults}"/>
 
-<div class="nav_bar"><k:homeLink/></div>
+<div id="nav_bar"><k:homeLink/></div>
+<div id="content">
 <k:results list="${lastResults}"></k:results>
+</div>
+<div id="widgets">
 <c:choose>
 <c:when test="${fn:length(sports) > 1}">
 	<k:sports list="${sports}"/>
 </c:when>
 </c:choose>
-
+</div>
 
