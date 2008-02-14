@@ -66,6 +66,7 @@
 	<jsp-config>
 		
 		<jsp-property-group>
+			<page-encoding>utf-8</page-encoding>
 			<display-name>kirolak</display-name>
 			<url-pattern>/index.jsp</url-pattern>
 			<url-pattern>/sport.jsp</url-pattern>
