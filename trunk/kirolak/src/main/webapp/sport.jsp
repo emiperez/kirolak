@@ -5,27 +5,18 @@
 
 
 <jsp:useBean id="results" class="com.kirolak.jsp.beans.resultsBean"/>
-<jsp:useBean id="sps" class="com.kirolak.jsp.beans.sportsBean"/>
-
-
-<c:set var="sports" value="${sps.sports}" />
 
 <jsp:setProperty name="results" property="sportSeoName" param="id"/> 
-<c:set var="lastResults" value="${results.lastResults}"/>
 
 <c:set var="title">${results.sport.name}</c:set>
+<c:set var="lastResults" value="${results.lastResults}"/>
+
 <k:head title="${title}"></k:head>
 
 
 <div id="nav_bar"><k:homeLink/> &gt; <k:sportNavigationBar sport="${results.sport}"></k:sportNavigationBar> </div>
 
-<div id="widgets">
-<c:choose>
-<c:when test="${fn:length(sports) > 1}">
-	<k:sports list="${sports}"/>
-</c:when>
-</c:choose>
-</div>
+<k:widgets node="${results.sport}" />
 
 <div id="content">
 <k:results list="${lastResults}"></k:results>
