@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="k" %>
 
-<%@ page errorPage="/includes/errorpage.jsp" %>
 <%@ page session="false" %>
 <fmt:setBundle basename="messages"/>
 

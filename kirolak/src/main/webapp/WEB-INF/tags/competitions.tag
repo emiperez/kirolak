@@ -6,7 +6,7 @@
 <%@ attribute name="list" required="true" type="java.util.ArrayList" %>
 
 <div class="widget_title">
-	<fmt:message key="compeitions"/>
+	<fmt:message key="competitions"/>
 </div>
 <div id="competitions" class="widget">
 	<ul>
