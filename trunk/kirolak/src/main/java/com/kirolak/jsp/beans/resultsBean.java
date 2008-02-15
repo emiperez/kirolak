@@ -2,13 +2,17 @@ package com.kirolak.jsp.beans;
 
 import java.util.List;
 
+import com.kirolak.Competition;
 import com.kirolak.KirolakObject;
 import com.kirolak.Match;
 import com.kirolak.Sport;
+import com.kirolak.Stage;
+import com.kirolak.dao.CompetitionDAO;
 import com.kirolak.dao.MatchDAO;
 import com.kirolak.dao.SportDAO;
+import com.kirolak.dao.StageDAO;
 
-public class resultsBean {
+public class resultsBean extends kirolakBean {
  
 	private String sport_seoName = null;
 	private KirolakObject item = null;
@@ -25,20 +29,24 @@ public class resultsBean {
 
 	public List<Match> getLastResults()
 	{
-		if(this.sport_seoName != null)
+		if(this.item != null)
 		{
-			if (this.item == null || this.item.getClass() != Sport.class)
-			{
-				this.item = SportDAO.getBySeoName(this.sport_seoName);
-			}
-			return MatchDAO.listLastUpdated((Sport)this.item);
+			return MatchDAO.listLastUpdated(this.item);
 		}
-		return MatchDAO.listLastUpdated();
+		else
+		{
+			return MatchDAO.listLastUpdated();
+		}
 	}
 	
 	public void setSport(Sport sport)
 	{
 		this.item = sport;
+	}
+	
+	public void setSport(String seoName)
+	{
+		this.item = SportDAO.getBySeoName(this.sport_seoName);
 	}
 	
 	public KirolakObject getSport()
@@ -48,6 +56,24 @@ public class resultsBean {
 			this.item = SportDAO.getBySeoName(this.sport_seoName);
 		}
 		return (Sport)this.item;
-	}	
+	}
+	
+	public KirolakObject getCompetition()
+	{
+		if (this.item == null || this.item.getClass() != Competition.class)
+		{
+			this.item = CompetitionDAO.get(this.id);
+		}
+		return (Competition)this.item;
+	}
+	
+	public KirolakObject getStage()
+	{
+		if (this.item == null || this.item.getClass() != Stage.class)
+		{
+			this.item = StageDAO.get(this.id);
+		}
+		return (Stage)this.item;
+	}
 	
 }
