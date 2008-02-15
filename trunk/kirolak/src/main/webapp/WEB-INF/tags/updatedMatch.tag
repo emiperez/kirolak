@@ -2,6 +2,6 @@
 <%@ attribute name="match" required="true" type="com.kirolak.Match" %>
 
 <li>
-	<k:sportLink sport="${match.round.group.stage.competition.sport}"/><br/>
+	<k:roundNavigationBar round="${match.round}" /><br/>
 	<k:match match="${match}"/>
 </li>

@@ -8,14 +8,24 @@
 <jsp:useBean id="sps" class="com.kirolak.jsp.beans.sportsBean"/>
 <c:set var="sports" value="${sps.sports}" />
 <c:set var="lastResults" value="${results.lastResults}"/>
+
 <c:set var="title"><fmt:message key="sports"></fmt:message></c:set>
 <k:head title="${title}"></k:head>
+
 <div id="nav_bar"><k:homeLink/></div>
 <div id="widgets">
 <c:choose>
-<c:when test="${fn:length(sports) > 1}">
-	<k:sports list="${sports}"/>
-</c:when>
+	<c:when test="${fn:length(sports) == 1}">
+		<jsp:useBean id="comps" class="com.kirolak.jsp.beans.competitionsBean"/>
+		<jsp:setProperty name="comps" property="sport" value="${sports[0]}"/> 
+		<c:set var="competitions" value="${comps.competitions}" />
+		<c:if test="${fn:length(competitions) > 0}">
+			<k:competitions list="${competitions}"/>
+		</c:if>	
+	</c:when>
+	<c:when test="${fn:length(sports) > 1}">
+		<k:sports list="${sports}"/>
+	</c:when>
 </c:choose>
 </div>
 <div id="content">

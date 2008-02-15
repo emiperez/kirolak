@@ -10,10 +10,14 @@
 
 <c:set var="sports" value="${sps.sports}" />
 
-<jsp:setProperty name="results" property="sport" param="id"/> 
+<jsp:setProperty name="results" property="sportSeoName" param="id"/> 
 <c:set var="lastResults" value="${results.lastResults}"/>
 
-<div id="nav_bar"><k:homeLink/></div>
+<c:set var="title">${results.sport.name}</c:set>
+<k:head title="${title}"></k:head>
+
+
+<div id="nav_bar"><k:homeLink/> &gt; <k:sportNavigationBar sport="${results.sport}"></k:sportNavigationBar> </div>
 
 <div id="widgets">
 <c:choose>
