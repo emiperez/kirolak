@@ -61,7 +61,6 @@ body {
 	font-size: inherit;
 }
 
-
 #widgets {
 	float: right;
 	width: 305px;
@@ -92,7 +91,18 @@ body {
 }
 
 #standings{
+	width: 100%;
 	display: table;
+}
+
+.standing_group{
+	background-color: #527252;
+	width: auto;
+	color: white;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding-left: 5px;
 }
 
 #standings_headers{
@@ -104,16 +114,9 @@ body {
 	padding-left: 5px;
 }
 
-#standing_team_header{
-	display: table-cell;
-	}
-	
-#standing_games_header{
-	display: table-cell;
-	}
-	
-#standing_points_header{
-	display: table-cell;
+.numeric_column_header{
+	text-align: center;
+	width: 3.5%;
 	}
 	
 #standings_row{
@@ -124,16 +127,14 @@ body {
 	padding-left: 5px;
 }
 
-#standing_team{
-	display: table-cell;
+.numeric_column{
+	text-align: right;
 	}
-	
-#standing_games{
-	display: table-cell;
-	}
-	
-#standing_points{
-	display: table-cell;
+
+.standing_points{
+	text-align: right;
+	background-color: #995d39;
+	color: white;
 	}
 
 #footer{
