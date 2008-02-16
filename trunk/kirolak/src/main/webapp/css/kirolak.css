@@ -91,6 +91,51 @@ body {
 	margin: 0px;
 }
 
+#standings{
+	display: table;
+}
+
+#standings_headers{
+	background-color: #527252;
+	width: auto;
+	color: white;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding-left: 5px;
+}
+
+#standing_team_header{
+	display: table-cell;
+	}
+	
+#standing_games_header{
+	display: table-cell;
+	}
+	
+#standing_points_header{
+	display: table-cell;
+	}
+	
+#standings_row{
+	background-color: white;
+	width: auto;
+	color: #995d39;
+	font-weight: bold;
+	padding-left: 5px;
+}
+
+#standing_team{
+	display: table-cell;
+	}
+	
+#standing_games{
+	display: table-cell;
+	}
+	
+#standing_points{
+	display: table-cell;
+	}
+
 #footer{
 	clear: left;
 	text-transform: capitalize;

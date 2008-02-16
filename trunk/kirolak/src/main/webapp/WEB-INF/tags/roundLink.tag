@@ -4,8 +4,7 @@
 <jsp:element name="a">	
 	<jsp:attribute name="href">
 		<c:url value="round.jsp">
-			<c:param name="group" value="${round.group.id}"/>
-			<c:param name="round" value="${round.number}"/>
+			<c:param name="round" value="${round.group.id}-${round.number}"/>
 		</c:url>
 	</jsp:attribute>
 	<jsp:body>
