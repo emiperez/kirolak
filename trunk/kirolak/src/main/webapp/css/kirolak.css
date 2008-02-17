@@ -33,24 +33,31 @@ body {
 	float: left;
 	padding: 5px;
 	width: 700px;
-	list-style: outside;
 	font-size: inherit;
 }
 
 #content h1{
-	padding-top: 2px;
-	margin-top: 2px;
-	color: #995d39;
-	font-size: 14px;
+	background-color: #527252;
+	width: auto;
+	color: white;
+	text-transform: uppercase;
 	font-weight: bold;
+	padding: 1px;
+	margin: 1px;
+	font-size: 14px;
 }
-#content ul{
-		width: 100%;
-		margin: 0px;
-		padding: 0px;
-	}
-#content li{
-	width: inherit;
+
+#results {
+	border-width: thin;
+	width: auto;
+	background-color: white;
+	border-color: gray;
+	border-style: solid;
+	padding: 1px;
+}
+
+.update {
+	width: auto;
 	list-style: none;
 	margin: 2px;
 	padding: 2px;
@@ -88,6 +95,44 @@ body {
 	list-style: none; 
 	padding: 5px;
 	margin: 0px;
+}
+
+.match_day_time {
+	padding: 0px;
+}
+.match {
+	border-collapse: collapse;
+	font-weight: bold;
+}
+
+.match_day_time {
+	width: 200px;
+}
+
+.home_team {
+	text-align: right;
+	width: 200px;
+}
+
+.score_home {
+	background-color: #995d39;
+	text-align: right;
+	color: white;
+	width: 20px;
+	margin: 0px;
+}
+
+.score_separator {
+	color: white;
+	background-color: #995d39;
+	margin: 0px;
+}
+
+.score_visiting {
+	color: white;
+	background-color: #995d39;
+	text-align: left;
+	width: 20px;
 }
 
 #standings{

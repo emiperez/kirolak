@@ -270,39 +270,39 @@ BEGIN
 			if(hts > vts) then			
 				update standings 
 					set games = games +1, games_home = games_home + 1, won_games = won_games + 1, 
-						score_total = score_total + hts, score_home = score_home + hts, 
+						won_home = won_home + 1, score_total = score_total + hts, score_home = score_home + hts, 
 						score_against_total = score_against_total + vts, score_against_home = score_against_home + vts,
 						team_points = team_points + s_points_win, home_points = home_points + s_points_win
 					where team_id = ht and group_id = p_group_id and round_id = p_round_id;
 		 		update standings 
 					set games = games +1, games_visiting = games_visiting + 1, lost_games = lost_games + 1, 
-						score_total = score_total + vts, score_visiting= score_visiting + vts, 
+						lost_visiting = lost_visiting + 1, score_total = score_total + vts, score_visiting= score_visiting + vts, 
 						score_against_total = score_against_total + hts, score_against_visiting = score_against_visiting + hts,
 						team_points = team_points + s_points_loose, visiting_points = visiting_points + s_points_loose
 					where team_id = vt and group_id = p_group_id and round_id = p_round_id;
 			else if (hts < vts) then			
 				update standings 
 					set games = games +1, games_home = games_home + 1, lost_games = lost_games + 1, 
-						score_total = score_total + hts, score_home = score_home + hts, 
+						lost_home = lost_home +1, score_total = score_total + hts, score_home = score_home + hts, 
 						score_against_total = score_against_total + vts, score_against_home = score_against_home + vts,
 						team_points = team_points + s_points_loose, home_points = home_points + s_points_loose
 					where team_id = ht and group_id = p_group_id and round_id = p_round_id;
 		 		update standings 
 					set games = games +1, games_visiting = games_visiting + 1, won_games = won_games + 1, 
-						score_total = score_total + vts, score_visiting= score_visiting + vts, 
+						won_visiting = won_visiting +1, score_total = score_total + vts, score_visiting= score_visiting + vts, 
 						score_against_total = score_against_total + hts, score_against_visiting = score_against_visiting + hts,
 						team_points = team_points + s_points_win, visiting_points = visiting_points + s_points_win
 					where team_id = vt and group_id = p_group_id and round_id = p_round_id;
 				else
 				update standings 
 					set games = games +1, games_home = games_home + 1, drawn_games = drawn_games + 1, 
-						score_total = score_total + hts, score_home = score_home + hts, 
+						drawn_home = drawn_home +1, score_total = score_total + hts, score_home = score_home + hts, 
 						score_against_total = score_against_total + vts, score_against_home = score_against_home + vts,
 						team_points = team_points + s_points_draw, home_points = home_points + s_points_draw
 					where team_id = ht and group_id = p_group_id and round_id = p_round_id;
 		 		update standings 
 					set games = games +1, games_visiting = games_visiting + 1, drawn_games = drawn_games + 1, 
-						score_total = score_total + vts, score_visiting= score_visiting + vts, 
+						drawn_visiting = drawn_visiting +1, score_total = score_total + vts, score_visiting= score_visiting + vts, 
 						score_against_total = score_against_total + hts, score_against_visiting = score_against_visiting + hts,
 						team_points = team_points + s_points_draw, visiting_points = visiting_points + s_points_draw
 					where team_id = vt and group_id = p_group_id and round_id = p_round_id;

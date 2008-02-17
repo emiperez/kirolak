@@ -20,13 +20,15 @@
 
 <div id="content">
 <div id="results" class="content">
-<ul>
-<li>
+<table>
+<tr>
+<td>
 <c:forEach items="${roundResults}" var="match">
 	<k:match match="${match}" />
 </c:forEach>
-</li>
-</ul>
+</td>
+</tr>
+</table>
 </div>
 <k:standings round="${results.round}" />
 </div>
