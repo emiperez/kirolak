@@ -1,20 +1,12 @@
 package com.kirolak.jsf.beans;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.faces.event.ActionEvent;
-import javax.faces.model.SelectItem;
 
 import com.kirolak.Competition;
 import com.kirolak.KirolakObject;
-import com.kirolak.Sport;
 import com.kirolak.Stage;
-import com.kirolak.Team;
 import com.kirolak.dao.CompetitionDAO;
-import com.kirolak.dao.SportDAO;
 import com.kirolak.dao.StageDAO;
-import com.kirolak.dao.TeamDAO;
 import com.kirolak.util.FacesUtil;
 import com.kirolak.util.Messages;
 

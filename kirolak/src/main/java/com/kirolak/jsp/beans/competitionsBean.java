@@ -2,9 +2,9 @@ package com.kirolak.jsp.beans;
 
 import java.util.List;
 
-import com.kirolak.*;
+import com.kirolak.KirolakObject;
+import com.kirolak.Sport;
 import com.kirolak.dao.CompetitionDAO;
-import com.kirolak.dao.SportDAO;
 
 public class competitionsBean {
 	

@@ -2,9 +2,8 @@ package com.kirolak.jsp.beans;
 
 import java.util.List;
 
-import com.kirolak.*;
-import com.kirolak.dao.CompetitionDAO;
-import com.kirolak.dao.SportDAO;
+import com.kirolak.Competition;
+import com.kirolak.KirolakObject;
 import com.kirolak.dao.StageDAO;
 
 public class stagesBean {

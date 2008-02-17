@@ -4,21 +4,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
-
-import org.hibernate.Session;
 
 import com.kirolak.Competition;
 import com.kirolak.KirolakObject;
-import com.kirolak.SelectedTeam;
 import com.kirolak.Sport;
 import com.kirolak.Team;
 import com.kirolak.dao.CompetitionDAO;
 import com.kirolak.dao.SportDAO;
 import com.kirolak.dao.TeamDAO;
 import com.kirolak.util.FacesUtil;
-import com.kirolak.util.HibernateUtil;
 import com.kirolak.util.Messages;
 
 public class CompetitionBean extends KirolakSession

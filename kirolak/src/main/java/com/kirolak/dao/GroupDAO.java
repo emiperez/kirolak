@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import com.kirolak.Competition;
 import com.kirolak.Group;
 import com.kirolak.KirolakObject;
 import com.kirolak.Stage;

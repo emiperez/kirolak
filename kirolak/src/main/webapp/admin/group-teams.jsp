@@ -18,7 +18,6 @@
 	<h:form id="group-teams">
 	
 	<div class="navigation_bar">
-		<div class="navigation_bar">
 		<h:commandLink id="sports_link" action="#{sport.load}" value="#{msg.sports}" immediate="true" />
 		&gt; 
 		<h:commandLink id="competitions_link" action="#{competition.load}"	immediate="true">			
