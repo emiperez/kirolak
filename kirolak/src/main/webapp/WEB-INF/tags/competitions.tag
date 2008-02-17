@@ -5,10 +5,10 @@
 
 <%@ attribute name="list" required="true" type="java.util.ArrayList" %>
 
-<div class="widget_title">
-	<fmt:message key="competitions"/>
-</div>
 <div id="competitions" class="widget">
+	<div class="widget_title">
+		<fmt:message key="competitions"/>
+	</div>
 	<ul>
 	<c:forEach items="${list}" var="competition">
 		<li>

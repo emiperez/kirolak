@@ -4,10 +4,8 @@
 <%@ attribute name="list" required="true" type="java.util.ArrayList" %>
 
 <div id="results" class="content">
-	<h1><fmt:message key="last_updates"/></h1>	
-	<ul>
+	<h1><fmt:message key="last_updates"/></h1>
 	<c:forEach items="${list}" var="match">
 			<k:updatedMatch match="${match}" />
 	</c:forEach>
-	</ul>
 </div>
