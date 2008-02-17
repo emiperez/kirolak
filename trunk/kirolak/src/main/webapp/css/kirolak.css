@@ -26,7 +26,7 @@ body {
 	background-color: white;
 	clear: left;
 	width: 100%;
-	left-padding: 2px;
+	padding-left: 2px;
 }
 
 #content{
@@ -97,21 +97,18 @@ body {
 	margin: 0px;
 }
 
-.match_day_time {
-	padding: 0px;
-}
 .match {
 	border-collapse: collapse;
 	font-weight: bold;
 }
 
 .match_day_time {
-	width: 200px;
+	width: 300px;
 }
 
 .home_team {
 	text-align: right;
-	width: 200px;
+	width: 150px;
 }
 
 .score_home {
