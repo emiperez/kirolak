@@ -6,12 +6,7 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 
-<script type="text/javascript">
-	function widthChange()
-	{
-		document.getElementById("content").style.width = (document.body.offsetWidth - 330) + "px";
-	}
-</script>
+<script type="text/javascript" src="js/kirolak.js"></script>
 
 </head>
 <body onResize="widthChange()" onLoad="widthChange()">

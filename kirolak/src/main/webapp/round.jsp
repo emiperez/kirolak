@@ -23,6 +23,7 @@
 <table>
 <tr>
 <td>
+<k:roundNavigator round="${results.round}"></k:roundNavigator>
 <c:forEach items="${roundResults}" var="match">
 	<k:match match="${match}" />
 </c:forEach>

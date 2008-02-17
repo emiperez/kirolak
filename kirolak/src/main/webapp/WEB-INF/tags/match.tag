@@ -5,7 +5,7 @@
 <table class="match">
 <tr>
 <td class="match_day_time">
-	<fmt:formatDate value="${match.dayTime}" type="both" dateStyle="long" timeStyle="short"/>
+	<fmt:formatDate value="${match.dayTime}" type="both" dateStyle="full" timeStyle="short"/>
 </td>
 <td class="home_team">
 	<k:teamLink team="${match.homeTeam}"></k:teamLink>
