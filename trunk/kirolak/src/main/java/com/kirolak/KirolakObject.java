@@ -1,6 +1,5 @@
 package com.kirolak;
 
-import java.lang.reflect.Constructor;
 
 public abstract class KirolakObject implements java.io.Serializable
 {

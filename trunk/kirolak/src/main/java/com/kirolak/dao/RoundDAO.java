@@ -3,8 +3,6 @@ package com.kirolak.dao;
 import java.util.Iterator;
 import java.util.List;
 
-import org.hibernate.Hibernate;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 
 import com.kirolak.Group;

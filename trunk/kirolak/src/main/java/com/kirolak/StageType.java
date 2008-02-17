@@ -1,10 +1,5 @@
 package com.kirolak;
 
-import java.util.List;
-
-import org.hibernate.Session;
-
-import com.kirolak.util.HibernateUtil;
 
 // Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1
 

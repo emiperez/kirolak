@@ -3,8 +3,6 @@ package com.kirolak.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.hibernate.Session;
 
 import com.kirolak.Competition;
@@ -16,8 +14,6 @@ import com.kirolak.util.HibernateUtil;
 
 public class TeamDAO extends KirolakDAO
 {
-
-	private static Log log = LogFactory.getLog(TeamDAO.class);
 
 	public static List<KirolakObject> listBySport(Sport sport)
 	{

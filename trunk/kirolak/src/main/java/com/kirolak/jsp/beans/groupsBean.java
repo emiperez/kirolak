@@ -2,10 +2,9 @@ package com.kirolak.jsp.beans;
 
 import java.util.List;
 
-import com.kirolak.*;
-import com.kirolak.dao.CompetitionDAO;
+import com.kirolak.KirolakObject;
+import com.kirolak.Stage;
 import com.kirolak.dao.GroupDAO;
-import com.kirolak.dao.SportDAO;
 
 public class groupsBean {
 	

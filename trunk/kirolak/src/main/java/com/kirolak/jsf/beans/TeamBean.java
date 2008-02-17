@@ -2,8 +2,6 @@ package com.kirolak.jsf.beans;
 
 import java.util.List;
 
-import javax.faces.event.ActionEvent;
-
 import com.kirolak.KirolakObject;
 import com.kirolak.Sport;
 import com.kirolak.Team;

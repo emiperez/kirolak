@@ -5,9 +5,7 @@ import java.util.List;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 
-import com.kirolak.Group;
 import com.kirolak.KirolakObject;
-import com.kirolak.Match;
 import com.kirolak.Round;
 import com.kirolak.Standing;
 import com.kirolak.util.HibernateUtil;
