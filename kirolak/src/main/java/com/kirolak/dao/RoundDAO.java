@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Hibernate;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 
 import com.kirolak.Group;
@@ -45,5 +46,13 @@ public class RoundDAO extends KirolakDAO
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		List<KirolakObject> items = session.createQuery("from Round r where r.compositeId.group = :group").setParameter("group", group).list();
 		return items;
+	}
+	
+	public static Round currentRound(Group group)
+	{
+		// Select the last Round where there is at least one match finished
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Round round = (Round)session.createSQLQuery("{call get_current_round(:group_id)}").addEntity(Round.class).setParameter("group_id", group.getId()).uniqueResult();		
+		return round;
 	}
 }

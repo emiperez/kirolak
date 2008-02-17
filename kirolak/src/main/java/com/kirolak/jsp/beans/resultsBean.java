@@ -19,7 +19,7 @@ import com.kirolak.dao.SportDAO;
 import com.kirolak.dao.StageDAO;
 import com.kirolak.dao.StandingDAO;
 
-public class resultsBean extends kirolakBean {
+public class resultsBean extends KirolakBean {
  
 	private String sport_seoName = null;
 	private KirolakObject item = null;

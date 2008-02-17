@@ -9,9 +9,10 @@ import com.kirolak.dao.RoundDAO;
 import com.kirolak.dao.SportDAO;
 import com.kirolak.dao.StageDAO;
 
-public class roundsBean {
+public class roundsBean extends KirolakBean {
 	
 		private Group group;
+		private Round currentRound;
 
 		public roundsBean()
 		{
@@ -24,11 +25,23 @@ public class roundsBean {
 		}
 
 		public Group getGroup() {
+			if(this.group == null)
+			{
+				this.group = (Group)GroupDAO.get(id);
+			}
 			return this.group;
 		}
 
 		public void setGroup(Group group) {
 			this.group = group;
 		}
-
+		
+		public Round getCurrentRound()
+		{
+			if(this.currentRound == null)
+			{
+				this.currentRound = RoundDAO.currentRound(group);
+			}
+			return this.currentRound;			
+		}
 }

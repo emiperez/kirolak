@@ -1,6 +1,6 @@
 package com.kirolak.jsp.beans;
 
-public class kirolakBean {
+public class KirolakBean {
 	Integer id;
 
 	public int getId() {
