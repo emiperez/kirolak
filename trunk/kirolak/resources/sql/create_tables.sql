@@ -322,6 +322,9 @@ BEGIN
 	declare current_round_id smallint;
 	set current_round_id = p_round_id;
 	select MAX(round_id) into max_round_id from matches where group_id = p_group_id and match_status = 30;
+	if(max_round_id is null) then	
+		set max_round_id = p_round_id;
+	end if;
 	WHILE (current_round_id <= max_round_id) DO
 		call calculate_round_standings(p_group_id, current_round_id);
 		select MIN(round_id) into current_round_id from matches where group_id = p_group_id and round_id > current_round_id and match_status = 30;
@@ -339,6 +342,20 @@ BEGIN
 	else		
 		select MIN(round_id) into min_round_id from matches where group_id = p_group_id;
 		select * from standings inner join teams on team_id = teams.id where group_id = p_group_id and round_id = min_round_id order by teams.name;
+	end if;
+END$$
+
+drop procedure if exists get_current_round$$
+create procedure get_current_round(p_group_id int)
+BEGIN
+	declare max_round_id smallint default 0;
+	declare min_round_id smallint default 1;
+	select MAX(round_id) into max_round_id from matches where group_id = p_group_id and match_status = 30;
+	if(max_round_id is not null) then	
+		select * from rounds where group_id = p_group_id and round_id = max_round_id;
+	else		
+		select MIN(round_id) into min_round_id from matches where group_id = p_group_id;
+		select * from rounds where group_id = p_group_id and round_id = min_round_id;
 	end if;
 END$$
 

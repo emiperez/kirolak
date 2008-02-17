@@ -6,6 +6,7 @@
 <jsp:useBean id="roundsBean" class="com.kirolak.jsp.beans.roundsBean"/>
 <jsp:setProperty property="group" name="roundsBean" value="${round.group}" />
 <c:set var="rounds" value="${roundsBean.rounds}"/>
+
 <div class="round_navigator">
 <form name="roundSelector">
 <select name="round_select" class="roundSelect" onchange="changeRound(${round.group.id},this.form.round_select)">

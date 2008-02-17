@@ -1,6 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ attribute name="title" required="true"%>
 <head>
-<c:set var="title" value="KirolaK"></c:set>
+<fmt:setLocale scope="request" value="en-US" />
 <title>${title} - KirolaK</title>
 <link href="css/kirolak.css" rel="stylesheet" type="text/css"/>
 <link rel="shortcut icon" href="favicon.ico" />
