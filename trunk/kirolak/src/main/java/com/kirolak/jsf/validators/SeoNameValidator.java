@@ -1,13 +1,13 @@
 package com.kirolak.jsf.validators;
 
-import com.kirolak.util.KirolakValidator;
-import com.sun.faces.util.MessageFactory;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
+
+import com.kirolak.util.KirolakValidator;
+import com.kirolak.util.Messages;
 
 public class SeoNameValidator implements Validator
 {
@@ -17,7 +17,8 @@ public class SeoNameValidator implements Validator
 
 		if (!KirolakValidator.validateSeoName((String) value))
 		{
-			FacesMessage message = MessageFactory.getMessage(context, "seo_name_error", FacesMessage.SEVERITY_ERROR, new Object[] {});
+			FacesMessage message = Messages.getMessage("messages", "seo_name_error");
+			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(message);
 		}
 	}
