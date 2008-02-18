@@ -3,7 +3,7 @@
 <jsp:element name="a">	
 	<jsp:attribute name="href">
 		<c:url value="sport.jsp">
-			<c:param name="id" value="${sport.seoName}"></c:param>
+			<c:param name="sport" value="${sport.seoName}"></c:param>
 		</c:url>
 	</jsp:attribute>
 	<jsp:body><c:out value="${sport.name}"/></jsp:body>

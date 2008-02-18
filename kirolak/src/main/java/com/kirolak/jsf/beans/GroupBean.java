@@ -128,6 +128,7 @@ public class GroupBean extends KirolakSession
 		{
 			group.getTeams().add(((Team) iterator.next()));
 		}
+		this.items = null;
 		return "groups";
 	}
 

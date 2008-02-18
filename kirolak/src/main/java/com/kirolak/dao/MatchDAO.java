@@ -11,6 +11,7 @@ import com.kirolak.Match;
 import com.kirolak.Round;
 import com.kirolak.Sport;
 import com.kirolak.Stage;
+import com.kirolak.Team;
 import com.kirolak.util.HibernateUtil;
 
 public class MatchDAO extends KirolakDAO
@@ -25,6 +26,14 @@ public class MatchDAO extends KirolakDAO
 		// TODO it should be done using Hibernate's Lazy Load
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		List<Match> items = session.createQuery("from Match m where m.round = :round").setParameter("round", round).list();
+		return items;
+	}
+	
+	public static List<Match> listByTeam(Team team, short page)
+	{
+		// TODO it should be done using Hibernate's Lazy Load
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		List<Match> items = session.createQuery("from Match m where (m.homeTeam = :team or m.visitingTeam = :team) and matchStatus=30 order by dayTime desc limit " + page + ", " + MAX_ROWS).setParameter("team", team).list();
 		return items;
 	}
 	

@@ -11,6 +11,7 @@ import com.kirolak.RoundId;
 import com.kirolak.Sport;
 import com.kirolak.Stage;
 import com.kirolak.Standing;
+import com.kirolak.Team;
 import com.kirolak.dao.CompetitionDAO;
 import com.kirolak.dao.GroupDAO;
 import com.kirolak.dao.MatchDAO;
@@ -18,12 +19,14 @@ import com.kirolak.dao.RoundDAO;
 import com.kirolak.dao.SportDAO;
 import com.kirolak.dao.StageDAO;
 import com.kirolak.dao.StandingDAO;
+import com.kirolak.dao.TeamDAO;
 
 public class resultsBean extends KirolakBean {
  
 	private String sport_seoName = null;
 	private KirolakObject item = null;
 	private String roundId = null;
+	private short page = 0;
 	
 	public resultsBean()
 	{
@@ -39,7 +42,14 @@ public class resultsBean extends KirolakBean {
 	{
 		if(this.item != null)
 		{
-			return MatchDAO.listLastUpdated(this.item);
+			if(this.item.getClass().equals(Team.class))
+			{
+				return MatchDAO.listByTeam((Team)item, this.page);
+			}
+			else
+			{
+				return MatchDAO.listLastUpdated(this.item);
+			}
 		}
 		else
 		{
@@ -64,6 +74,15 @@ public class resultsBean extends KirolakBean {
 			this.item = SportDAO.getBySeoName(this.sport_seoName);
 		}
 		return (Sport)this.item;
+	}
+	
+	public KirolakObject getTeam()
+	{
+		if (this.item == null || this.item.getClass() != Team.class)
+		{
+			this.item = TeamDAO.get(getId());
+		}
+		return (Team)this.item;
 	}
 	
 	public KirolakObject getCompetition()

@@ -3,6 +3,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="k" %>
 
 <%@ attribute name="node" type="com.kirolak.KirolakObject" required="false" %>
+<jsp:useBean id="comps" class="com.kirolak.jsp.beans.competitionsBean"/>
 
 <c:set var="itemClass" value="${node.class.simpleName}"/>
 <div id="widgets">
@@ -30,11 +31,13 @@
 			<c:when test="${itemClass == 'Group'}">			
 				<c:set var="group" value="${node}"/>
 			</c:when>
+			<c:when test="${itemClass == 'Team'}">			
+				<c:set var="team" value="${node}"/>
+			</c:when>
 		</c:choose>
 	</c:if>
-	<c:if test="${!empty sport}">
-		<jsp:useBean id="comps" class="com.kirolak.jsp.beans.competitionsBean"/>		
-		<jsp:setProperty name="comps" property="sport" value="${sport}"/>
+	<c:if test="${!empty sport}">		
+		<jsp:setProperty name="comps" property="item" value="${sport}"/>
 		<c:set var="competitions" value="${comps.competitions}" />		
 		<c:if test="${fn:length(competitions) == 1}">
 			<c:set var="competition" value="${competitions[0]}"/>
@@ -60,6 +63,13 @@
 		<c:set var="groups" value="${grps.groups}" />		
 		<c:if test="${fn:length(groups) > 1}">
 			<k:groups list="${groups}" />
+		</c:if>
+	</c:if>
+	<c:if test="${!empty team}">
+		<jsp:setProperty name="comps" property="item" value="${team}"/>
+		<c:set var="competitions" value="${comps.competitions}" />		
+		<c:if test="${fn:length(competitions) > 0}">
+			<k:competitions list="${competitions}" />
 		</c:if>
 	</c:if>
 	

@@ -67,12 +67,13 @@
 		
 		<jsp-property-group>			
 			<display-name>kirolak</display-name>
-			<page-encoding>utf-8</page-encoding>
 			<url-pattern>/index.jsp</url-pattern>
 			<url-pattern>/sport.jsp</url-pattern>
 			<url-pattern>/competition.jsp</url-pattern>
 			<url-pattern>/stage.jsp</url-pattern>
 			<url-pattern>/round.jsp</url-pattern>
+			<url-pattern>/team.jsp</url-pattern>
+			<page-encoding>utf-8</page-encoding>
 			<el-ignored>false</el-ignored>
 			<scripting-invalid>false</scripting-invalid>
 			<is-xml>false</is-xml>

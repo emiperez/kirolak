@@ -6,7 +6,7 @@
 
 <jsp:useBean id="results" class="com.kirolak.jsp.beans.resultsBean"/>
 
-<jsp:setProperty name="results" property="sportSeoName" param="id"/> 
+<jsp:setProperty name="results" property="sportSeoName" param="sport"/> 
 
 <c:set var="title">${results.sport.name}</c:set>
 <c:set var="lastResults" value="${results.lastResults}"/>

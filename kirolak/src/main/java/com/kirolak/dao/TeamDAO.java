@@ -14,6 +14,11 @@ import com.kirolak.util.HibernateUtil;
 
 public class TeamDAO extends KirolakDAO
 {
+	
+	public static KirolakObject get(int id)
+	{
+		return KirolakDAO.get(Team.class, id);
+	}
 
 	public static List<KirolakObject> listBySport(Sport sport)
 	{
