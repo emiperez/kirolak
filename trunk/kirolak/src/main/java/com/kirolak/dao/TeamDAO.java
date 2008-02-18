@@ -24,7 +24,7 @@ public class TeamDAO extends KirolakDAO
 	{
 		// TODO it should be done using Hibernate's Lazy Load
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		List<KirolakObject> items = session.createQuery("from Team where sport_id = :id").setParameter("id", sport.getId()).list();
+		List<KirolakObject> items = session.createQuery("from Team where sport_id = :id order by name").setParameter("id", sport.getId()).list();
 		return items;
 	}
 
@@ -36,7 +36,7 @@ public class TeamDAO extends KirolakDAO
 		items = session.createSQLQuery("Select teams.* " +
 					" from teams, competition_teams " +
 					" where teams.id = competition_teams.team_id " +
-					" and competition_id = :competition_id").addEntity(Team.class).setInteger("competition_id", competition.getId()).list();
+					" and competition_id = :competition_id order by name").addEntity(Team.class).setInteger("competition_id", competition.getId()).list();
 		return items;
 	}
 	
@@ -47,7 +47,7 @@ public class TeamDAO extends KirolakDAO
 		items = session.createSQLQuery("Select teams.* " +
 					" from teams, group_teams " +
 					" where teams.id = group_teams.team_id " +
-					" and group_id = :group_id").addEntity(Team.class).setInteger("group_id", group.getId()).list();
+					" and group_id = :group_id order by name").addEntity(Team.class).setInteger("group_id", group.getId()).list();
 		return items;
 	}
 }
