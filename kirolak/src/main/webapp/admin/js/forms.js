@@ -8,3 +8,21 @@ function setFocus(field_focus, error_field) {
         element.focus();
     }
 }
+
+function checkAll( master )
+{ 
+	var checked = master.checked;
+	
+	var col = document.getElementsByTagName("INPUT");
+	for (var i=0;i<col.length;i++) {
+		col[i].checked= checked;
+	}
+ 
+ 
+	var jsfForm = master.form;
+	for( i=0; i< jsfForm.length; i++){
+		if( jsfForm[i].type == 'checkbox' && jsfForm[i].id != master.id  ){
+			jsfForm[i].checked = checked;
+		}
+	}	
+}

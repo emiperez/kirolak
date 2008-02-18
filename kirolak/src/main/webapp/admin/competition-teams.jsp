@@ -11,6 +11,7 @@
 			<f:param value="#{competition.parent.name}"/>
 		</h:outputFormat>
 	</title>	
+	<script type="text/javascript" src="js/forms.js"></script>	
 	<link href="css/forms.css" rel="stylesheet" type="text/css"/>
 	</head>
 
@@ -32,6 +33,8 @@
 			<f:param value="#{msg.teams}" />
 		</h:outputFormat>
 	</div>
+	
+	<div><input type="checkbox" onchange="checkAll(this);"/><h:outputLabel styleClass="label" value="#{msg.select_all}"/></div>
 	<h:selectManyCheckbox value="#{competition.selectedTeams}" layout="pageDirection">
 		<f:converter converterId="kirolak.teamConverter"/>
 		<f:selectItems value="#{competition.selectItemsTeams}" />
