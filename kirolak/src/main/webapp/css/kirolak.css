@@ -107,10 +107,12 @@ body {
 	margin-right: 2px;
 	margin-bottom: 1px;
 	width: 99.5%;
+	font-size: 12px;
 }
 
 .match_day_time {
-	width: 300px;
+	width: 280px;
+	text-align: right;
 }
 
 .home_team {

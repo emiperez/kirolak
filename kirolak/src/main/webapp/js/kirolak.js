@@ -1,7 +1,7 @@
 
 	function widthChange()
 	{
-		document.getElementById("content").style.width = (document.body.offsetWidth - 330) + "px";
+		document.getElementById("content").style.width = (document.body.offsetWidth - 350) + "px";
 	}
 
 	function changeRound(groupId,roundSelect)
