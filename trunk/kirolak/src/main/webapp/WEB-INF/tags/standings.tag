@@ -15,10 +15,10 @@
 			<fmt:message key="total"/>
 		</td>
 		<td class="standing_group" colspan="7">
-			<fmt:message key="home"/>
+			<fmt:message key="home_team"/>
 		</td>
 		<td class="standing_group" colspan="7">
-			<fmt:message key="visiting"/>
+			<fmt:message key="visiting_team"/>
 		</td>
 	</tr>
 	<tr id="standings_headers">
