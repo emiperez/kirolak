@@ -1,0 +1,70 @@
+
+
+input,textarea,select {
+	border: 1px solid #BBBBBB;
+	font-size: 10px;
+	background: #F0F8FF;
+	color: black;
+	font-family: verdana, arial, sans-serif;
+}
+
+input[type='submit'],input[type='button'] {
+	background: #4477AA;
+	color: white;
+	margin: 5px;
+	border-color: gray;
+}
+
+
+th {
+	background: silver;
+	font-size: 11px;
+	font-weight: bold;
+	color: white;
+	text-align: left;
+	font-family: verdana, arial, sans-serif;	
+	padding: 3px;
+}
+
+td {
+	padding-left: 5px;
+	font-size: 11px;
+	padding-right: 5px;
+	font-family: verdana, arial, sans-serif;
+}
+
+.row {
+	background: #EAF0FD;
+	color: black;
+	text-align: left;
+	font-family: verdana, arial, sans-serif;
+}
+
+.navigation_bar {
+	font-size: 11px;
+	font-family: verdana, arial, sans-serif;
+}
+
+.title {
+	padding: 5px;
+	font-size: 14px;
+	font-weight: bold;
+	color: black;
+	font-family: verdana, arial, sans-serif;
+}
+
+.label {
+	font-size: 11px;
+	font-weight: bold;
+	color: gray;
+	font-family: verdana, arial, sans-serif;
+}
+
+.error {
+	font-size: 11px;
+	margin-left: 5px;
+	float: left;
+	padding: 2px;
+	border: 1px solid red;
+	font-family: verdana, arial, sans-serif;
+}

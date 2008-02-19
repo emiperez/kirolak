@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<description>Kirolak Sport Standings</description>
+	<resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/dbKirolaK</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>messages</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>server</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>javax.faces.CONFIG_FILES</param-name>
+		<param-value>
+			/WEB-INF/faces-config.xml, /WEB-INF/faces-config.sport.xml,
+			/WEB-INF/faces-config.team.xml, /WEB-INF/faces-config.competition.xml,
+			/WEB-INF/faces-config.stage.xml, /WEB-INF/faces-config.group.xml,
+			/WEB-INF/faces-config.round.xml
+		</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+	</listener>
+
+	<!-- Faces Servlet -->
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+
+	<!-- Faces Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<filter>
+		<filter-name>HibernateFilter</filter-name>
+		<filter-class>com.kirolak.filters.HibernateSessionRequestFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>HibernateFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<jsp-config>
+		
+		<jsp-property-group>			
+			<display-name>kirolak</display-name>
+			<url-pattern>/index.jsp</url-pattern>
+			<url-pattern>/sport.jsp</url-pattern>
+			<url-pattern>/competition.jsp</url-pattern>
+			<url-pattern>/stage.jsp</url-pattern>
+			<url-pattern>/round.jsp</url-pattern>
+			<url-pattern>/team.jsp</url-pattern>
+			<page-encoding>utf-8</page-encoding>
+			<el-ignored>false</el-ignored>
+			<scripting-invalid>false</scripting-invalid>
+			<is-xml>false</is-xml>
+			<include-prelude>/includes/prelude.jspf</include-prelude>
+			<include-coda>/includes/coda.jspf</include-coda>
+		</jsp-property-group>
+	</jsp-config>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Admin</web-resource-name>
+			<url-pattern>/admin/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>kirolak</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-role>
+		<role-name>kirolak</role-name>
+	</security-role>
+
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+
+</web-app>
