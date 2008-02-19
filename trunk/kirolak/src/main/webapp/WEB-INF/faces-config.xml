@@ -5,6 +5,7 @@
 	<application>
 		<locale-config>
 			<default-locale>en</default-locale>
+			<supported-locale>es</supported-locale>
 		</locale-config>
 		<resource-bundle>
 			<base-name>messages</base-name>
