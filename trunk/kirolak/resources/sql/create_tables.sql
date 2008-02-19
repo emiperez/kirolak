@@ -1,32 +1,46 @@
 drop table if exists score_modes;
 create table score_modes
 (
-	id tinyint unsigned PRIMARY KEY,
-	name char(15) UNIQUE
+	id tinyint unsigned,
+	locale char(2),
+	name char(15),
+	PRIMARY KEY (id, locale)
 );
-insert into score_modes values(10,'Accumulative');
-insert into score_modes values(20,'Winned Parts');
+insert into score_modes values(10,'en','Accumulative');
+insert into score_modes values(20,'en','Sets');
+insert into score_modes values(10,'es','Acumulado');
+insert into score_modes values(20,'es','Sets (Tenis)');
 
 
 drop table if exists stage_types;
 create table stage_types
 (
-	id tinyint unsigned PRIMARY KEY,
-	name char(15)
+	id tinyint unsigned,
+	locale char(2),
+	name char(15),
+	PRIMARY KEY (id, locale)
 );
-insert into stage_types values(10,'Heats');
-insert into stage_types values(20,'Points');
-insert into stage_types values(30,'Race');
+insert into stage_types values(10,'en','Heats');
+insert into stage_types values(20,'en','League');
+insert into stage_types values(30,'en','Race');
+insert into stage_types values(10,'es','Eliminatoria');
+insert into stage_types values(20,'es','Liga');
+insert into stage_types values(30,'es','Carrera');
 
 drop table if exists match_status;
 create table match_status
 (
-	id tinyint unsigned PRIMARY KEY,
-	name char(15)
+	id tinyint unsigned,
+	locale char(2),
+	name char(15),
+	PRIMARY KEY (id, locale)
 );
-insert into match_status values(10,'To Begin');
-insert into match_status values(20,'Playing');
-insert into match_status values(30,'Finished');
+insert into match_status values(10,'en','To Begin');
+insert into match_status values(20,'en','Playing');
+insert into match_status values(30,'en','Finished');
+insert into match_status values(10,'es','No Iniciado');
+insert into match_status values(20,'es','En Juego');
+insert into match_status values(30,'es','Finalizado');
 
 drop table if exists standings;
 drop table if exists matches;
