@@ -8,7 +8,6 @@ import java.util.Locale;
 
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
-import javax.servlet.jsp.PageContext;
 
 import com.kirolak.KirolakObject;
 import com.kirolak.LocalizedListItem;

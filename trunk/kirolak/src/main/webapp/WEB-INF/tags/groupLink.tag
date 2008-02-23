@@ -5,6 +5,9 @@
 	<jsp:attribute name="href">
 		<c:url value="group.jsp">
 			<c:param name="group" value="${group.name}-${group.id}"></c:param>
+			<c:if test="${!empty param.l}">
+				<c:param name="l" value="${param.l}"></c:param>
+			</c:if>
 		</c:url>
 	</jsp:attribute>
 	<jsp:body>

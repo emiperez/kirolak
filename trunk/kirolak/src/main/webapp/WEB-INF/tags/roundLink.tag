@@ -5,6 +5,9 @@
 	<jsp:attribute name="href">
 		<c:url value="round.jsp">
 			<c:param name="round" value="${round.group.id}-${round.number}"/>
+			<c:if test="${!empty param.l}">
+				<c:param name="l" value="${param.l}"></c:param>
+			</c:if>
 		</c:url>
 	</jsp:attribute>
 	<jsp:body>

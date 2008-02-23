@@ -79,6 +79,7 @@
 			<is-xml>false</is-xml>
 			<include-prelude>/includes/prelude.jspf</include-prelude>
 			<include-coda>/includes/coda.jspf</include-coda>
+			<trim-directive-whitespaces>true</trim-directive-whitespaces>
 		</jsp-property-group>
 	</jsp-config>
 
