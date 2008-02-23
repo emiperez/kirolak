@@ -34,5 +34,5 @@
 		maxActive="100" maxIdle="30" maxWait="100" username="DBUSER" password="DBPASSWORD"
 		driverClassName="com.mysql.jdbc.Driver"
 		
-		url="jdbc:mysql://localhost:3306/DBNAME?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;connectionCollation=utf8_general_ci&amp;characterSetResults=utf8" />
+		url="jdbc:mysql://localhost:3306/${db.dbname}?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;connectionCollation=utf8_general_ci&amp;characterSetResults=utf8" />
 </Context>
