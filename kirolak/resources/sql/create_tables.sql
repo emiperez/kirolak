@@ -3,12 +3,15 @@ create table available_locales
 (
 	locale char(2) PRIMARY KEY
 );
+insert into available_locales values("en");
+insert into available_locales values("es");
+insert into available_locales values("eu");
 
 drop table if exists configuration;
 create table configuration
 (
 	output_locale char(2),
-	manager_locale char(2),
+	manager_locale char(2)
 );
 
 drop table if exists score_modes;
@@ -51,14 +54,18 @@ create table match_status
 	id tinyint unsigned,
 	locale char(2),
 	name char(15),
+	abbreviation char(2),
 	PRIMARY KEY (id, locale)
 );
-insert into match_status values(10,'en','To Begin');
-insert into match_status values(20,'en','Playing');
-insert into match_status values(30,'en','Finished');
-insert into match_status values(10,'es','No Iniciado');
-insert into match_status values(20,'es','En Juego');
-insert into match_status values(30,'es','Finalizado');
+insert into match_status values(10,'en','To Begin','T');
+insert into match_status values(20,'en','Playing','P');
+insert into match_status values(30,'en','Finished','F');
+insert into match_status values(10,'es','No Iniciado','N');
+insert into match_status values(20,'es','En Juego','J');
+insert into match_status values(30,'es','Finalizado','F');
+insert into match_status values(10,'eu','Hasi gabe','H');
+insert into match_status values(20,'eu','Jolasten','J');
+insert into match_status values(30,'eu','Bukatua','B');
 
 drop table if exists standings;
 drop table if exists matches;

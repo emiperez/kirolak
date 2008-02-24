@@ -5,7 +5,7 @@
 	<groupId>com.kirolak</groupId>
 	<artifactId>kirolak</artifactId>
 	<packaging>war</packaging>
-	<version>0.1.0dev1</version>
+	<version>0.2.0dev1</version>
 	<name>kirolak</name>
 
 	<url>http://maven.apache.org</url>
