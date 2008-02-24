@@ -1,3 +1,4 @@
+<%@tag trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ attribute name="team" required="true" type="com.kirolak.Team" %>
 <jsp:element name="a">	

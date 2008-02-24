@@ -1,3 +1,16 @@
+drop table if exists available_locales;
+create table available_locales
+(
+	locale char(2) PRIMARY KEY
+);
+
+drop table if exists configuration;
+create table configuration
+(
+	output_locale char(2),
+	manager_locale char(2),
+);
+
 drop table if exists score_modes;
 create table score_modes
 (
@@ -10,6 +23,8 @@ insert into score_modes values(10,'en','Accumulative');
 insert into score_modes values(20,'en','Sets');
 insert into score_modes values(10,'es','Acumulado');
 insert into score_modes values(20,'es','Sets (Tenis)');
+insert into score_modes values(10,'eu','Puntu Guztira');
+insert into score_modes values(20,'eu','Set (Tenis)');
 
 
 drop table if exists stage_types;
@@ -26,6 +41,9 @@ insert into stage_types values(30,'en','Race');
 insert into stage_types values(10,'es','Eliminatoria');
 insert into stage_types values(20,'es','Liga');
 insert into stage_types values(30,'es','Carrera');
+insert into stage_types values(10,'eu','Kanporaketa');
+insert into stage_types values(20,'eu','Liga');
+insert into stage_types values(30,'eu','Lasterketa');
 
 drop table if exists match_status;
 create table match_status

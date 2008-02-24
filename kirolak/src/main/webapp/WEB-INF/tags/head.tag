@@ -1,3 +1,4 @@
+<%@tag trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ attribute name="title" required="true"%>
 <head>

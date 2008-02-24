@@ -1,3 +1,4 @@
+<%@tag trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="k" %>
 <%@ attribute name="match" required="true" type="com.kirolak.Match" %>
