@@ -1,3 +1,4 @@
+<%@tag trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ attribute name="group" required="true" type="com.kirolak.Group" %>

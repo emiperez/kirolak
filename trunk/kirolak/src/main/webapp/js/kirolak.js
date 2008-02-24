@@ -6,6 +6,5 @@
 
 	function changeRound(groupId,roundSelect)
 	{
-		alert(roundSelect);
 		document.location = 'round.jsp?round='+groupId+'-'+roundSelect.options[roundSelect.selectedIndex].value;
 	}
