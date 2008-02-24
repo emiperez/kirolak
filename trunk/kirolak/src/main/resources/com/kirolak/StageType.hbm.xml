@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.kirolak.LocalizedListItem" table="stage_types" >
+    <class name="com.kirolak.StageType" table="stage_types" >
         <composite-id name="compositeId" class="com.kirolak.LocalizedId">
             <key-property name="id" type="java.lang.Byte">
                 <column name="id" />
