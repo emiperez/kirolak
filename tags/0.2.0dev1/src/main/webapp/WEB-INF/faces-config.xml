@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+	<application>
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>es</supported-locale>
+			<supported-locale>eu</supported-locale>
+		</locale-config>
+		<resource-bundle>
+			<base-name>messages</base-name>
+			<var>msg</var>
+		</resource-bundle>
+	</application>
+
+
+	<!-- NAVIGATION RULES -->
+
+	<navigation-rule>
+		<from-view-id>/admin/*</from-view-id>
+		<navigation-case>
+			<from-outcome>sports</from-outcome>
+			<to-view-id>/admin/sports.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>teams</from-outcome>
+			<to-view-id>/admin/teams.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>competitions</from-outcome>
+			<to-view-id>/admin/competitions.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>stages</from-outcome>
+			<to-view-id>/admin/stages.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>groups</from-outcome>
+			<to-view-id>/admin/groups.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>rounds</from-outcome>
+			<to-view-id>/admin/rounds.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- BEANS -->
+
+	<managed-bean>
+		<managed-bean-name>app</managed-bean-name>
+		<managed-bean-class>com.kirolak.jsf.beans.Kirolak</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+
+	<!-- VALIDATORS -->
+	<validator>
+		<validator-id>kirolak.seoNameValidator</validator-id>
+		<validator-class>com.kirolak.jsf.validators.SeoNameValidator</validator-class>
+	</validator>
+
+	<!-- CONVERTERS -->
+	
+	<!-- LISTENERS -->
+	<lifecycle>
+        <phase-listener>com.kirolak.jsf.listeners.ErrorFieldListener</phase-listener>
+    </lifecycle>
+
+</faces-config>

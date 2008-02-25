@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+	<!-- NAVIGATION RULES -->
+	
+	<navigation-rule>
+		<from-view-id>/admin/rounds.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>edit</from-outcome>
+			<to-view-id>/admin/round.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>list</from-outcome>
+			<to-view-id>/admin/rounds.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>rounds</from-outcome>
+			<to-view-id>/admin/rounds.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/admin/round.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>list</from-outcome>
+			<to-view-id>/admin/rounds.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- BEANS -->
+	<managed-bean>
+		<managed-bean-name>round</managed-bean-name>
+		<managed-bean-class>
+			com.kirolak.jsf.beans.RoundBean
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- CONVERTERS -->
+	
+</faces-config>
