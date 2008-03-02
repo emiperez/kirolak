@@ -24,10 +24,9 @@
 	<context-param>
 		<param-name>javax.faces.CONFIG_FILES</param-name>
 		<param-value>
-			/WEB-INF/faces-config.xml, /WEB-INF/faces-config.sport.xml,
-			/WEB-INF/faces-config.team.xml, /WEB-INF/faces-config.competition.xml,
-			/WEB-INF/faces-config.stage.xml, /WEB-INF/faces-config.group.xml,
-			/WEB-INF/faces-config.round.xml
+			/WEB-INF/faces-config.sport.xml, /WEB-INF/faces-config.team.xml,
+			/WEB-INF/faces-config.competition.xml, /WEB-INF/faces-config.stage.xml,
+			 /WEB-INF/faces-config.group.xml, /WEB-INF/faces-config.round.xml
 		</param-value>
 	</context-param>
 
