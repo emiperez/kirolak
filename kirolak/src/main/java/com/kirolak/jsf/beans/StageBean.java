@@ -8,7 +8,6 @@ import com.kirolak.Stage;
 import com.kirolak.dao.CompetitionDAO;
 import com.kirolak.dao.StageDAO;
 import com.kirolak.util.FacesUtil;
-import com.kirolak.util.Messages;
 
 public class StageBean extends KirolakSession
 {
@@ -20,7 +19,7 @@ public class StageBean extends KirolakSession
 			return this.item.getName();
 		} else
 		{
-			return Messages.getString("messages", "new_stage");
+			return FacesUtil.getString("messages", "new_stage");
 		}
 	}
 
@@ -49,7 +48,6 @@ public class StageBean extends KirolakSession
 		stage.setStartDate(comp.getStartDate());
 		stage.setFinishDate(comp.getFinishDate());
 		stage.setMaxParts(comp.getSport().getMaxParts());
-		stage.setPlayOffName(comp.getSport().getPlayOffName());
 		stage.setPointsWin(comp.getSport().getPointsWin());
 		stage.setPointsDraw(comp.getSport().getPointsDraw());
 		stage.setPointsLoose(comp.getSport().getPointsLoose());

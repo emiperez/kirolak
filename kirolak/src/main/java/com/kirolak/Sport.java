@@ -1,5 +1,11 @@
 package com.kirolak;
 
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Set;
+
+import com.kirolak.util.I18n;
+
 // Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1
 
 /**
@@ -8,31 +14,25 @@ package com.kirolak;
 public class Sport extends KirolakObject implements java.io.Serializable
 {
 	private Byte maxParts;
-	private String name;
-	private String partName;
-	private String playOffName;
 	private Byte pointsDraw;
 	private Byte pointsLoose;
 	private Byte pointsWin;
-
 	private Byte scoreMode;
-	private String seoName;
+	private Set<LocalizedSportData> localizedItems;
+	
+	private LocalizedSportData localizedItem;
 
 	public Sport()
 	{
 		this.id = -1;
 	}
 
-	public Sport(short id, String name, String seoName, Byte scoreMode, String partName, Byte maxParts, String playOffName, Byte pointsWin,
+	public Sport(short id, Byte scoreMode, Byte maxParts, Byte pointsWin,
 			Byte pointsDraw, Byte pointsLoose)
 	{
 		this.id = id;
-		this.name = name;
-		this.seoName = seoName;
 		this.scoreMode = scoreMode;
-		this.partName = partName;
 		this.maxParts = maxParts;
-		this.playOffName = playOffName;
 		this.pointsWin = pointsWin;
 		this.pointsDraw = pointsDraw;
 		this.pointsLoose = pointsLoose;
@@ -47,25 +47,30 @@ public class Sport extends KirolakObject implements java.io.Serializable
 	{
 		return Integer.valueOf(this.id).shortValue();
 	}
+	
+	public String getSeoName()
+	{
+		return getLocalizedSport().getSeoName();
+	}
+	
+	public String getName()
+	{
+		return getLocalizedSport().getName();
+	}
+	
+	public String getPartName()
+	{
+		return getLocalizedSport().getPartName();
+	}
+	
+	public String getPlayOffName()
+	{
+		return getLocalizedSport().getPlayOffName();
+	}
 
 	public Byte getMaxParts()
 	{
 		return this.maxParts;
-	}
-
-	public String getName()
-	{
-		return this.name;
-	}
-
-	public String getPartName()
-	{
-		return this.partName;
-	}
-
-	public String getPlayOffName()
-	{
-		return this.playOffName;
 	}
 
 	public Byte getPointsDraw()
@@ -88,29 +93,9 @@ public class Sport extends KirolakObject implements java.io.Serializable
 		return this.scoreMode;
 	}
 
-	public String getSeoName()
-	{
-		return this.seoName;
-	}
-
 	public void setMaxParts(Byte maxParts)
 	{
 		this.maxParts = maxParts;
-	}
-
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-
-	public void setPartName(String partName)
-	{
-		this.partName = partName;
-	}
-
-	public void setPlayOffName(String playOffName)
-	{
-		this.playOffName = playOffName;
 	}
 
 	public void setPointsDraw(Byte pointsDraw)
@@ -133,14 +118,50 @@ public class Sport extends KirolakObject implements java.io.Serializable
 		this.scoreMode = scoreMode;
 	}
 
-	public void setSeoName(String seoName)
-	{
-		this.seoName = seoName;
-	}
-
 	public boolean equals(Object obj)
 	{
 		return (this == obj || (obj != null && (obj instanceof Sport) && ((Sport) obj).id == this.id));
+	}
+
+
+	public Set<LocalizedSportData> getLocalizedSportData()
+    {
+    	return localizedItems;
+    }
+
+	public void setLocalizedSportData(Set<LocalizedSportData> localizedItems)
+    {
+    	this.localizedItems = localizedItems;
+    }	
+	
+	public LocalizedSportData getLocalizedSport()
+	{
+		if(this.localizedItem == null)
+		{
+			Locale locale = I18n.getCurrentLocale();			
+			LocalizedSportData returnValue = null;
+			Iterator<LocalizedSportData> iterator = this.localizedItems.iterator();
+			LocalizedSportData item;
+			
+			while(iterator.hasNext())
+			{
+				item = iterator.next();
+				if(item.getLocale().equals(locale))
+				{
+					this.localizedItem = item;
+					return item;
+				}
+				else
+				{
+					if (item.getLocale().getLanguage().equals(locale.getLanguage()))
+					{
+						returnValue = item;					
+					}
+				}
+			}
+			this.localizedItem = returnValue;
+		}
+		return this.localizedItem;
 	}
 
 }

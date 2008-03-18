@@ -9,8 +9,7 @@ import java.util.Locale;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
-import com.kirolak.KirolakObject;
-import com.kirolak.LocalizedListItem;
+import com.kirolak.MatchStatus;
 import com.kirolak.ScoreMode;
 import com.kirolak.StageType;
 import com.kirolak.dao.MatchStatusDAO;
@@ -22,15 +21,15 @@ public class Kirolak implements Serializable
 
 	//TODO: LazyLoad
 	private static final long serialVersionUID = 1L;
-	private List<KirolakObject> scoreModes;
+	private List<ScoreMode> scoreModes;
 	private List<SelectItem> scoreModesSelectItems;
-	private List<KirolakObject> stageTypes;
+	private List<StageType> stageTypes;
 	private List<SelectItem> stageTypesSelectItems;
-	private List<KirolakObject> matchStatus;
+	private List<MatchStatus> matchStatus;
 	private List<SelectItem> matchStatusSelectItems;
 	
 
-	public List<KirolakObject> getScoreModes()
+	public List<ScoreMode> getScoreModes()
 	{
 		Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
 		this.scoreModes = ScoreModeDAO.list(locale);
@@ -41,16 +40,16 @@ public class Kirolak implements Serializable
 	{
 		getScoreModes();
 		this.scoreModesSelectItems = new ArrayList<SelectItem>();
-		Iterator<KirolakObject> scoreModesIterator = this.scoreModes.iterator();
+		Iterator<ScoreMode> scoreModesIterator = this.scoreModes.iterator();
 		while (scoreModesIterator.hasNext())
 		{
-			KirolakObject scoreMode = scoreModesIterator.next();
-			this.scoreModesSelectItems.add(new SelectItem(((ScoreMode)scoreMode).getId(), scoreMode.getName()));
+			ScoreMode scoreMode = scoreModesIterator.next();
+			this.scoreModesSelectItems.add(new SelectItem(scoreMode.getId(), scoreMode.getName()));
 		}
 		return this.scoreModesSelectItems;
 	}
 	
-	public List<KirolakObject> getStageTypes()
+	public List<StageType> getStageTypes()
 	{
 		Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
 		this.stageTypes = StageTypeDAO.list(locale);
@@ -63,17 +62,17 @@ public class Kirolak implements Serializable
 		if (this.stageTypesSelectItems == null)
 		{
 			this.stageTypesSelectItems = new ArrayList<SelectItem>();
-			Iterator<KirolakObject> stageTypesIterator = stageTypes.iterator();
+			Iterator<StageType> stageTypesIterator = stageTypes.iterator();
 			while (stageTypesIterator.hasNext())
 			{
-				KirolakObject stageType = stageTypesIterator.next();
-				this.stageTypesSelectItems.add(new SelectItem(((StageType)stageType).getId(), stageType.getName()));
+				StageType stageType = stageTypesIterator.next();
+				this.stageTypesSelectItems.add(new SelectItem(stageType.getId(), stageType.getName()));
 			}
 		}
 		return this.stageTypesSelectItems;
 	}
 	
-	public List<KirolakObject> getMatchStatus()
+	public List<MatchStatus> getMatchStatus()
 	{		
 		Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
 		this.matchStatus = MatchStatusDAO.list(locale);
@@ -86,11 +85,11 @@ public class Kirolak implements Serializable
 		if (this.matchStatusSelectItems == null)
 		{
 			this.matchStatusSelectItems = new ArrayList<SelectItem>();
-			Iterator<KirolakObject> iterator = matchStatus.iterator();
+			Iterator<MatchStatus> iterator = matchStatus.iterator();
 			while (iterator.hasNext())
 			{
-				KirolakObject matchStatus = iterator.next();
-				this.matchStatusSelectItems.add(new SelectItem(((LocalizedListItem)matchStatus).getId(), matchStatus.getName()));
+				MatchStatus matchStatus = iterator.next();
+				this.matchStatusSelectItems.add(new SelectItem(matchStatus.getId(), matchStatus.getName()));
 			}
 		}
 		return this.matchStatusSelectItems;

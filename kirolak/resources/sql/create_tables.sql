@@ -1,7 +1,7 @@
 drop table if exists available_locales;
 create table available_locales
 (
-	locale char(2) PRIMARY KEY
+	locale char(5) PRIMARY KEY
 );
 insert into available_locales values("en");
 insert into available_locales values("es");
@@ -10,15 +10,15 @@ insert into available_locales values("eu");
 drop table if exists configuration;
 create table configuration
 (
-	output_locale char(2),
-	manager_locale char(2)
+	output_locale char(5),
+	manager_locale char(5)
 );
 
 drop table if exists score_modes;
 create table score_modes
 (
 	id tinyint unsigned,
-	locale char(2),
+	locale char(5),
 	name char(15),
 	PRIMARY KEY (id, locale)
 );
@@ -34,7 +34,7 @@ drop table if exists stage_types;
 create table stage_types
 (
 	id tinyint unsigned,
-	locale char(2),
+	locale char(5),
 	name char(15),
 	PRIMARY KEY (id, locale)
 );
@@ -52,7 +52,7 @@ drop table if exists match_status;
 create table match_status
 (
 	id tinyint unsigned,
-	locale char(2),
+	locale char(5),
 	name char(15),
 	abbreviation char(2),
 	PRIMARY KEY (id, locale)
@@ -76,22 +76,31 @@ drop table if exists teams;
 drop table if exists groups;
 drop table if exists stages;
 drop table if exists competitions;
+drop table if exists localized_sports;
 drop table if exists sports;
 
 create table sports
 (
 	id smallint unsigned PRIMARY KEY AUTO_INCREMENT,
-	name char(25) UNIQUE,
-	seo_name char(25) UNIQUE,
 	score_mode tinyint unsigned COMMENT 'accumulative, winned parts...' NOT NULL,
-	part_name char(25),
 	max_parts tinyint unsigned,
-	play_off_name char(25),
 	points_win tinyint,
 	points_draw tinyint,
-	points_loose tinyint,
-	INDEX sport_seo_name (seo_name)
+	points_loose tinyint
 ) ENGINE=InnoDB;
+
+create table localized_sports
+(
+	sport_id smallint unsigned,
+	locale char(5),
+	name char(25),
+	seo_name char(25),
+	part_name char(25),
+	play_off_name char(25),
+	PRIMARY KEY(locale, seo_name),	
+	FOREIGN KEY (sport_id) REFERENCES sports(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
 
 create table competitions
 (

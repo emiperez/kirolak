@@ -20,7 +20,6 @@ import com.kirolak.dao.TeamDAO;
 import com.kirolak.extended.GroupExt;
 import com.kirolak.extended.StandingExt;
 import com.kirolak.util.FacesUtil;
-import com.kirolak.util.Messages;
 
 public class RoundBean extends KirolakSession
 {
@@ -43,7 +42,7 @@ public class RoundBean extends KirolakSession
 			return this.item.getName();
 		} else
 		{
-			return Messages.getString("messages", "new_round");
+			return FacesUtil.getString("messages", "new_round");
 		}
 	}
 
