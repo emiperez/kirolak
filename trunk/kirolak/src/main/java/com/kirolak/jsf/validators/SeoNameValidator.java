@@ -6,8 +6,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
+import com.kirolak.util.FacesUtil;
 import com.kirolak.util.KirolakValidator;
-import com.kirolak.util.Messages;
 
 public class SeoNameValidator implements Validator
 {
@@ -17,7 +17,7 @@ public class SeoNameValidator implements Validator
 
 		if (!KirolakValidator.validateSeoName((String) value))
 		{
-			FacesMessage message = Messages.getMessage("messages", "seo_name_error");
+			FacesMessage message = FacesUtil.getMessage("messages", "seo_name_error");
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(message);
 		}

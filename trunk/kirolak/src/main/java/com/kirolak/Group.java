@@ -15,6 +15,7 @@ public class Group extends KirolakObject
 	protected Stage stage;
 	protected Set<Team> teams = new HashSet<Team>();
 	private Short lastPlayedRound;
+	private String name;
 
 	public Group()
 	{
@@ -77,9 +78,7 @@ public class Group extends KirolakObject
 			}
 		}
 		return returnValue;
-	}
-	
-	
+	}	
 
 	public Short getLastPlayedRound()
 	{
@@ -94,5 +93,15 @@ public class Group extends KirolakObject
 		}
 		this.lastPlayedRound = lastPlayedRound;
 	}
+
+	public String getName()
+    {
+    	return name;
+    }
+
+	public void setName(String name)
+    {
+    	this.name = name;
+    }
 
 }
