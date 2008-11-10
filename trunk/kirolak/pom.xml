@@ -34,19 +34,19 @@
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>el-api</artifactId>
-			<version>6.0.14</version>
+			<version>6.0.18</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>servlet-api</artifactId>
-			<version>6.0.14</version>
+			<version>6.0.18</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.1.2</version>
+			<version>1.2</version>
 		</dependency>
 
 		<dependency>
@@ -57,28 +57,28 @@
 		<dependency>
 			<groupId>javax.faces</groupId>
 			<artifactId>jsf-api</artifactId>
-			<version>1.2_04-p02</version>
+			<version>1.2_10</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.faces</groupId>
 			<artifactId>jsf-impl</artifactId>
-			<version>1.2_04-p02</version>
+			<version>1.2_08</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.transaction</groupId>
 			<artifactId>jta</artifactId>
-			<version>1.0.1B</version>
+			<version>1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate</artifactId>
-			<version>3.2.5.ga</version>
+			<version>3.2.6.ga</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.0.5</version>
+			<version>5.1.6</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- DEPENDENCIES FOR VELOCITY
