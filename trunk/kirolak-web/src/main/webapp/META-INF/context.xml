@@ -1,4 +1,4 @@
-<Context path="/kirolak" reloadable="true" workDir="/tmp/tomcat/work">
+<Context path="/kirolak" docBase="/home/emiperez/Desarrollo/workspace/kirolak/target" reloadable="true" workDir="/tmp/tomcat/work">
 	
 	<Realm className="org.apache.catalina.realm.MemoryRealm"/>
 	

@@ -5,7 +5,7 @@ import java.util.List;
 import com.kirolak.KirolakObject;
 import com.kirolak.Sport;
 import com.kirolak.dao.SportDAO;
-import com.kirolak.util.FacesUtil;
+import com.kirolak.util.Messages;
 
 public class SportBean extends KirolakSession
 {
@@ -16,7 +16,7 @@ public class SportBean extends KirolakSession
 			return this.item.getName();
 		} else
 		{
-			return FacesUtil.getString("messages", "new_sport");
+			return Messages.getString("messages", "new_sport");
 		}
 	}
 

@@ -43,6 +43,12 @@ public class RoundDAO extends KirolakDAO
 		// TODO it should be done using Hibernate's Lazy Load
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		List<KirolakObject> items = session.createQuery("from Round r where r.compositeId.group = :group").setParameter("group", group).list();
+		Iterator<KirolakObject> iterator = items.iterator();
+		while(iterator.hasNext())
+		{
+			Round round = (Round)iterator.next();				
+			round.setMatches(MatchDAO.listByRound(round));
+		}
 		return items;
 	}
 	
@@ -50,7 +56,8 @@ public class RoundDAO extends KirolakDAO
 	{
 		// Select the last Round where there is at least one match finished
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Round round = (Round)session.createSQLQuery("{call get_current_round(:group_id)}").addEntity(Round.class).setParameter("group_id", group.getId()).uniqueResult();		
+		Round round = (Round)session.createSQLQuery("{call get_current_round(:group_id)}").addEntity(Round.class).setParameter("group_id", group.getId()).uniqueResult();
+		round.setMatches(MatchDAO.listByRound(round));
 		return round;
 	}
 }
