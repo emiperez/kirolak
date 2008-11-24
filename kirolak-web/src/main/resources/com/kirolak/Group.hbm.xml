@@ -12,7 +12,7 @@
             <column name="name" length="25" not-null="true" />
         </property>
         <many-to-one name="stage" column="stage_id" class="com.kirolak.Stage" lazy="false"/>
-		<set name="teams" table="group_teams">
+		<set name="teams" table="group_teams" lazy="false">
 			<key column="group_id" />
 			<many-to-many column="team_id" class="com.kirolak.Team" />
 		</set>

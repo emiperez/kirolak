@@ -21,18 +21,11 @@ public class GroupExt
 	{
 		List<Round> roundList = new ArrayList<Round>();
 		List<KirolakObject> teamList = new ArrayList<KirolakObject>();
-		try
+		
+		Iterator<Team> teamIterator = group.getTeams().iterator();
+		while(teamIterator.hasNext())
 		{
-			Iterator<Team> teamIterator = group.getTeams().iterator();
-			while(teamIterator.hasNext())
-			{
-				teamList.add(teamIterator.next());
-			}
-		}
-		//TODO: Find out why this Exception is happening
-		catch(LazyInitializationException lazy)
-		{
-			teamList = TeamDAO.listByGroup(group);
+			teamList.add(teamIterator.next());
 		}
 		int teamCount = teamList.size();
 		if (teamCount > 0)

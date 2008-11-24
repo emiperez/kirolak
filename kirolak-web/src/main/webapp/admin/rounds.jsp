@@ -65,7 +65,7 @@
 				<f:facet name="header">
 					<h:outputText value="#{msg.matches}" />
 				</f:facet>
-				<h:dataTable value="#{item.matchList}" var="match">
+				<h:dataTable value="#{item.matches}" var="match">
 					<h:column>
 						<h:outputText value="#{match.homeTeam.acronym}" />
 					</h:column>					

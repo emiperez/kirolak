@@ -19,6 +19,7 @@ import com.kirolak.extended.GroupExt;
 import com.kirolak.extended.StageExt;
 import com.kirolak.extended.StandingExt;
 import com.kirolak.util.FacesUtil;
+import com.kirolak.util.Messages;
 
 public class GroupBean extends KirolakSession
 {
@@ -33,7 +34,7 @@ public class GroupBean extends KirolakSession
 			return this.item.getName();
 		} else
 		{
-			return FacesUtil.getString("messages", "new_group");
+			return Messages.getString("messages", "new_group");
 		}
 	}
 

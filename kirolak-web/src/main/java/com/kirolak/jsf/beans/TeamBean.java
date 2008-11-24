@@ -8,7 +8,7 @@ import com.kirolak.Team;
 import com.kirolak.dao.SportDAO;
 import com.kirolak.dao.TeamDAO;
 import com.kirolak.util.FacesUtil;
-import com.kirolak.util.I18n;
+import com.kirolak.util.Messages;
 
 public class TeamBean extends KirolakSession
 {
@@ -19,7 +19,7 @@ public class TeamBean extends KirolakSession
 			return this.item.getName();
 		} else
 		{
-			return FacesUtil.getString("messages", "new_team");
+			return Messages.getString("messages", "new_team");
 		}
 	}
 

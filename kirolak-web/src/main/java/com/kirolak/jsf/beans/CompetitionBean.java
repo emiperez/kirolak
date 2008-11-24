@@ -14,6 +14,7 @@ import com.kirolak.dao.CompetitionDAO;
 import com.kirolak.dao.SportDAO;
 import com.kirolak.dao.TeamDAO;
 import com.kirolak.util.FacesUtil;
+import com.kirolak.util.Messages;
 
 public class CompetitionBean extends KirolakSession
 {
@@ -28,7 +29,7 @@ public class CompetitionBean extends KirolakSession
 			return this.item.getName();
 		} else
 		{
-			return FacesUtil.getString("messages", "new_competition");
+			return Messages.getString("messages", "new_competition");
 		}
 	}
 

@@ -5,24 +5,23 @@ import java.util.Locale;
 
 import org.hibernate.Session;
 
-import com.kirolak.MatchStatus;
+import com.kirolak.KirolakObject;
+import com.kirolak.LocalizedListItem;
 import com.kirolak.util.HibernateUtil;
 
-public class MatchStatusDAO
+public class MatchStatusDAO extends KirolakDAO
 {
 
-	public static MatchStatus get(short id)
+	public static KirolakObject get(short id)
 	{
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		MatchStatus returnValue = (MatchStatus) session.get(MatchStatus.class, id);
-		return returnValue;
+		return KirolakDAO.get(LocalizedListItem.class, id);
 	}
 
-	public static List<MatchStatus> list(Locale locale)
+	public static List<KirolakObject> list(Locale locale)
 	{
 		// TODO it should be done using Hibernate's Lazy Load
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		List<MatchStatus> items = session.createQuery("from MatchStatus ms where ms.compositeId.locale = :locale").setParameter("locale", locale.getLanguage()).list();
+		List<KirolakObject> items = session.createQuery("from MatchStatus ms where ms.compositeId.locale = :locale ").setParameter("locale", locale.getLanguage()).list();
 		return items;
 	}
 

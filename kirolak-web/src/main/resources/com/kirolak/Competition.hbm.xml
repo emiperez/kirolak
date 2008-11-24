@@ -22,7 +22,7 @@
 		</property>
 		<many-to-one name="sport" column="sport_id" class="com.kirolak.Sport">
 		</many-to-one>
-		<set name="teams" table="competition_teams">
+		<set name="teams" table="competition_teams" lazy="true">
 			<key column="competition_id" />
 			<many-to-many column="team_id" class="com.kirolak.Team" />
 		</set>
