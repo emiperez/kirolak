@@ -35,11 +35,6 @@
 			<artifactId>kirolak-hibernate</artifactId>
 			<version>0.3.0dev1</version>			
 		</dependency>
-		<dependency>
-			<groupId>com.kirolak</groupId>
-			<artifactId>kirolak-rmi-servlet</artifactId>
-			<version>0.3.0dev1</version>
-		</dependency>
 		
 		<dependency>
 			<groupId>junit</groupId>
