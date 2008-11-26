@@ -5,8 +5,6 @@ import java.util.Observable;
 import org.hibernate.Session;
 
 import com.kirolak.KirolakObject;
-import com.kirolak.generators.KirolakObservable;
-import com.kirolak.generators.TestObserver;
 import com.kirolak.util.HibernateUtil;
 
 public abstract class KirolakDAO
@@ -18,7 +16,6 @@ public abstract class KirolakDAO
 	{
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.saveOrUpdate(obj);
-		new KirolakObservable((KirolakObject)obj);
 	}
 
 	public static void delete(Object obj)

@@ -15,11 +15,6 @@
   		<artifactId>kirolak-pojo</artifactId>
   		<version>0.3.0dev1</version>
   	</dependency>
-  	<dependency>
-  		<groupId>com.kirolak</groupId>
-  		<artifactId>kirolak-generators</artifactId>
-  		<version>0.3.0dev1</version>
-  	</dependency>
   </dependencies>
   <build>
 		<plugins>
