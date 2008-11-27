@@ -12,6 +12,7 @@ import com.kirolak.Round;
 import com.kirolak.Stage;
 import com.kirolak.Team;
 import com.kirolak.dao.GroupDAO;
+import com.kirolak.dao.KirolakDAO;
 import com.kirolak.dao.RoundDAO;
 import com.kirolak.dao.StageDAO;
 import com.kirolak.dao.TeamDAO;
@@ -180,5 +181,14 @@ public class GroupBean extends KirolakSession
 		}
 		this.items = null;
 		return "groups";
+	}
+	
+	@Override
+	public String saveItem()
+	{
+		KirolakDAO.save(this.item);
+		this.items = null;
+		this.selectedTeams = null;
+		return "group-teams";
 	}
 }

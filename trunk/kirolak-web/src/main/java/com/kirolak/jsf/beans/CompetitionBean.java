@@ -11,6 +11,7 @@ import com.kirolak.KirolakObject;
 import com.kirolak.Sport;
 import com.kirolak.Team;
 import com.kirolak.dao.CompetitionDAO;
+import com.kirolak.dao.KirolakDAO;
 import com.kirolak.dao.SportDAO;
 import com.kirolak.dao.TeamDAO;
 import com.kirolak.util.FacesUtil;
@@ -76,6 +77,8 @@ public class CompetitionBean extends KirolakSession
 	public String teams()
 	{
 		this.item = (KirolakObject) itemData.getRowData();
+		this.selectableTeams = null;
+		this.selectedTeams = null;
 		return "competition-teams";
 	}
 
@@ -119,6 +122,16 @@ public class CompetitionBean extends KirolakSession
 			comp.getTeams().add(((Team)iterator.next()));
 		}
 		return "competitions";
+	}	
+	
+	@Override
+	public String saveItem()
+	{
+		KirolakDAO.save(this.item);
+		this.items = null;
+		this.selectableTeams = null;
+		this.selectedTeams = null;
+		return "competition-teams";
 	}
 
 }
