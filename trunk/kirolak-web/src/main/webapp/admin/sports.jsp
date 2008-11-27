@@ -14,6 +14,7 @@
 	</head>
 
 	<body>
+	<div class="title">${msg.sports}</div>
 	<h:form id="sports">
 		<h:commandButton action="#{sport.newItem}" value="#{msg.new}"/>
 		<h:dataTable value="#{sport.items}" var="item"
