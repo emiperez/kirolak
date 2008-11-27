@@ -5,15 +5,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import org.hibernate.LazyInitializationException;
-
 import com.kirolak.Group;
 import com.kirolak.KirolakObject;
 import com.kirolak.Match;
 import com.kirolak.Round;
 import com.kirolak.RoundId;
 import com.kirolak.Team;
-import com.kirolak.dao.TeamDAO;
 
 public class GroupExt
 {
