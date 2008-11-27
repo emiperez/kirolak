@@ -31,6 +31,10 @@
 			<from-outcome>list</from-outcome>
 			<to-view-id>/admin/competitions.jsp</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>competition-teams</from-outcome>
+			<to-view-id>/admin/competition-teams.jsp</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 	<!-- BEANS -->
