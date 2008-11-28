@@ -11,7 +11,6 @@ import java.util.Set;
 public class Competition extends KirolakObject
 {
 
-	private Sport sport;
 	private String name;
 	private String seoName;
 	private Date startDate;
@@ -33,7 +32,7 @@ public class Competition extends KirolakObject
 	public Competition(int id, Sport sport, String name, String seoName)
 	{
 		this.id = id;
-		this.sport = sport;
+		this.parent = sport;
 		this.name = name;
 		this.seoName = seoName;
 	}
@@ -70,12 +69,12 @@ public class Competition extends KirolakObject
 
 	public Sport getSport()
 	{
-		return sport;
+		return (Sport)this.parent;
 	}
 
 	public void setSport(Sport sport)
 	{
-		this.sport = sport;
+		this.parent = sport;
 	}
 
 	public Date getStartDate()
