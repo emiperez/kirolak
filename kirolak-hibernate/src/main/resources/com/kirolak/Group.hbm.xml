@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-nov-2007 8:26:55 by Hibernate Tools 3.2.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.kirolak.Group" table="groups" >
+        <id name="id" type="int" unsaved-value="-1">
+            <column name="id" />
+			<generator class="native" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="25" not-null="true" />
+        </property>
+        <many-to-one name="stage" column="stage_id" class="com.kirolak.Stage" lazy="false"/>
+		<set name="teams" table="group_teams" lazy="false">
+			<key column="group_id" />
+			<many-to-many column="team_id" class="com.kirolak.Team" />
+		</set>
+		<property name="lastPlayedRound" type="java.lang.Short" >
+			<!-- WARNING!! IFNULL function works only for mysql it should be changed for any other DBMS -->
+			<formula> (select max(m.round_id) from matches m where m.group_id=id and m.match_status=30)</formula>
+		</property>
+    </class>
+</hibernate-mapping>
