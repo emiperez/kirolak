@@ -9,6 +9,7 @@ import javax.faces.model.SelectItem;
 
 import com.kirolak.KirolakObject;
 import com.kirolak.dao.KirolakDAO;
+import com.kirolak.util.Updater;
 
 public abstract class KirolakSession
 {
@@ -61,7 +62,7 @@ public abstract class KirolakSession
 
 	public String saveItem()
 	{
-		KirolakDAO.save(this.item);
+		Updater.save(this.item);
 		this.items = null;
 		return "list";
 	}
@@ -69,7 +70,7 @@ public abstract class KirolakSession
 	public String deleteItem()
 	{
 		this.item = (KirolakObject) itemData.getRowData();
-		KirolakDAO.delete(this.item);
+		Updater.delete(this.item);
 		this.items = null;
 
 		return "list";

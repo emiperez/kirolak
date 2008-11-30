@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.faces.model.SelectItem;
 
+import org.hibernate.sql.Update;
+
 import com.kirolak.Group;
 import com.kirolak.KirolakObject;
 import com.kirolak.Round;
@@ -19,8 +21,9 @@ import com.kirolak.dao.TeamDAO;
 import com.kirolak.extended.GroupExt;
 import com.kirolak.extended.StageExt;
 import com.kirolak.extended.StandingExt;
-import com.kirolak.util.FacesUtil;
-import com.kirolak.util.Messages;
+import com.kirolak.jsf.util.FacesUtil;
+import com.kirolak.jsf.util.Messages;
+import com.kirolak.util.Updater;
 
 public class GroupBean extends KirolakSession
 {
@@ -186,7 +189,7 @@ public class GroupBean extends KirolakSession
 	@Override
 	public String saveItem()
 	{
-		KirolakDAO.save(this.item);
+		Updater.save(this.item);
 		this.items = null;
 		this.selectedTeams = null;
 		return "group-teams";

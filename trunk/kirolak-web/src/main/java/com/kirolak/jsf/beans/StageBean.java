@@ -7,8 +7,8 @@ import com.kirolak.KirolakObject;
 import com.kirolak.Stage;
 import com.kirolak.dao.CompetitionDAO;
 import com.kirolak.dao.StageDAO;
-import com.kirolak.util.FacesUtil;
-import com.kirolak.util.Messages;
+import com.kirolak.jsf.util.FacesUtil;
+import com.kirolak.jsf.util.Messages;
 
 public class StageBean extends KirolakSession
 {

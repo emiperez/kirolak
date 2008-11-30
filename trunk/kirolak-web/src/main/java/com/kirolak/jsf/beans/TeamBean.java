@@ -7,8 +7,8 @@ import com.kirolak.Sport;
 import com.kirolak.Team;
 import com.kirolak.dao.SportDAO;
 import com.kirolak.dao.TeamDAO;
-import com.kirolak.util.FacesUtil;
-import com.kirolak.util.Messages;
+import com.kirolak.jsf.util.FacesUtil;
+import com.kirolak.jsf.util.Messages;
 
 public class TeamBean extends KirolakSession
 {
