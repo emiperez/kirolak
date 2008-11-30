@@ -6,8 +6,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
+import com.kirolak.jsf.util.Messages;
 import com.kirolak.util.KirolakValidator;
-import com.kirolak.util.Messages;
 
 public class SeoNameValidator implements Validator
 {

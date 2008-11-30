@@ -14,8 +14,9 @@ import com.kirolak.dao.CompetitionDAO;
 import com.kirolak.dao.KirolakDAO;
 import com.kirolak.dao.SportDAO;
 import com.kirolak.dao.TeamDAO;
-import com.kirolak.util.FacesUtil;
-import com.kirolak.util.Messages;
+import com.kirolak.jsf.util.FacesUtil;
+import com.kirolak.jsf.util.Messages;
+import com.kirolak.util.Updater;
 
 public class CompetitionBean extends KirolakSession
 {
@@ -127,7 +128,7 @@ public class CompetitionBean extends KirolakSession
 	@Override
 	public String saveItem()
 	{
-		KirolakDAO.save(this.item);
+		Updater.save(this.item);
 		this.items = null;
 		this.selectableTeams = null;
 		this.selectedTeams = null;

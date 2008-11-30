@@ -5,7 +5,7 @@ import java.util.List;
 import com.kirolak.KirolakObject;
 import com.kirolak.Sport;
 import com.kirolak.dao.SportDAO;
-import com.kirolak.util.Messages;
+import com.kirolak.jsf.util.Messages;
 
 public class SportBean extends KirolakSession
 {

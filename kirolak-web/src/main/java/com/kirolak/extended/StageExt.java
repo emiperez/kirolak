@@ -9,6 +9,7 @@ import com.kirolak.Stage;
 import com.kirolak.Team;
 import com.kirolak.dao.GroupDAO;
 import com.kirolak.dao.TeamDAO;
+import com.kirolak.util.Updater;
 
 public class StageExt
 {
@@ -23,7 +24,7 @@ public class StageExt
 			Group group = new Group();
 			group.setStage(stage);
 			group.setName(new Character((char)(n+65)).toString());
-			GroupDAO.save(group);
+			Updater.save(group);
 		}
 		List<KirolakObject> groups = GroupDAO.listByStage(stage);
 		for (int n =0; n < groups.size(); n++)

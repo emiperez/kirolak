@@ -19,8 +19,9 @@ import com.kirolak.dao.StandingDAO;
 import com.kirolak.dao.TeamDAO;
 import com.kirolak.extended.GroupExt;
 import com.kirolak.extended.StandingExt;
-import com.kirolak.util.FacesUtil;
-import com.kirolak.util.Messages;
+import com.kirolak.jsf.util.FacesUtil;
+import com.kirolak.jsf.util.Messages;
+import com.kirolak.util.Updater;
 
 public class RoundBean extends KirolakSession
 {
@@ -32,6 +33,7 @@ public class RoundBean extends KirolakSession
 		round.setMatches(this.listMatch);
 		RoundDAO.saveRound(round);
 		StandingDAO.calculate(round);
+		Updater.notify(round);
 		this.items = null;
 		return "list";
 	}
@@ -91,6 +93,7 @@ public class RoundBean extends KirolakSession
 				Round round = iterator.next();
 				RoundDAO.saveRound(round);
 				StandingExt.create(round);
+				Updater.notify(round);
 			}
 		}
 		this.items = null;
