@@ -35,6 +35,11 @@
 		</dependency>
 		<dependency>
 			<groupId>com.kirolak</groupId>
+			<artifactId>kirolak-util</artifactId>
+			<version>0.3.0dev1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.kirolak</groupId>
 			<artifactId>kirolak-i18n</artifactId>
 			<version>0.3.0dev1</version>
 		</dependency>
